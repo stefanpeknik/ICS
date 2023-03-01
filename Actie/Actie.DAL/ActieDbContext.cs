@@ -15,7 +15,7 @@ public class ActieDbContext : DbContext
     public DbSet<ProjectEntity> Projects => Set<ProjectEntity>();
     public DbSet<ActivityEntity> Activities => Set<ActivityEntity>();
 
-
+    public DbSet<UserEntity> UsersDb { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // TODO
