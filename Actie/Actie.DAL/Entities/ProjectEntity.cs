@@ -4,7 +4,7 @@ namespace Actie.DAT.Entities;
 
 public class ProjectEntity : IEntity
 {
-    public Guid Id { get; set; }
+    public required Guid Id { get; set; }
         
     public required string Name { get; set; }
     public ICollection<ActivityEntity>? Users { get; set; }
