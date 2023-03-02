@@ -1,4 +1,6 @@
-﻿namespace Actie.DAT.Entities;
+﻿using Actie.DAL.Entities;
+
+namespace Actie.DAT.Entities;
 
 public class ActivityEntity : IEntity
 {
@@ -9,5 +11,6 @@ public class ActivityEntity : IEntity
     public int? Rating { get; set; }
     public string? Type { get; set; }
     public string? Description { get; set; }
+    public required ICollection<TagEntity> Tags { get; set; }
 
 }
