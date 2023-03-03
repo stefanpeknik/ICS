@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Actie.DAL.Migrations
 {
     [DbContext(typeof(ActieDbContext))]
-    [Migration("20230303162126_Initial")]
+    [Migration("20230303162405_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -40,7 +40,7 @@ namespace Actie.DAL.Migrations
 
                     b.HasIndex("ActivityEntityId");
 
-                    b.ToTable("TagEntity");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Actie.DAT.Entities.ActivityEntity", b =>

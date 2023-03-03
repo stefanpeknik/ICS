@@ -37,7 +37,7 @@ namespace Actie.DAL.Migrations
 
                     b.HasIndex("ActivityEntityId");
 
-                    b.ToTable("TagEntity");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Actie.DAT.Entities.ActivityEntity", b =>

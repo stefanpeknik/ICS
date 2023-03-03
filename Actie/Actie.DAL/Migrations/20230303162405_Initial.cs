@@ -96,7 +96,7 @@ namespace Actie.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TagEntity",
+                name: "Tags",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -106,9 +106,9 @@ namespace Actie.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TagEntity", x => x.Id);
+                    table.PrimaryKey("PK_Tags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TagEntity_Activities_ActivityEntityId",
+                        name: "FK_Tags_Activities_ActivityEntityId",
                         column: x => x.ActivityEntityId,
                         principalTable: "Activities",
                         principalColumn: "Id");
@@ -130,8 +130,8 @@ namespace Actie.DAL.Migrations
                 column: "UsersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TagEntity_ActivityEntityId",
-                table: "TagEntity",
+                name: "IX_Tags_ActivityEntityId",
+                table: "Tags",
                 column: "ActivityEntityId");
         }
 
@@ -142,7 +142,7 @@ namespace Actie.DAL.Migrations
                 name: "ProjectEntityUserEntity");
 
             migrationBuilder.DropTable(
-                name: "TagEntity");
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Activities");
