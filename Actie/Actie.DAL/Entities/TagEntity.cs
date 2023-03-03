@@ -10,8 +10,6 @@ namespace Actie.DAL.Entities
         public required string Name { get; set; }
         public string? Description { get; set; }
 
-        public Guid? ActivityTagId { get; set; }
-        public ActivityTagEntity? ActivityTag { get; set; }
-
+        public ICollection<ActivityTagEntity> Activities { get; set; }
     }
 }

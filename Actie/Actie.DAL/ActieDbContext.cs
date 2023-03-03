@@ -12,10 +12,12 @@ public class ActieDbContext : DbContext
         : base(contextOptions) =>
         _seedDemoData = seedDemoData;
 
-    public DbSet<UserEntity> Users => Set<UserEntity>();
-    public DbSet<ProjectEntity> Projects => Set<ProjectEntity>();
     public DbSet<ActivityEntity> Activities => Set<ActivityEntity>();
+    public DbSet<ActivityTagEntity> ActivitiesTags => Set<ActivityTagEntity>();
+    public DbSet<ProjectEntity> Projects => Set<ProjectEntity>();
     public DbSet<TagEntity> Tags => Set<TagEntity>();
+    public DbSet<UserEntity> Users => Set<UserEntity>();
+    public DbSet<UserProjectEntity> UsersProjects => Set<UserProjectEntity>();
 
     public DbSet<UserEntity> UsersDb { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)

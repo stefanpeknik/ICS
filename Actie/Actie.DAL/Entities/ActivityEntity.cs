@@ -12,7 +12,8 @@ public class ActivityEntity : IEntity
     public string? Type { get; set; }
     public string? Description { get; set; }
 
-    public Guid? ActivityTagId { get; set; }
-    public ActivityTagEntity? ActivityTag { get; set; }
+    public ICollection<ActivityTagEntity>? Tags { get; set; }
 
+    public Guid? ProjectId { get; set; }
+    public ProjectEntity? Project { get; set; }
 }

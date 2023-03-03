@@ -11,7 +11,8 @@ public class UserEntity : IEntity
     public string? Gender { get; set; }
     public float? Weight { get; set; }
     public int? Height { get; set; }
-    public ICollection<ActivityEntity>? Activities { get; set; }
-    public ICollection<ProjectEntity>? Projects { get; set; }
 
+    public ICollection<ActivityEntity>? Activities { get; set; }
+
+    public ICollection<UserProjectEntity>? Projects { get; set; }
 }
