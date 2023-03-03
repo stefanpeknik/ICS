@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Actie.DAL.Migrations
 {
     [DbContext(typeof(ActieDbContext))]
-    [Migration("20230303160732_Initial")]
+    [Migration("20230303162126_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -62,9 +62,6 @@ namespace Actie.DAL.Migrations
                     b.Property<Guid?>("ProjectEntityId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ProjectEntityId1")
-                        .HasColumnType("TEXT");
-
                     b.Property<int?>("Rating")
                         .HasColumnType("INTEGER");
 
@@ -80,8 +77,6 @@ namespace Actie.DAL.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectEntityId");
-
-                    b.HasIndex("ProjectEntityId1");
 
                     b.HasIndex("UserEntityId");
 
@@ -102,12 +97,7 @@ namespace Actie.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("UserEntityId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserEntityId");
 
                     b.ToTable("Projects");
                 });
@@ -146,6 +136,21 @@ namespace Actie.DAL.Migrations
                     b.ToTable("UserEntity");
                 });
 
+            modelBuilder.Entity("ProjectEntityUserEntity", b =>
+                {
+                    b.Property<Guid>("ProjectsId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("UsersId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ProjectsId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("ProjectEntityUserEntity");
+                });
+
             modelBuilder.Entity("Actie.DAL.Entities.TagEntity", b =>
                 {
                     b.HasOne("Actie.DAT.Entities.ActivityEntity", null)
@@ -159,20 +164,24 @@ namespace Actie.DAL.Migrations
                         .WithMany("Activities")
                         .HasForeignKey("ProjectEntityId");
 
-                    b.HasOne("Actie.DAT.Entities.ProjectEntity", null)
-                        .WithMany("Users")
-                        .HasForeignKey("ProjectEntityId1");
-
                     b.HasOne("Actie.DAT.Entities.UserEntity", null)
                         .WithMany("Activities")
                         .HasForeignKey("UserEntityId");
                 });
 
-            modelBuilder.Entity("Actie.DAT.Entities.ProjectEntity", b =>
+            modelBuilder.Entity("ProjectEntityUserEntity", b =>
                 {
+                    b.HasOne("Actie.DAT.Entities.ProjectEntity", null)
+                        .WithMany()
+                        .HasForeignKey("ProjectsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Actie.DAT.Entities.UserEntity", null)
-                        .WithMany("Projects")
-                        .HasForeignKey("UserEntityId");
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Actie.DAT.Entities.ActivityEntity", b =>
@@ -183,15 +192,11 @@ namespace Actie.DAL.Migrations
             modelBuilder.Entity("Actie.DAT.Entities.ProjectEntity", b =>
                 {
                     b.Navigation("Activities");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Actie.DAT.Entities.UserEntity", b =>
                 {
                     b.Navigation("Activities");
-
-                    b.Navigation("Projects");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,6 +12,19 @@ namespace Actie.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserEntity",
                 columns: table => new
                 {
@@ -30,25 +43,6 @@ namespace Actie.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Projects",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false),
-                    UserEntityId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Projects_UserEntity_UserEntityId",
-                        column: x => x.UserEntityId,
-                        principalTable: "UserEntity",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Activities",
                 columns: table => new
                 {
@@ -60,7 +54,6 @@ namespace Actie.DAL.Migrations
                     Type = table.Column<string>(type: "TEXT", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     ProjectEntityId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    ProjectEntityId1 = table.Column<Guid>(type: "TEXT", nullable: true),
                     UserEntityId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -72,15 +65,34 @@ namespace Actie.DAL.Migrations
                         principalTable: "Projects",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Activities_Projects_ProjectEntityId1",
-                        column: x => x.ProjectEntityId1,
-                        principalTable: "Projects",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Activities_UserEntity_UserEntityId",
                         column: x => x.UserEntityId,
                         principalTable: "UserEntity",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectEntityUserEntity",
+                columns: table => new
+                {
+                    ProjectsId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    UsersId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectEntityUserEntity", x => new { x.ProjectsId, x.UsersId });
+                    table.ForeignKey(
+                        name: "FK_ProjectEntityUserEntity_Projects_ProjectsId",
+                        column: x => x.ProjectsId,
+                        principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProjectEntityUserEntity_UserEntity_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "UserEntity",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,19 +120,14 @@ namespace Actie.DAL.Migrations
                 column: "ProjectEntityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Activities_ProjectEntityId1",
-                table: "Activities",
-                column: "ProjectEntityId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Activities_UserEntityId",
                 table: "Activities",
                 column: "UserEntityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_UserEntityId",
-                table: "Projects",
-                column: "UserEntityId");
+                name: "IX_ProjectEntityUserEntity_UsersId",
+                table: "ProjectEntityUserEntity",
+                column: "UsersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TagEntity_ActivityEntityId",
@@ -131,6 +138,9 @@ namespace Actie.DAL.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ProjectEntityUserEntity");
+
             migrationBuilder.DropTable(
                 name: "TagEntity");
 
