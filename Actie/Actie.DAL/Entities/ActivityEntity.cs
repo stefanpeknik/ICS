@@ -11,6 +11,6 @@ public class ActivityEntity : IEntity
     public int? Rating { get; set; }
     public string? Type { get; set; }
     public string? Description { get; set; }
-    public required ICollection<TagEntity> Tags { get; set; }
+    public ICollection<TagEntity>? Tags { get; set; }
 
 }
