@@ -1,4 +1,4 @@
-﻿namespace Actie.DAT.Entities;
+﻿namespace Actie.DAL.Entities;
 
 public class UserEntity : IEntity
 {

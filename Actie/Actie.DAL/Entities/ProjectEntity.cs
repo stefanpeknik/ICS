@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Actie.DAT.Entities;
+namespace Actie.DAL.Entities;
 
 public class ProjectEntity : IEntity
 {

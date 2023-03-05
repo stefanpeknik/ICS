@@ -1,6 +1,4 @@
-﻿using Actie.DAT.Entities;
-
-
+﻿using Actie.DAL.Entities;
 
 namespace Actie.DAL.Entities
 {

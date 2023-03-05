@@ -1,6 +1,6 @@
 ﻿using Actie.DAL.Entities;
 
-namespace Actie.DAT.Entities;
+namespace Actie.DAL.Entities;
 
 public class ActivityTagEntity : IEntity
 {
