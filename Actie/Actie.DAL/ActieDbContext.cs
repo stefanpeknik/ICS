@@ -1,8 +1,7 @@
 ﻿using Actie.DAL.Entities;
-using Actie.DAT.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Actie.DAT;
+namespace Actie.DAL;
 
 public class ActieDbContext : DbContext
 {
