@@ -19,9 +19,10 @@ public class ActieDbContext : DbContext
     public DbSet<UserEntity> Users => Set<UserEntity>();
     public DbSet<UserProjectEntity> UsersProjects => Set<UserProjectEntity>();
 
-    public DbSet<UserEntity> UsersDb { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         // TODO
     }
 }
