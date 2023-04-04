@@ -12,7 +12,7 @@ public class UserEntity : IEntity
     public float? Weight { get; set; }
     public int? Height { get; set; }
 
-    public ICollection<ActivityEntity>? Activities { get; set; }
+    public ICollection<ActivityEntity>? Activities { get; init; } = new List<ActivityEntity>();
 
-    public ICollection<UserProjectEntity>? Projects { get; set; }
+    public ICollection<UserProjectEntity>? Projects { get; init; } = new List<UserProjectEntity>();
 }
