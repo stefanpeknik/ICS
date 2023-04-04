@@ -8,6 +8,6 @@ namespace Actie.DAL.Entities
         public required string Name { get; set; }
         public string? Description { get; set; }
 
-        public ICollection<ActivityTagEntity> Activities { get; set; }
+        public ICollection<ActivityTagEntity> Activities { get; init; } = new List<ActivityTagEntity>();
     }
 }
