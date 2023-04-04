@@ -2,7 +2,7 @@
 
 [assembly: InternalsVisibleTo("CookBook.BL.Tests")]
 
-namespace CookBook.BL;
+namespace Actie.BL;
 
 internal class BusinessLogic
 {

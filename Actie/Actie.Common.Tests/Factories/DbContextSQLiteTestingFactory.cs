@@ -1,7 +1,7 @@
 ﻿using Actie.DAL;
 using Microsoft.EntityFrameworkCore;
 
-namespace CookBook.Common.Tests.Factories;
+namespace Actie.Common.Tests.Factories;
 
 public class DbContextSqLiteTestingFactory : IDbContextFactory<ActieDbContext>
 {

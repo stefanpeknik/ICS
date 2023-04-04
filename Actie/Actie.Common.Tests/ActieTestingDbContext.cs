@@ -1,7 +1,7 @@
 ﻿using Actie.DAL;
 using Microsoft.EntityFrameworkCore;
 
-namespace CookBook.Common.Tests;
+namespace Actie.Common.Tests;
 
 public class ActieTestingDbContext : ActieDbContext
 {

@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Actie.Common.Tests;
-using CookBook.Common.Tests.Factories;
+using Actie.Common.Tests.Factories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Xunit;
