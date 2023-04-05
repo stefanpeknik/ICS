@@ -1,6 +1,6 @@
 ﻿namespace Actie.DAL.Entities;
 
-public class TagEntity : IEntity
+public record TagEntity : IEntity
 {
     public required Guid Id { get; set; }
     public required string Name { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Actie.DAL.Entities;
 
-public class ActivityEntity : IEntity
+public record ActivityEntity : IEntity
 {
     public required Guid Id { get; set; }
     public required string Name { get; set; }

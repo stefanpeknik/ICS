@@ -1,6 +1,6 @@
 ﻿namespace Actie.DAL.Entities;
 
-public class UserProjectEntity : IEntity
+public record UserProjectEntity : IEntity
 {
     public required Guid Id { get; set; }
 

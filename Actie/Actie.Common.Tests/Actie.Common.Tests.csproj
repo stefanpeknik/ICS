@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Actie.DAL\Actie.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Seeds\" />
-  </ItemGroup>
-
 </Project>
