@@ -1,20 +1,23 @@
-﻿
-using Actie.DAL.DTOs;
-using Actie.DAL.Entities;
+﻿using Actie.DAL.Entities;
+using Actie.DAL.Mappers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Actie.DAL.Repositories;
+
 public class Repository<TEntity> : IRepository<TEntity>
     where TEntity : class, IEntity
 {
     private readonly DbSet<TEntity> _dbSet;
-    private readonly IEntityDTO<TEntity> _entityDTO;
+    private readonly IEntityMapper<TEntity> _entityMapper;
 
-    public Repository(DbContext dbContext, IEntityDTO<TEntity> entityDTO)
+    public Repository(
+        DbContext dbContext,
+        IEntityMapper<TEntity> entityMapper)
     {
         _dbSet = dbContext.Set<TEntity>();
-        _entityDTO = entityDTO;
+        _entityMapper = entityMapper;
     }
+
     public IQueryable<TEntity> Get() => _dbSet;
 
     public async ValueTask<bool> ExistsAsync(TEntity entity)
@@ -26,7 +29,7 @@ public class Repository<TEntity> : IRepository<TEntity>
     public async Task<TEntity> UpdateAsync(TEntity entity)
     {
         TEntity existingEntity = await _dbSet.SingleAsync(e => e.Id == entity.Id);
-        _entityDTO.MapToExistingEntity(existingEntity, entity);
+        _entityMapper.MapToExistingEntity(existingEntity, entity);
         return existingEntity;
     }
 
