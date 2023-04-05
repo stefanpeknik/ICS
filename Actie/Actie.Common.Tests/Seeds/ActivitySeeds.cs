@@ -31,6 +31,17 @@ public static class ActivitySeeds
         Description = null,
     };
 
+    public static readonly ActivityEntity ActivityEntity1 = new()
+    {
+        Id = Guid.Parse(input: "c2261147-0a6f-46c2-9b17-d5a20ce8c055"),
+        Name = "Walking",
+        Start = DateTime.Parse("2023-02-04 15:20 PM"),
+        End = DateTime.Parse("2023-02-04 17:00 PM"),
+        Rating = 9,
+        Type = null,
+        Description = null,
+    };
+
     //To ensure that no tests reuse these clones for non-idempotent operations
     public static readonly ActivityEntity ActivityEntityWithNoTags = ActivityEntity with { Id = Guid.Parse("98B7F7B6-0F51-43B3-B8C0-B5FCFFF6DC2E"), Tags = Array.Empty<ActivityTagEntity>() };
     public static readonly ActivityEntity ActivityEntityUpdate = ActivityEntity with { Id = Guid.Parse("0953F3CE-7B1A-48C1-9796-D2BAC7F67868"), Tags = Array.Empty<ActivityTagEntity>() };
@@ -44,6 +55,8 @@ public static class ActivitySeeds
         ActivityEntity.Tags.Add(ActivityTagSeeds.ActivityTagEntity1);
         ActivityEntity.Tags.Add(ActivityTagSeeds.ActivityTagEntity2);
 
+        ActivityEntity1.Tags.Add(ActivityTagSeeds.ActivityTagEntity2);
+
         ActivityForActivityTagEntityDelete.Tags.Add(ActivityTagSeeds.ActivityTagEntityDelete);
     }
 
@@ -51,6 +64,7 @@ public static class ActivitySeeds
     {
         modelBuilder.Entity<ActivityEntity>().HasData(
             ActivityEntity with { Tags = Array.Empty<ActivityTagEntity>() },
+            ActivityEntity1 with { Tags = Array.Empty<ActivityTagEntity>() },
             ActivityEntityWithNoTags,
             ActivityEntityUpdate,
             ActivityEntityDelete,
