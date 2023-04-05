@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace Actie.DAL.Entities;
+﻿namespace Actie.DAL.Entities;
 
 public class ProjectEntity : IEntity
 {

@@ -1,16 +1,13 @@
-﻿
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
-using Actie.DAL.DTOs;
 using Actie.DAL.Entities;
+using Actie.DAL.Mappers;
 using Actie.DAL.Repositories;
+using Actie.DAL.UnitOfWork;
+using CookBook.BL.Mappers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Actie.BL.Facades;
 public abstract class
@@ -18,9 +15,9 @@ public abstract class
     where TEntity : class, IEntity
     where TListModel : IModel
     where TDetailModel : class, IModel
-    where TEntityMapper : IEntityDTO<TEntity>, new()
+    where TEntityMapper : IEntityMapper<TEntity>, new()
 {
-    protected readonly IModelDTO<TEntity, TListModel, TDetailModel> ModelMapper;
+    protected readonly IModelMapper<TEntity, TListModel, TDetailModel> ModelMapper;
     protected readonly IUnitOfWorkFactory UnitOfWorkFactory;
 
     protected FacadeBase(

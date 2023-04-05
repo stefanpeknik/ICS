@@ -1,11 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Actie.BL.Models;
+﻿namespace Actie.BL.Models;
 public record ActivityListModel : ModelBase
 {
     public required string Name { get; set; }

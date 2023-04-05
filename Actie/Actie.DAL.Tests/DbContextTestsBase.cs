@@ -4,8 +4,6 @@
 using Actie.Common.Tests;
 using Actie.Common.Tests.Factories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using Xunit;
 using Xunit.Abstractions;
 
 namespace Actie.DAL.Tests;

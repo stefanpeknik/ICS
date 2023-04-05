@@ -1,6 +1,4 @@
-﻿using Actie.DAL.Entities;
-
-namespace Actie.DAL.Entities;
+﻿namespace Actie.DAL.Entities;
 
 public class ActivityEntity : IEntity
 {
