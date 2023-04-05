@@ -1,13 +1,8 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Actie.BL.Models;
+﻿using Actie.BL.Models;
 using Actie.DAL.Entities;
 
-namespace Actie.BL.Facades;
+namespace Actie.BL.Facades.Interfaces;
+
 public interface IFacade<TEntity, TListModel, TDetailModel>
     where TEntity : class, IEntity
     where TListModel : IModel
