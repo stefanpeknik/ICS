@@ -38,22 +38,28 @@ public static class UserSeeds
     public static readonly UserEntity UserEntityUpdate = UserEntity with { Id = Guid.Parse("1d82c88e-6839-4be3-b271-393331222e94"), Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() };
     public static readonly UserEntity UserEntityDelete = UserEntity with { Id = Guid.Parse("2868b4fe-c861-4c69-a1bb-5bb8900f34cb"), Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() };
 
-    // public static readonly UserEntity UserForUserProjectEntityUpdate = UserEntity with { Id = Guid.Parse("1a2c1aad-a4c0-4562-b4b8-f36ee41a495b"), TODO Tags = Array.Empty<ActivityTagEntity>() };
-    // public static readonly UserEntity UserForUserProjectEntityDelete = UserEntity with { Id = Guid.Parse("1a2c1aad-a4c0-4562-b4b8-f36ee41a495b"), TODO Tags = new List<ActivityTagEntity>() };
+    public static readonly UserEntity UserForUserProjectEntityUpdate = UserEntity with { Id = Guid.Parse("b5476ecf-0010-49f5-887d-e54c168f47d9"), Projects = Array.Empty<UserProjectEntity>(), Activities = Array.Empty<ActivityEntity>()};
+    public static readonly UserEntity UserForUserProjectEntityDelete = UserEntity with { Id = Guid.Parse("20cce012-1d55-48fa-beb2-f4453324234f"), Projects = new List<UserProjectEntity>(), Activities = Array.Empty<ActivityEntity>()};
+
 
     static UserSeeds()
     {
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity);
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity1);
+        UserEntity.Projects.Add(UserProjectSeeds.UserProjectEntity);
+
+        UserForUserProjectEntityDelete.Projects.Add(UserProjectSeeds.UserProjectEntityDelete);
     }
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<UserEntity>().HasData(
-            UserEntity with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() },
+            UserEntity with {Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>()},
             UserEntityWithNoActivitiesNorProjects,
             UserEntityUpdate,
-            UserEntityDelete
+            UserEntityDelete,
+            UserForUserProjectEntityUpdate,
+            UserForUserProjectEntityDelete with{Projects = Array.Empty<UserProjectEntity>()}
         );
     }
 }
