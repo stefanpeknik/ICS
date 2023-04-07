@@ -8,27 +8,27 @@ class ActivityModelMapper : ModelMapperBase<ActivityEntity, ActivityListModel, A
 {
     public override ActivityListModel MapToListModel(ActivityEntity? entity)
         => entity is null
-        ? ActivityListModel.Empty
-        : new ActivityListModel
-        {
-            Id = entity.Id,
-            Name = entity.Name,
-            Start = entity.Start,
-            End = entity.End,
-            Type = entity.Type
-        };
+            ? ActivityListModel.Empty
+            : new ActivityListModel
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Start = entity.Start,
+                End = entity.End,
+                Type = entity.Type
+            };
 
     public override ActivityDetailModel MapToDetailModel(ActivityEntity? entity)
         => entity is null
-        ? ActivityDetailModel.Empty
-        : new ActivityDetailModel
-        {
-            Id = entity.Id,
-            Name = entity.Name,
-            Start = entity.Start,
-            End = entity.End,
-            Type = entity.Type
-        };
+            ? ActivityDetailModel.Empty
+            : new ActivityDetailModel
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Start = entity.Start,
+                End = entity.End,
+                Type = entity.Type
+            };
 
     public override ActivityEntity MapToEntity(ActivityDetailModel model)
         => new()

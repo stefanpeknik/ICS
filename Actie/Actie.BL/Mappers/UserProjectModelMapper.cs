@@ -6,9 +6,29 @@ namespace Actie.BL.Mappers;
 
 class UserProjectModelMapper : ModelMapperBase<UserProjectEntity, UserProjectListModel, UserProjectDetailModel>, IUserProjectModelMapper
 {
-    public override UserProjectListModel MapToListModel(UserProjectEntity? entity) => throw new NotImplementedException();
+    public override UserProjectListModel MapToListModel(UserProjectEntity? entity)
+        => entity is null
+            ? UserProjectListModel.Empty
+            : new UserProjectListModel
+            {
+                UserId = entity.UserId,
+                ProjectId = entity.ProjectId
+            };
 
-    public override UserProjectDetailModel MapToDetailModel(UserProjectEntity entity) => throw new NotImplementedException();
+    public override UserProjectDetailModel MapToDetailModel(UserProjectEntity? entity)
+        => entity is null
+            ? UserProjectDetailModel.Empty
+            : new UserProjectDetailModel
+            {
+                UserId = entity.UserId,
+                ProjectId = entity.ProjectId
+            };
 
-    public override UserProjectEntity MapToEntity(UserProjectDetailModel model) => throw new NotImplementedException();
+    public override UserProjectEntity MapToEntity(UserProjectDetailModel model)
+        => new()
+        {
+            Id = model.Id,
+            UserId = model.UserId,
+            ProjectId = model.ProjectId
+        };
 }

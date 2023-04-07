@@ -6,9 +6,28 @@ namespace Actie.BL.Mappers;
 
 class ProjectModelMapper : ModelMapperBase<ProjectEntity, ProjectListModel, ProjectDetailModel>, IProjectModelMapper
 {
-    public override ProjectListModel MapToListModel(ProjectEntity? entity) => throw new NotImplementedException();
+    public override ProjectListModel MapToListModel(ProjectEntity? entity)
+        => entity is null
+        ? ProjectListModel.Empty
+        : new ProjectListModel
+        {
+            Name = entity.Name
+        };
 
-    public override ProjectDetailModel MapToDetailModel(ProjectEntity entity) => throw new NotImplementedException();
+    public override ProjectDetailModel MapToDetailModel(ProjectEntity? entity)
+        => entity is null
+            ? ProjectDetailModel.Empty
+            : new ProjectDetailModel
+            {
+                Name = entity.Name,
+                Description = entity.Description
+            };
 
-    public override ProjectEntity MapToEntity(ProjectDetailModel model) => throw new NotImplementedException();
+    public override ProjectEntity MapToEntity(ProjectDetailModel model)
+        => new()
+        {
+            Id = model.Id,
+            Name = model.Name,
+            Description = model.Description
+        };
 }
