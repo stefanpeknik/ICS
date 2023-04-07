@@ -14,4 +14,7 @@ public record ActivityEntity : IEntity
 
     public Guid? ProjectId { get; set; }
     public ProjectEntity? Project { get; set; }
+
+    public Guid? UserId { get; set; }
+    public UserEntity? User { get; set; }
 }
