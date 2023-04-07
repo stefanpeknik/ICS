@@ -22,6 +22,58 @@ public class ActieDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        // Activity
+        modelBuilder.Entity<ActivityEntity>()
+            .HasOne(a => a.Project)
+            .WithMany(p => p.Activities)
+            .OnDelete(DeleteBehavior.SetNull);
+        modelBuilder.Entity<ActivityEntity>()
+            .HasOne(a => a.User)
+            .WithMany(u => u.Activities)
+            .OnDelete(DeleteBehavior.SetNull);
+        modelBuilder.Entity<ActivityEntity>()
+            .HasMany(a => a.Tags)
+            .WithOne(at => at.Activity)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Project
+        modelBuilder.Entity<ProjectEntity>()
+            .HasMany(p => p.Activities)
+            .WithOne(a => a.Project)
+            .OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<ProjectEntity>()
+            .HasMany(p => p.Users)
+            .WithOne(up => up.Project)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // User
+        modelBuilder.Entity<UserEntity>()
+            .HasMany(u => u.Activities)
+            .WithOne(a => a.User)
+            .OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<UserEntity>()
+            .HasMany(u => u.Projects)
+            .WithOne(up => up.User)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // UserProject
+        modelBuilder.Entity<UserProjectEntity>()
+            .HasOne(up => up.User)
+            .WithMany(u => u.Projects)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        // Tag
+        modelBuilder.Entity<TagEntity>()
+            .HasMany(t => t.Activities)
+            .WithOne(at => at.Tag)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // ActivityTag
+        modelBuilder.Entity<ActivityTagEntity>()
+            .HasOne(at => at.Activity)
+            .WithMany(a => a.Tags)
+            .OnDelete(DeleteBehavior.SetNull);
+
         // TODO
     }
 }
