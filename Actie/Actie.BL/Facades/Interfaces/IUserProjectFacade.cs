@@ -1,9 +1,8 @@
-﻿
-
-using Actie.BL.Models;
+﻿using Actie.BL.Models;
+using Actie.DAL.Entities;
 
 namespace Actie.BL.Facades.Interfaces;
-public interface IUserProjectFacade
+
+public interface IUserProjectFacade : IFacade<UserProjectEntity, UserProjectListModel, UserProjectDetailModel>
 {
-    //Task<UserProjectDetailModel> SaveAsync(UserProjectDetailModel model, Guid )
 }

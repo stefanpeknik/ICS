@@ -1,12 +1,8 @@
-﻿// Copyright (c) .NET Foundation and contributors. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-//
-
-using System.Diagnostics;
-using Actie.DAL.Entities;
+﻿using Actie.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Actie.Common.Tests.Seeds;
+
 public static class UserSeeds
 {
     public static readonly UserEntity EmptyUserEntity = new()

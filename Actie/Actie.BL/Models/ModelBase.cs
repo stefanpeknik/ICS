@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 
 namespace Actie.BL.Models;
+
 public abstract record ModelBase : INotifyPropertyChanged, IModel
 {
     public Guid Id { get; set; }

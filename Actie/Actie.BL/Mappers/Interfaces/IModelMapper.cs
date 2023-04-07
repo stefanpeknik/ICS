@@ -1,4 +1,4 @@
-﻿namespace CookBook.BL.Mappers;
+﻿namespace Actie.BL.Mappers.Interfaces;
 
 public interface IModelMapper<TEntity, out TListModel, TDetailModel>
 {

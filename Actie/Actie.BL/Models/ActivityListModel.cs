@@ -1,4 +1,5 @@
 ﻿namespace Actie.BL.Models;
+
 public record ActivityListModel : ModelBase
 {
     public required string Name { get; set; }
