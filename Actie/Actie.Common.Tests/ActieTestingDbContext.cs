@@ -1,4 +1,5 @@
-﻿using Actie.DAL;
+﻿using Actie.Common.Tests.Seeds;
+using Actie.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace Actie.Common.Tests;
@@ -19,7 +20,12 @@ public class ActieTestingDbContext : ActieDbContext
 
         if (_seedTestingData)
         {
-            // TODO
+            ActivitySeeds.Seed((modelBuilder));
+            ActivityTagSeeds.Seed((modelBuilder));
+            ProjectSeeds.Seed((modelBuilder));
+            TagSeeds.Seed(modelBuilder);
+            UserProjectSeeds.Seed((modelBuilder));
+            UserSeeds.Seed(modelBuilder);
         }
     }
 }

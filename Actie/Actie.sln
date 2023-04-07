@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C23D3E56
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actie.Common.Tests", "Actie.Common.Tests\Actie.Common.Tests.csproj", "{0ED63418-262A-483E-BA1C-464CBE26F92C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actie.BL", "Actie.BL\Actie.BL.csproj", "{41D8E9AE-0541-4FE8-B6F6-71B0B8F723B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actie.BL", "Actie.BL\Actie.BL.csproj", "{41D8E9AE-0541-4FE8-B6F6-71B0B8F723B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
