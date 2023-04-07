@@ -21,6 +21,9 @@ public record UserDetailModel : ModelBase
         Name = string.Empty,
         Surname = string.Empty,
         Photo = null,
+        Age = null,
         Gender = string.Empty,
+        Weight = null,
+        Height = null
     };
 }
