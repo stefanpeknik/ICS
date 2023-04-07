@@ -23,7 +23,7 @@ public static class ActivitySeeds
         Start = DateTime.Parse("2023-01-04 12:00 PM"),
         End = DateTime.Parse("2023-01-04 13:00 PM"),
         Rating = 6,
-        Type = null,
+        Type = string.Empty,
         Description = null,
     };
 
@@ -34,7 +34,7 @@ public static class ActivitySeeds
         Start = DateTime.Parse("2023-02-04 15:20 PM"),
         End = DateTime.Parse("2023-02-04 17:00 PM"),
         Rating = 9,
-        Type = null,
+        Type = "Outdoor",
         Description = null,
     };
 
