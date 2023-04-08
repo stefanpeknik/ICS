@@ -127,14 +127,14 @@ public class DbContextProjectTests : DbContextTestsBase
     public async Task Delete_Project_Deleted()
     {
         //Arrange
-        var baseEntity = UserSeeds.UserEntityDelete;
+        var baseEntity = ProjectSeeds.ProjectEntityDelete;
 
         //Act
-        ActieDbContextSUT.Users.Remove(baseEntity);
+        ActieDbContextSUT.Projects.Remove(baseEntity);
         await ActieDbContextSUT.SaveChangesAsync();
 
         //Assert
-        Assert.False(await ActieDbContextSUT.Users.AnyAsync(i => i.Id == baseEntity.Id));
+        Assert.False(await ActieDbContextSUT.Projects.AnyAsync(i => i.Id == baseEntity.Id));
     }
 
     [Fact]
