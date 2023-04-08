@@ -79,7 +79,7 @@ public class DbContextUserTests : DbContextTestsBase
 
 
     [Fact]
-    public async Task Update_Recipe_Persisted()
+    public async Task Update_User_Persisted()
     {
         //Arrange
         var baseEntity = UserSeeds.UserEntityUpdate;
@@ -101,7 +101,7 @@ public class DbContextUserTests : DbContextTestsBase
     }
 
     [Fact]
-    public async Task Delete_UserWithoutActivities_Deleted()
+    public async Task Delete_User_Deleted()
     {
         //Arrange
         var baseEntity = UserSeeds.UserEntityDelete;
@@ -115,7 +115,7 @@ public class DbContextUserTests : DbContextTestsBase
     }
 
     [Fact]
-    public async Task DeleteById_UserWithoutActivities_Deleted()
+    public async Task DeleteById_User_Deleted()
     {
         //Arrange
         var baseEntity = UserSeeds.UserEntityDelete;
