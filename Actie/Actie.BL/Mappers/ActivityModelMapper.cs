@@ -40,6 +40,7 @@ class ActivityModelMapper : ModelMapperBase<ActivityEntity, ActivityListModel, A
             Type = model.Type,
             Rating = model.Rating,
             Description = model.Description,
-            ProjectId = model.ProjectId
+            ProjectId = model.ProjectId,
+            UserId = model.UserId
         };
 }
