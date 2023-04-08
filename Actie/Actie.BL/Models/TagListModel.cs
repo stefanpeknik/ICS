@@ -7,7 +7,7 @@ public record TagListModel : ModelBase
 
     public static TagListModel Empty => new()
     {
-        Id = Guid.NewGuid(),
+        Id = Guid.Empty,
         Name = string.Empty,
         Description = string.Empty,
     };

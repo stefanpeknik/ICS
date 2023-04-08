@@ -17,7 +17,7 @@ public record UserDetailModel : ModelBase
 
     public static UserDetailModel Empty => new()
     {
-        Id = Guid.NewGuid(),
+        Id = Guid.Empty,
         Name = string.Empty,
         Surname = string.Empty,
         Photo = null,

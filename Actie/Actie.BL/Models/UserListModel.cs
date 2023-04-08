@@ -8,7 +8,7 @@ public record UserListModel : ModelBase
 
     public static UserListModel Empty => new()
     {
-        Id = Guid.NewGuid(),
+        Id = Guid.Empty,
         Name = string.Empty,
         Surname = string.Empty,
         Photo = null,
