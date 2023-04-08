@@ -5,7 +5,7 @@ namespace Actie.Common.Tests.Seeds;
 
 public static class TagSeeds
 {
-    public static readonly TagEntity EmptyTag = new()
+    public static readonly TagEntity EmptyTagEntity = new()
     {
         Id = default,
         Name = default!,
