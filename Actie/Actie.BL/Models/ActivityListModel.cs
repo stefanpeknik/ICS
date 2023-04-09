@@ -9,7 +9,7 @@ public record ActivityListModel : ModelBase
 
     public static ActivityListModel Empty => new()
     {
-        Id = Guid.Empty,
+        Id = Guid.NewGuid(),
         Name = string.Empty,
         Start = DateTime.MinValue,
         End = DateTime.MinValue,
