@@ -2,15 +2,18 @@
 using Actie.BL.Models;
 using Actie.DAL.Entities;
 
+
 namespace Actie.BL.Mappers;
 
-class ActivityTagModelMapper : ModelMapperBase<ActivityTagEntity, ActivityTagListModel, ActivityTagDetailModel>, IActivityTagModelMapper
+public class ActivityTagModelMapper : ModelMapperBase<ActivityTagEntity, ActivityTagListModel, ActivityTagDetailModel>,
+    IActivityTagModelMapper
 {
     public override ActivityTagListModel MapToListModel(ActivityTagEntity? entity)
         => entity is null
             ? ActivityTagListModel.Empty
             : new ActivityTagListModel
             {
+                Id= entity.Id,
                 TagId = entity.TagId,
                 ActivityId = entity.ActivityId
             };
@@ -20,6 +23,7 @@ class ActivityTagModelMapper : ModelMapperBase<ActivityTagEntity, ActivityTagLis
             ? ActivityTagDetailModel.Empty
             : new ActivityTagDetailModel
             {
+                Id = entity.Id,
                 TagId = entity.TagId,
                 ActivityId = entity.ActivityId
             };

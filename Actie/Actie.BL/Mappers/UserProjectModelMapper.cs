@@ -4,7 +4,7 @@ using Actie.DAL.Entities;
 
 namespace Actie.BL.Mappers;
 
-class UserProjectModelMapper : ModelMapperBase<UserProjectEntity, UserProjectListModel, UserProjectDetailModel>, IUserProjectModelMapper
+public class UserProjectModelMapper : ModelMapperBase<UserProjectEntity, UserProjectListModel, UserProjectDetailModel>, IUserProjectModelMapper
 {
     public override UserProjectListModel MapToListModel(UserProjectEntity? entity)
         => entity is null
