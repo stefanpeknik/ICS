@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace CookBook.BL;
+namespace Actie.BL;
 
 public static class EnumerableExtension
 {
