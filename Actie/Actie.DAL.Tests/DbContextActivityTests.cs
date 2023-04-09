@@ -69,7 +69,7 @@ public class DbContextActivityTests : DbContextTestsBase
             .SingleAsync(i => i.Id == ActivitySeeds.ActivityEntity.Id);
 
         //Assert
-        DeepAssert.Equal(ActivitySeeds.ActivityEntity with { Tags = Array.Empty<ActivityTagEntity>() }, entity);
+        DeepAssert.Equal(ActivitySeeds.ActivityEntity with { Tags = Array.Empty<ActivityTagEntity>(), Project = null, User = null}, entity);
     }
 
 

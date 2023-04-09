@@ -77,6 +77,33 @@ public class DbContextUserTests : DbContextTestsBase
         DeepAssert.Equal(UserSeeds.UserEntity with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>()}, entity);
     }
 
+    // TODO: might need to be prettied a little
+    [Fact]
+    public async Task GetById_IncludingActivities_User()
+    {
+        //Act
+        var entity = await ActieDbContextSUT.Users
+            .Include(i => i.Activities)
+            .SingleAsync(i => i.Id == UserSeeds.UserEntity.Id);
+
+        //Assert
+        Assert.Equal(UserSeeds.UserEntity.Id, entity.Id);
+        Assert.Equal(UserSeeds.UserEntity.Name, entity.Name);
+        Assert.Equal(UserSeeds.UserEntity.Surname, entity.Surname);
+        Assert.Equal(UserSeeds.UserEntity.Photo, entity.Photo);
+        Assert.Equal(UserSeeds.UserEntity.Age, entity.Age);
+        Assert.Equal(UserSeeds.UserEntity.Gender, entity.Gender);
+        Assert.Equal(UserSeeds.UserEntity.Weight, entity.Weight);
+        Assert.Equal(UserSeeds.UserEntity.Height, entity.Height);
+        Assert.Equal(UserSeeds.UserEntity.Activities?.Count, entity.Activities?.Count);
+        if (UserSeeds.UserEntity.Activities != null && entity.Activities != null)
+        {
+            foreach (var activity in UserSeeds.UserEntity.Activities)
+            {
+                Assert.Contains(activity.Id, entity.Activities.Select(a => a.Id));
+            }
+        }
+    }
 
     [Fact]
     public async Task Update_User_Persisted()
