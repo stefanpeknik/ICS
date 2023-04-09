@@ -63,18 +63,20 @@ public sealed class UserFacadeTests : FacadeTestsBase
     [Fact]
     public async Task GetById_SeededUserEntity()
     {
-        var ingredient = await _userFacadeSUT.GetAsync(UserSeeds.UserEntity.Id);
+        var user = await _userFacadeSUT.GetAsync(UserSeeds.UserEntity.Id);
 
-        DeepAssert.Equal(UserModelMapper.MapToDetailModel(UserSeeds.UserEntity), ingredient);
+        DeepAssert.Equal(UserModelMapper.MapToDetailModel(UserSeeds.UserEntity), user);
     }
 
     [Fact]
     public async Task GetById_NonExistent()
     {
-        var ingredient = await _userFacadeSUT.GetAsync(UserSeeds.EmptyUserEntity.Id);
+        var user = await _userFacadeSUT.GetAsync(UserSeeds.EmptyUserEntity.Id);
 
-        Assert.Null(ingredient);
+        Assert.Null(user);
     }
 
     
+
+   
 }
