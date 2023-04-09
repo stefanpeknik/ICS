@@ -20,18 +20,19 @@ steps:
     packageType: 'sdk'
     version: '7.0.x'
 
-- task: CmdLine@2
-  inputs:
-    script: 'dotnet workload install maui'
+- script: dotnet workload install maui
+  displayName: 'Install maui workload'
 
 - task: DotNetCoreCLI@2
   name: "Build"
   inputs:
     command: 'build'
-    projects: '*/Actie.sln'
+    projects: '**/Actie.sln'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   name: "Test"
   inputs:
     command: 'test'
-    projects: '*/Actie.sln'
+    projects: '**/Actie.sln'
+    arguments: '--configuration $(buildConfiguration)'
