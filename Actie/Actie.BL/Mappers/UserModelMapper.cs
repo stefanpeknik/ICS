@@ -6,6 +6,15 @@ namespace Actie.BL.Mappers;
 
 class UserModelMapper : ModelMapperBase<UserEntity, UserListModel, UserDetailModel>, IUserModelMapper
 {
+    private readonly IActivityModelMapper _activityModelMapper;
+    private readonly IUserProjectModelMapper _userProjectModelMapper;
+
+    public UserModelMapper(IActivityModelMapper activityModelMapper, IUserProjectModelMapper userProjectModelMapper)
+    {
+        _activityModelMapper = activityModelMapper;
+        _userProjectModelMapper = userProjectModelMapper;
+    }
+
     public override UserListModel MapToListModel(UserEntity? entity)
         => entity is null
             ? UserListModel.Empty
@@ -29,7 +38,9 @@ class UserModelMapper : ModelMapperBase<UserEntity, UserListModel, UserDetailMod
                 Age = entity.Age,
                 Gender = entity.Gender,
                 Weight = entity.Weight,
-                Height = entity.Height
+                Height = entity.Height,
+                Activities = _activityModelMapper.MapToListModel(entity.Activities).ToObservableCollection(),
+                Projects = _userProjectModelMapper.MapToListModel(entity.Projects).ToObservableCollection()
             };
 
     public override UserEntity MapToEntity(UserDetailModel model)

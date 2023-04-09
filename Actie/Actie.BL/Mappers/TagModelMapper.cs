@@ -6,6 +6,13 @@ namespace Actie.BL.Mappers;
 
 class TagModelMapper : ModelMapperBase<TagEntity, TagListModel, TagDetailModel>, ITagModelMapper
 {
+    private readonly IActivityTagModelMapper _activityTagModelMapper;
+
+    public TagModelMapper(IActivityTagModelMapper activityTagModelMapper)
+    {
+        _activityTagModelMapper = activityTagModelMapper;
+    }
+
     public override TagListModel MapToListModel(TagEntity? entity)
         => entity is null
             ? TagListModel.Empty
@@ -23,7 +30,8 @@ class TagModelMapper : ModelMapperBase<TagEntity, TagListModel, TagDetailModel>,
             {
                 Id = entity.Id,
                 Name = entity.Name,
-                Description = entity.Description
+                Description = entity.Description,
+                Activities = _activityTagModelMapper.MapToListModel(entity.Activities).ToObservableCollection()
             };
 
     public override TagEntity MapToEntity(TagDetailModel model)

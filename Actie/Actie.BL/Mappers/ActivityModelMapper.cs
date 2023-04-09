@@ -6,6 +6,13 @@ namespace Actie.BL.Mappers;
 
 class ActivityModelMapper : ModelMapperBase<ActivityEntity, ActivityListModel, ActivityDetailModel>, IActivityModelMapper
 {
+    private readonly IActivityTagModelMapper _activityTagModelMapper;
+
+    public ActivityModelMapper(IActivityTagModelMapper activityTagModelMapper)
+    {
+        _activityTagModelMapper = activityTagModelMapper;
+    }
+
     public override ActivityListModel MapToListModel(ActivityEntity? entity)
         => entity is null
             ? ActivityListModel.Empty
@@ -15,7 +22,9 @@ class ActivityModelMapper : ModelMapperBase<ActivityEntity, ActivityListModel, A
                 Name = entity.Name,
                 Start = entity.Start,
                 End = entity.End,
-                Type = entity.Type
+                Type = entity.Type,
+                Tags = _activityTagModelMapper.MapToListModel(entity.Tags).ToObservableCollection()
+
             };
 
     public override ActivityDetailModel MapToDetailModel(ActivityEntity? entity)
@@ -31,7 +40,8 @@ class ActivityModelMapper : ModelMapperBase<ActivityEntity, ActivityListModel, A
                 Rating = entity.Rating,
                 Description = entity.Description,
                 ProjectId = entity.ProjectId,
-                UserId = entity.UserId
+                UserId = entity.UserId,
+                Tags = _activityTagModelMapper.MapToListModel(entity.Tags).ToObservableCollection()
             };
 
     public override ActivityEntity MapToEntity(ActivityDetailModel model)

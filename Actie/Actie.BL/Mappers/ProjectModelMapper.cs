@@ -6,6 +6,16 @@ namespace Actie.BL.Mappers;
 
 class ProjectModelMapper : ModelMapperBase<ProjectEntity, ProjectListModel, ProjectDetailModel>, IProjectModelMapper
 {
+    private readonly IActivityModelMapper _activityModelMapper;
+    private readonly IUserProjectModelMapper _userProjectModelMapper;
+
+    public ProjectModelMapper(IActivityModelMapper activityModelMapper, IUserProjectModelMapper userProjectModelMapper)
+    {
+        _activityModelMapper = activityModelMapper;
+        _userProjectModelMapper = userProjectModelMapper;
+    }
+
+
     public override ProjectListModel MapToListModel(ProjectEntity? entity)
         => entity is null
         ? ProjectListModel.Empty
@@ -22,7 +32,10 @@ class ProjectModelMapper : ModelMapperBase<ProjectEntity, ProjectListModel, Proj
             {
                 Id = entity.Id,
                 Name = entity.Name,
-                Description = entity.Description
+                Description = entity.Description,
+                Activities = _activityModelMapper.MapToListModel(entity.Activities).ToObservableCollection(),
+                Users = _userProjectModelMapper.MapToListModel(entity.Users).ToObservableCollection()
+
             };
 
     public override ProjectEntity MapToEntity(ProjectDetailModel model)
