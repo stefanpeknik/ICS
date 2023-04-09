@@ -61,6 +61,10 @@ public class ActieDbContext : DbContext
             .HasOne(up => up.User)
             .WithMany(u => u.Projects)
             .OnDelete(DeleteBehavior.SetNull);
+        modelBuilder.Entity<UserProjectEntity>()
+            .HasOne(up => up.Project)
+            .WithMany(p => p.Users)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Tag
         modelBuilder.Entity<TagEntity>()
@@ -73,7 +77,9 @@ public class ActieDbContext : DbContext
             .HasOne(at => at.Activity)
             .WithMany(a => a.Tags)
             .OnDelete(DeleteBehavior.SetNull);
-
-        // TODO
+        modelBuilder.Entity<ActivityTagEntity>()
+            .HasOne(at => at.Tag)
+            .WithMany(t => t.Activities)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }
