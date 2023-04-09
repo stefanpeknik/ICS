@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using Actie.BL.Facades;
 using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
+using Actie.Common.Tests;
 using Actie.Common.Tests.Seeds;
 using Actie.DAL.Entities;
 using Xunit.Abstractions;
@@ -67,5 +68,96 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
         //Act && Assert
         await Assert.ThrowsAnyAsync<InvalidOperationException>(() => _projectFacadeSUT.SaveAsync(model));
 
+    }
+
+    [Fact]
+    public async Task GetById_FromSeeded_DoesNotThrowAndEqualsSeeded()
+    {
+        //Arrange
+        var detailModel = ProjectModelMapper.MapToDetailModel(ProjectSeeds.ProjectEntity);
+
+        //Act
+        var returnedModel = await _projectFacadeSUT.GetAsync(detailModel.Id);
+
+        //Assert
+        DeepAssert.Equal(detailModel, returnedModel);
+    }
+
+    [Fact]
+    public async Task GetAll_FromSeeded_DoesNotThrowAndContainsSeeded()
+    {
+        //Arrange
+        var listModel = ProjectModelMapper.MapToListModel(ProjectSeeds.ProjectEntity);
+
+        //Act
+        var returnedModel = await _projectFacadeSUT.GetAsync();
+
+        //Assert
+        Assert.Contains(listModel, returnedModel);
+    }
+
+    [Fact]
+    public async Task Update_FromSeeded_DoesNotThrow()
+    {
+        //Arrange
+        var detailModel = ProjectModelMapper.MapToDetailModel(ProjectSeeds.ProjectEntity);
+        detailModel.Name = "Changed name";
+
+        //Act & Assert
+        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = default });
+    }
+
+    [Fact]
+    public async Task Update_Name_FromSeeded_CheckUpdated()
+    {
+        //Arrange
+        var detailModel = ProjectModelMapper.MapToDetailModel(ProjectSeeds.ProjectEntity);
+        detailModel.Name = "Changed name 1";
+
+        //Act
+        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = default });
+
+        //Assert
+        var returnedModel = await _projectFacadeSUT.GetAsync(detailModel.Id);
+        DeepAssert.Equal(detailModel, returnedModel);
+    }
+
+    [Fact]
+    public async Task Update_RemoveActivities_FromSeeded_CheckNotUpdated()
+    {
+        //Arrange
+        var detailModel = ProjectModelMapper.MapToDetailModel(ProjectSeeds.ProjectEntity);
+        detailModel.Activities.Clear();
+
+        //Act
+        await _projectFacadeSUT.SaveAsync(detailModel);
+
+        //Assert
+        var returnedModel = await _projectFacadeSUT.GetAsync(detailModel.Id);
+        DeepAssert.Equal(ProjectModelMapper.MapToDetailModel(ProjectSeeds.ProjectEntity), returnedModel);
+    }
+
+    //need fix
+
+    [Fact]
+    public async Task Update_RemoveOneOfActivities_FromSeeded_CheckUpdated()
+    {
+        //Arrange
+        var detailModel = ProjectModelMapper.MapToDetailModel(ProjectSeeds.ProjectEntity);
+        detailModel.Activities.Remove(detailModel.Activities.First());
+
+        //Act
+        await Assert.ThrowsAnyAsync<InvalidOperationException>(() => _projectFacadeSUT.SaveAsync(detailModel));
+
+        //Assert
+        var returnedModel = await _projectFacadeSUT.GetAsync(detailModel.Id);
+        DeepAssert.Equal(ProjectModelMapper.MapToDetailModel(ProjectSeeds.ProjectEntity), returnedModel);
+    }
+
+    [Fact]
+    public async Task DeleteById_FromSeeded_DoesNotThrow()
+    {
+        //Arrange & Act & Assert
+        await _projectFacadeSUT.DeleteAsync(ProjectSeeds.ProjectEntity.Id);
     }
 }
