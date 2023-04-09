@@ -26,7 +26,7 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
         {
             Name = "Test",
             Description = "Prvni aktivita",
-            Activities = new ObservableCollection<ActivityEntity>()
+            Activities = new ObservableCollection<ActivityListModel>()
             {
                 new()
                 {
@@ -50,7 +50,7 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
         {
             Name = "Treninkovy denik",
             Description = "Popis",
-            Activities = new ObservableCollection<ActivityEntity>()
+            Activities = new ObservableCollection<ActivityListModel>()
             {
                 new ()
                 {
@@ -157,7 +157,11 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
     [Fact]
     public async Task DeleteById_FromSeeded_DoesNotThrow()
     {
-        //Arrange & Act & Assert
+        //Act
         await _projectFacadeSUT.DeleteAsync(ProjectSeeds.ProjectEntity.Id);
+
+        //Assert
+        var returnedModel = await _projectFacadeSUT.GetAsync(ProjectSeeds.ProjectEntity.Id);
+        Assert.Null(returnedModel);
     }
 }

@@ -30,13 +30,14 @@ public class FacadeTestsBase : IAsyncLifetime
         ActivityTagEntityMapper = new ActivityTagEntityMapper();
         UserProjectEntityMapper = new UserProjectEntityMapper();
 
-        ActivityModelMapper = new ActivityModelMapper();
-        UserModelMapper = new UserModelMapper();
-        ProjectModelMapper = new ProjectModelMapper();
-        TagModelMapper = new TagModelMapper();
-
         ActivityTagModelMapper = new ActivityTagModelMapper();
         UserProjectModelMapper = new UserProjectModelMapper();
+
+        ActivityModelMapper = new ActivityModelMapper(ActivityTagModelMapper);
+        UserModelMapper = new UserModelMapper(ActivityModelMapper, UserProjectModelMapper);
+        ProjectModelMapper = new ProjectModelMapper(ActivityModelMapper, UserProjectModelMapper);
+        TagModelMapper = new TagModelMapper(ActivityTagModelMapper);
+
 
         UnitOfWorkFactory = new UnitOfWorkFactory(DbContextFactory);
     }
