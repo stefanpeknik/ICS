@@ -11,6 +11,7 @@ class TagModelMapper : ModelMapperBase<TagEntity, TagListModel, TagDetailModel>,
             ? TagListModel.Empty
             : new TagListModel
             {
+                Id = entity.Id,
                 Name = entity.Name,
                 Description = entity.Description
             };
@@ -20,6 +21,7 @@ class TagModelMapper : ModelMapperBase<TagEntity, TagListModel, TagDetailModel>,
             ? TagDetailModel.Empty
             : new TagDetailModel
             {
+                Id = entity.Id,
                 Name = entity.Name,
                 Description = entity.Description
             };

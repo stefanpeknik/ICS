@@ -27,7 +27,11 @@ class ActivityModelMapper : ModelMapperBase<ActivityEntity, ActivityListModel, A
                 Name = entity.Name,
                 Start = entity.Start,
                 End = entity.End,
-                Type = entity.Type
+                Type = entity.Type,
+                Rating = entity.Rating,
+                Description = entity.Description,
+                ProjectId = entity.ProjectId,
+                UserId = entity.UserId
             };
 
     public override ActivityEntity MapToEntity(ActivityDetailModel model)

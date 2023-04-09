@@ -11,6 +11,7 @@ class UserModelMapper : ModelMapperBase<UserEntity, UserListModel, UserDetailMod
             ? UserListModel.Empty
             : new UserListModel
             {
+                Id = entity.Id,
                 Name = entity.Name,
                 Surname = entity.Surname,
                 Photo = entity.Photo
