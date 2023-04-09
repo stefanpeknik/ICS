@@ -10,7 +10,7 @@ public record ActivityEntity : IEntity
     public int? Rating { get; set; }
     public string? Description { get; set; }
 
-    public ICollection<ActivityTagEntity>? Tags { get; init; } = new List<ActivityTagEntity>();
+    public ICollection<ActivityTagEntity> Tags { get; init; } = new List<ActivityTagEntity>();
 
     public Guid? ProjectId { get; set; }
     public ProjectEntity? Project { get; set; }

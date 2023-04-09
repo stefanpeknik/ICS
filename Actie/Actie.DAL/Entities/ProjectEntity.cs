@@ -6,7 +6,7 @@ public record ProjectEntity : IEntity
         
     public required string Name { get; set; }
     public required string Description { get; set; }
-    public ICollection<ActivityEntity>? Activities { get; init; } = new List<ActivityEntity>();
+    public ICollection<ActivityEntity> Activities { get; init; } = new List<ActivityEntity>();
 
-    public ICollection<UserProjectEntity>? Users { get; init; } = new List<UserProjectEntity>();
+    public ICollection<UserProjectEntity> Users { get; init; } = new List<UserProjectEntity>();
 }
