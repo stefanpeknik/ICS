@@ -63,7 +63,7 @@ public static class ActivitySeeds
         ActivityEntity.Tags.Add(ActivityTagSeeds.ActivityTagEntity1);
         ActivityEntity.Tags.Add(ActivityTagSeeds.ActivityTagEntity2);
 
-        ActivityEntity1.Tags.Add(ActivityTagSeeds.ActivityTagEntity2);
+        ActivityEntity1.Tags.Add(ActivityTagSeeds.ActivityTagEntity3);
 
         ActivityForActivityTagEntityDelete.Tags.Add(ActivityTagSeeds.ActivityTagEntityDelete);
     }
