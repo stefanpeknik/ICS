@@ -11,6 +11,7 @@ public class UserProjectModelMapper : ModelMapperBase<UserProjectEntity, UserPro
             ? UserProjectListModel.Empty
             : new UserProjectListModel
             {
+                Id = entity.Id,
                 UserId = entity.UserId,
                 ProjectId = entity.ProjectId
             };
@@ -20,6 +21,7 @@ public class UserProjectModelMapper : ModelMapperBase<UserProjectEntity, UserPro
             ? UserProjectDetailModel.Empty
             : new UserProjectDetailModel
             {
+                Id = entity.Id,
                 UserId = entity.UserId,
                 ProjectId = entity.ProjectId
             };

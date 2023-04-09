@@ -13,7 +13,7 @@ public class ActivityTagModelMapper : ModelMapperBase<ActivityTagEntity, Activit
             ? ActivityTagListModel.Empty
             : new ActivityTagListModel
             {
-                Id= entity.Id,
+                Id = entity.Id,
                 TagId = entity.TagId,
                 ActivityId = entity.ActivityId
             };

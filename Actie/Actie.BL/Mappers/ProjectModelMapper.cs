@@ -11,6 +11,7 @@ class ProjectModelMapper : ModelMapperBase<ProjectEntity, ProjectListModel, Proj
         ? ProjectListModel.Empty
         : new ProjectListModel
         {
+            Id = entity.Id,
             Name = entity.Name
         };
 
@@ -19,6 +20,7 @@ class ProjectModelMapper : ModelMapperBase<ProjectEntity, ProjectListModel, Proj
             ? ProjectDetailModel.Empty
             : new ProjectDetailModel
             {
+                Id = entity.Id,
                 Name = entity.Name,
                 Description = entity.Description
             };
