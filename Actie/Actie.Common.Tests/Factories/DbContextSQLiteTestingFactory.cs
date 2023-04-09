@@ -17,7 +17,9 @@ public class DbContextSqLiteTestingFactory : IDbContextFactory<ActieDbContext>
     {
         DbContextOptionsBuilder<ActieDbContext> builder = new();
         builder.UseSqlite($"Data Source={_databaseName};Cache=Shared");
-        
+        builder.EnableDetailedErrors(detailedErrorsEnabled: true);
+        builder.EnableSensitiveDataLogging(sensitiveDataLoggingEnabled: true);
+
         // contextOptionsBuilder.LogTo(System.Console.WriteLine); //Enable in case you want to see tests details, enabled may cause some inconsistencies in tests
         // builder.EnableSensitiveDataLogging();
         

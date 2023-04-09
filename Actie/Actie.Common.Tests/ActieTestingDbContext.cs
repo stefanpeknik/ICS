@@ -20,12 +20,15 @@ public class ActieTestingDbContext : ActieDbContext
 
         if (_seedTestingData)
         {
-            ActivitySeeds.Seed((modelBuilder));
-            ActivityTagSeeds.Seed((modelBuilder));
-            ProjectSeeds.Seed((modelBuilder));
             TagSeeds.Seed(modelBuilder);
-            UserProjectSeeds.Seed((modelBuilder));
             UserSeeds.Seed(modelBuilder);
+            ProjectSeeds.Seed(modelBuilder);
+
+            ActivitySeeds.Seed(modelBuilder);
+
+            ActivityTagSeeds.Seed(modelBuilder);
+
+            UserProjectSeeds.Seed(modelBuilder);
         }
     }
 }
