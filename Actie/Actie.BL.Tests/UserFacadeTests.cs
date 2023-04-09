@@ -1,11 +1,7 @@
 ﻿
 using Actie.BL.Facades;
 using Actie.BL.Facades.Interfaces;
-using Actie.BL.Mappers;
-using Actie.BL.Mappers.Interfaces;
 using Actie.BL.Models;
-using Actie.DAL.Entities;
-using Actie.DAL.UnitOfWork;
 using Xunit.Abstractions;
 
 namespace Actie.BL.Tests;
