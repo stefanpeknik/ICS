@@ -1,4 +1,6 @@
-﻿namespace Actie.BL.Models;
+﻿using System.Collections.ObjectModel;
+
+namespace Actie.BL.Models;
 
 public record ActivityListModel : ModelBase
 {
@@ -6,6 +8,7 @@ public record ActivityListModel : ModelBase
     public required DateTime Start { get; set; }
     public required DateTime End { get; set; }
     public required string Type { get; set; }
+    public ObservableCollection<ActivityTagListModel>? Tags { get; init; } = new();
 
     public static ActivityListModel Empty => new()
     {

@@ -2,8 +2,8 @@
 
 public record ActivityTagListModel : ModelBase
 {
-    public required Guid TagId { get; set; }
-    public required Guid ActivityId { get; set; }
+    public required Guid? TagId { get; set; }
+    public required Guid? ActivityId { get; set; }
 
     public static ActivityTagListModel Empty => new()
     {

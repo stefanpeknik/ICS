@@ -12,8 +12,8 @@ public record UserDetailModel : ModelBase
     public string? Gender { get; set; }
     public float? Weight { get; set; }
     public int? Height { get; set; }
-    public ObservableCollection<ActivityEntity>? Activities { get; init; } = new();
-    public ObservableCollection<UserProjectEntity>? Projects { get; init; } = new();
+    public ObservableCollection<ActivityListModel> Activities { get; init; } = new();
+    public ObservableCollection<UserProjectListModel> Projects { get; init; } = new();
 
     public static UserDetailModel Empty => new()
     {

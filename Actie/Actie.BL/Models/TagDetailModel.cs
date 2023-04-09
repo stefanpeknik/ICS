@@ -8,7 +8,7 @@ public record TagDetailModel : ModelBase
     public required string Name { get; set; }
     public string? Description { get; set; }
 
-    public ObservableCollection<ActivityTagEntity> Activities { get; init; } = new();
+    public ObservableCollection<ActivityTagListModel> Activities { get; init; } = new();
 
     public static TagDetailModel Empty => new()
     {

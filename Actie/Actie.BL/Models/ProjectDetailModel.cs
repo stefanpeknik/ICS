@@ -7,8 +7,8 @@ public record ProjectDetailModel : ModelBase
 {
     public required string Name { get; set; }
     public required string Description { get; set; }
-    public ObservableCollection<ActivityEntity>? Activities { get; init; } = new ();
-    public ObservableCollection<UserProjectEntity>? Users { get; init; } = new();
+    public ObservableCollection<ActivityListModel> Activities { get; init; } = new ();
+    public ObservableCollection<UserProjectListModel> Users { get; init; } = new();
 
     public static ProjectDetailModel Empty => new()
     {

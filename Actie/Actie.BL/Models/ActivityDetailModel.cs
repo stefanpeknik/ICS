@@ -1,4 +1,6 @@
-﻿namespace Actie.BL.Models;
+﻿using System.Collections.ObjectModel;
+
+namespace Actie.BL.Models;
 
 public record ActivityDetailModel : ModelBase
 {
@@ -10,6 +12,7 @@ public record ActivityDetailModel : ModelBase
     public string? Description { get; set; }
     public Guid? ProjectId { get; set; }
     public Guid? UserId { get; set; }
+    public ObservableCollection<ActivityTagListModel>? Tags { get; init; } = new();
 
     public static ActivityDetailModel Empty => new()
     {
@@ -21,6 +24,7 @@ public record ActivityDetailModel : ModelBase
         Rating = null,
         Description = string.Empty,
         ProjectId = Guid.Empty,
-        UserId = Guid.Empty
+        UserId = Guid.Empty,
+        Tags = new()
     };
 }
