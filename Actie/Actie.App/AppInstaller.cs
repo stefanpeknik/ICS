@@ -2,12 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 //
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Android.OS;
 using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Services;
 
@@ -23,19 +17,19 @@ public static class AppInstaller
 
         services.AddSingleton<IAlertService, AlertService>();
 
-        services.Scan(selector => selector
-            .FromAssemblyOf<App>()
-            .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
-            .AsSelf()
-            .WithTransientLifetime());
+       // services.Scan(selector => selector
+         //   .FromAssemblyOf<App>()
+           // .AddClasses(filter => filter.AssignableTo<ContentPageBase>())
+            //.AsSelf()
+           // .WithTransientLifetime());
 
-        services.Scan(selector => selector
-            .FromAssemblyOf<App>()
-            .AddClasses(filter => filter.AssignableTo<IViewModel>())
-            .AsSelfWithInterfaces()
-            .WithTransientLifetime());
+       // services.Scan(selector => selector
+         //   .FromAssemblyOf<App>()
+          //  .AddClasses(filter => filter.AssignableTo<IViewModel>())
+           // .AsSelfWithInterfaces()
+           // .WithTransientLifetime());
 
-        services.AddTransient<INavigationService, NavigationService>();
+      //  services.AddTransient<INavigationService, NavigationService>();
 
         return services;
     }
