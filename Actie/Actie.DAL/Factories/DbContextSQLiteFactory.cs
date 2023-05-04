@@ -2,12 +2,12 @@
 
 namespace Actie.DAL.Factories;
 
-public class DbContextSqLiteFactory : IDbContextFactory<ActieDbContext>
+public class DbContextSQLiteFactory : IDbContextFactory<ActieDbContext>
 {
     private readonly bool _seedTestingData;
     private readonly DbContextOptionsBuilder<ActieDbContext> _contextOptionsBuilder = new();
 
-    public DbContextSqLiteFactory(string databaseName, bool seedTestingData = false)
+    public DbContextSQLiteFactory(string databaseName, bool seedTestingData = false)
     {
         _seedTestingData = seedTestingData;
 
