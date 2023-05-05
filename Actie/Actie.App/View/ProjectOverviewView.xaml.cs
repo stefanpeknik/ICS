@@ -1,6 +1,6 @@
 namespace Actie.App.View;
 
-public partial class ProjectOverviewView : ContentView
+public partial class ProjectOverviewView
 {
 	public ProjectOverviewView()
 	{

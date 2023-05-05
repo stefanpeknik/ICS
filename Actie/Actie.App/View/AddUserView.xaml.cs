@@ -1,6 +1,6 @@
 namespace Actie.App.View;
 
-public partial class AddUserView : ContentView
+public partial class AddUserView
 {
 	public AddUserView()
 	{

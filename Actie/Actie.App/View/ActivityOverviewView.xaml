@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
              x:Class="Actie.App.View.ActivityOverviewView">
@@ -7,61 +7,78 @@
 
 
 
-    <Grid ColumnDefinitions="200, *"
-          VerticalOptions="FillAndExpand">
+    <Grid ColumnDefinitions="300, *">
         <Grid Grid.Column="0"
-              VerticalOptions="FillAndExpand"
-              RowDefinitions="75,75,75,75,75, *"
-              Margin="{OnIdiom Phone='10, 0'}">
-            <Grid Grid.Row="0">
-                <Image Grid.Row="0"
-                       HorizontalOptions="Fill" VerticalOptions="Fill"
-                       Aspect="AspectFill"
+              RowDefinitions="150,50,50, *"
+              HorizontalOptions="Center">
+            <HorizontalStackLayout Grid.Row="0">
+                <Image  HorizontalOptions="Start"
                        WidthRequest="50" HeightRequest="50"
                        Source="user.jpg">
                     <Image.Clip>
                         <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
                     </Image.Clip>
                 </Image>
-                <Label Grid.Row="0"
+                <Label 
                        FontSize="20" LineBreakMode="WordWrap"
                        Text="Jmeno: "
-                       TextColor="White" HorizontalOptions="End" />
-            </Grid>
-            
-            <Button Grid.Row="1"
-                    Text="Projects"
-                    HeightRequest="75"
-                    FontSize="22"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    Margin="80,0"/>
-            <Button Grid.Row="2"
-                    Text="Activities"
-                    HeightRequest="75"
-                    FontSize="22"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    Margin="80,0"/>
-            <Button Grid.Row="3"
-                    Text="Settings"
-                    HeightRequest="75"
-                    FontSize="22"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    Margin="80,0"/>
-            <Button Grid.Row="4"
-                    Text="Log out"
-                    HeightRequest="75"
-                    FontSize="22"
-                    HorizontalOptions="End"
-                    VerticalOptions="End"
-                    Margin="80,0"/>
+                       TextColor="White" HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       Margin="10"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Grid.Row="1">
+                <BoxView Color="Purple"
+                         Margin="0,0,10,0"
+                         HeightRequest="15"
+                         WidthRequest="15"
+                         CornerRadius="15"
+                />
+                <Button Text="Projects"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Row="2">
+                <BoxView Color="White"
+                         Margin="0,0,10,0"
+                         HeightRequest="15"
+                         WidthRequest="15"
+                         CornerRadius="15"
+                />
+                <Button Text="Activities"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+            </HorizontalStackLayout>
+            <VerticalStackLayout Grid.Row="3"
+                                 VerticalOptions="End"
+                                 Margin="0,0,0,50">
+                <Button
+                        Text="Settings"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+                <Button
+                        Text="Log out"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+            </VerticalStackLayout>
         </Grid>
 
-        <ScrollView>
+        <ScrollView BackgroundColor="AliceBlue"
+                    Grid.Column="1" >
 
-            <CollectionView Grid.Column="1" ItemsSource="{Binding Activities}"
+            <CollectionView ItemsSource="{Binding Activities}"
                             VerticalOptions="FillAndExpand">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
@@ -131,4 +148,4 @@
     </Grid>
 
 
-</ContentView>
+</ContentPage>

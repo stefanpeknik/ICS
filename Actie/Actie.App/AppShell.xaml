@@ -9,7 +9,7 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        ContentTemplate="{DataTemplate view:IntroView}"
+        ContentTemplate="{DataTemplate view:ProjectOverviewView}"
         Route="IntroView" />
 
 </Shell>
