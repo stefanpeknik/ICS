@@ -68,7 +68,7 @@ public class FacadeTestsBase : IAsyncLifetime
     public async Task InitializeAsync()
     {
         await using var dbx = await DbContextFactory.CreateDbContextAsync();
-        SeedsInit.LoadLists();
+        TestSeedsInit.LoadLists();
         await dbx.Database.EnsureDeletedAsync();
         await dbx.Database.EnsureCreatedAsync();
     }

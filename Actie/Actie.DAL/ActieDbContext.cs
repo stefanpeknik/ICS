@@ -1,4 +1,6 @@
-﻿using Actie.DAL.Entities;
+﻿using Actie.Common.Tests.Seeds;
+using Actie.DAL.Entities;
+using Actie.DAL.Seeds;
 using Microsoft.EntityFrameworkCore;
 
 namespace Actie.DAL;
@@ -81,5 +83,22 @@ public class ActieDbContext : DbContext
             .HasOne(at => at.Tag)
             .WithMany(t => t.Activities)
             .OnDelete(DeleteBehavior.SetNull);
+
+        if (_seedDemoData)
+        {
+            SeedsInit.LoadLists();
+
+            TagSeeds.Seed(modelBuilder);
+
+            UserSeeds.Seed(modelBuilder);
+
+            ProjectSeeds.Seed(modelBuilder);
+
+            ActivitySeeds.Seed(modelBuilder);
+
+            ActivityTagSeeds.Seed(modelBuilder);
+
+            UserProjectSeeds.Seed(modelBuilder);
+        }
     }
 }
