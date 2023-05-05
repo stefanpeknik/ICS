@@ -76,25 +76,25 @@
 Toto se mi vygenerovalo, no idea co to je-->
 
 	<ItemGroup>
-	  <MauiXaml Update="View\ActivityOverviewView.xaml">
+	  <MauiXaml Update="Views\Activity\ActivityOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\AddProjectView.xaml">
+	  <MauiXaml Update="Views\Project\AddProjectView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\AddUserView.xaml">
+	  <MauiXaml Update="Views\User\AddUserView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ContentPageBase.xaml">
+	  <MauiXaml Update="Views\ContentPageBase.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\IntroView.xaml">
+	  <MauiXaml Update="Views\User\IntroView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\ProjectOverviewView.xaml">
+	  <MauiXaml Update="Views\Project\ProjectOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\UserProjectOverviewView.xaml">
+	  <MauiXaml Update="Views\Project\UserProjectOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

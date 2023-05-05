@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Actie.App.View"
              xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
-             x:Class="Actie.App.View.IntroView">
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             x:Class="Actie.App.Views.User.IntroView"
+             x:Name="UserListViewRoot">
 
 
 
@@ -23,7 +26,8 @@
                        FontSize="24"
                        Text=">> Debug print at vim kde jsem. Users:"/>
 
-            <CollectionView Grid.Row="1" ItemsSource="{Binding User}"
+            <!--ItemsSource="{Binding Users}"-->
+            <CollectionView Grid.Row="1"
                                 VerticalOptions="FillAndExpand">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Horizontal"
@@ -37,10 +41,12 @@
                                    CornerRadius="10"
                                    WidthRequest="320" HeightRequest="240"
                                    IsClippedToBounds="True">
+                            <!--
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference UserListViewRoot}, Path=BindingContext.GoToDetailCommand}"
                                                           CommandParameter="{Binding Id}" />
                             </Frame.GestureRecognizers>
+                            -->
 
                             <Grid>
                                 <Image Grid.Row="0"

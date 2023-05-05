@@ -1,4 +1,4 @@
-namespace Actie.App.View;
+namespace Actie.App.Views.User;
 
 public partial class IntroView
 {

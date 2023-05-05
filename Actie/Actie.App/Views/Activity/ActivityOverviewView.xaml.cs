@@ -1,4 +1,4 @@
-namespace Actie.App.View;
+namespace Actie.App.Views.Activity;
 
 public partial class ActivityOverviewView
 {
