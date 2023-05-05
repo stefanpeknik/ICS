@@ -38,7 +38,7 @@ public static class UserSeeds
     public static readonly UserEntity UserForUserProjectEntityDelete = UserEntity with { Id = Guid.Parse("20cce012-1d55-48fa-beb2-f4453324234f"), Projects = new List<UserProjectEntity>(), Activities = Array.Empty<ActivityEntity>()};
 
 
-    static UserSeeds()
+    public static void LoadLists()
     {
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity);
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity1);

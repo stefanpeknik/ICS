@@ -3,6 +3,7 @@ using Actie.BL.Mappers;
 using Actie.BL.Mappers.Interfaces;
 using Actie.Common.Tests;
 using Actie.Common.Tests.Factories;
+using Actie.Common.Tests.Seeds;
 using Actie.DAL;
 using Actie.DAL.Mappers;
 using Actie.DAL.UnitOfWork;
@@ -67,6 +68,7 @@ public class FacadeTestsBase : IAsyncLifetime
     public async Task InitializeAsync()
     {
         await using var dbx = await DbContextFactory.CreateDbContextAsync();
+        SeedsInit.LoadLists();
         await dbx.Database.EnsureDeletedAsync();
         await dbx.Database.EnsureCreatedAsync();
     }
