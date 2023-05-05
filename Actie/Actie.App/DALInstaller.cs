@@ -20,7 +20,7 @@ public static class DALInstaller
     public static IServiceCollection AddDALServices(this IServiceCollection services, IConfiguration configuration)
     {
         DALOptions dalOptions = new();
-     //   configuration.GetSection("Actie:DAL").Bind(dalOptions);
+        configuration.GetSection("Actie:DAL").Bind(dalOptions);
 
         services.AddSingleton<DALOptions>(dalOptions);
 
