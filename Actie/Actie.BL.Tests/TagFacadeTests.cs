@@ -85,7 +85,7 @@ public sealed class TagFacadeTests : FacadeTestsBase
     public async Task Delete_TagUsedInActivity_Throws()
     {
         // Act & Assert
-        await Assert.ThrowsAsync<InvalidOperationException>(async () => await _tagFacadeSUT.DeleteAsync(TagSeeds.TagEntity1.Id));
+        await Assert.ThrowsAsync<InvalidOperationException>(async () => await _tagFacadeSUT.DeleteAsync(TagSeeds.EmptyTagEntity.Id));
     }
 
     [Fact]

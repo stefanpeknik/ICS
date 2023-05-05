@@ -50,11 +50,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Messages\" />
-	  <Folder Include="Models\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\Actie.DAL\Actie.DAL.csproj" />
 	</ItemGroup>
 
@@ -77,6 +72,12 @@
 	  <MauiXaml Update="View\ProjectOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ViewModels\Activity\" />
+	  <Folder Include="ViewModels\Project\" />
+	  <Folder Include="ViewModels\User\" />
 	</ItemGroup>
 
 </Project>
