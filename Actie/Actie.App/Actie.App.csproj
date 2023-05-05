@@ -74,4 +74,10 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="ViewModels\Activity\" />
+	  <Folder Include="ViewModels\Project\" />
+	  <Folder Include="ViewModels\User\" />
+	</ItemGroup>
+
 </Project>
