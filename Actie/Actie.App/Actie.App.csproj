@@ -50,10 +50,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Messages\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\Actie.DAL\Actie.DAL.csproj" />
 	</ItemGroup>
 
