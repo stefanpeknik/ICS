@@ -51,7 +51,7 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
         if (endTime != null)
             query = query.Where(a => a.End < endTime);
 
-        IEnumerable<ActivityEntity> entities = query;
+        IEnumerable<ActivityEntity> entities = await query.ToListAsync();
 
         return ModelMapper.MapToListModel(entities);
     }
