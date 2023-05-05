@@ -5,7 +5,7 @@
              Title="ContentPageBase">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Welcome to .NET MAUI! what this"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

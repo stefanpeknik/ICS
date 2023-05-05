@@ -4,7 +4,7 @@
              x:Class="Actie.App.View.AddProjectView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Welcome to .NET MAUI! AddProjectView"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
