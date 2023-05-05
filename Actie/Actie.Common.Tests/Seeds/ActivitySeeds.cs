@@ -9,8 +9,8 @@ public static class ActivitySeeds
     {
         Id = default,
         Name = default!,
-        Start = default,
-        End = default,
+        Start = DateTimeFiller.StartDateTime,
+        End = DateTimeFiller.EndDateTime,
         Rating = default,
         Type = default!,
         Description = default,

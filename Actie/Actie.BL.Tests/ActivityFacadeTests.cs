@@ -24,14 +24,14 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
     [Fact]
     public async Task Create_WithNonExistingItem_DoesNotThrow()
     {
-        // Arange
+        // Arrange
         var model = new ActivityDetailModel()
         {
             Id = Guid.Empty,
             Name = @"Activity 1",
             Type = @"Activity 1 type",
-            Start = DateTime.Now,
-            End = DateTime.Now,
+            Start = DateTimeFiller.StartDateTime,
+            End = DateTimeFiller.EndDateTime,
         };
 
         // Act & Assert
@@ -56,7 +56,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var activity = await _activityFacadeSUT.GetAsync(ActivitySeeds.ActivityEntity.Id);
 
         // Assert
-        DeepAssert.Equal(ActivityModelMapper.MapToDetailModel(ActivitySeeds.ActivityEntity).Id, activity?.Id);
+        DeepAssert.Equal(ActivityModelMapper.MapToDetailModel(ActivitySeeds.ActivityEntity), activity);
     }
 
     [Fact]
@@ -98,8 +98,8 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
             Id = Guid.Empty,
             Name = "Run",
             Type = "Sprint",
-            Start = DateTime.Now,
-            End = DateTime.Now,
+            Start = DateTimeFiller.StartDateTime,
+            End = DateTimeFiller.EndDateTime,
         };
 
         //Act
@@ -108,7 +108,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var activityFromDb = await dbx.Activities.SingleAsync(i => i.Id == activity.Id);
 
         //Assert
-        Assert.Equal(activity.Id, ActivityModelMapper.MapToDetailModel(activityFromDb).Id);
+        DeepAssert.Equal(activity, ActivityModelMapper.MapToDetailModel(activityFromDb));
     }
 
     [Fact]
@@ -120,8 +120,8 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
             Id = Guid.Empty,
             Name = @"Jumping",
             Type = @"Jumping Jacks",
-            Start = DateTime.Now,
-            End = DateTime.Now,
+            Start = DateTimeFiller.StartDateTime,
+            End = DateTimeFiller.EndDateTime,
         };
 
         activity.Name += " updated";
@@ -133,6 +133,6 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var ingredientFromDb = await dbxAssert.Activities.SingleAsync(i => i.Id == activity.Id);
 
         // Assert
-        DeepAssert.Equal(activity.Id, ActivityModelMapper.MapToDetailModel(ingredientFromDb).Id);
+        DeepAssert.Equal(activity, ActivityModelMapper.MapToDetailModel(ingredientFromDb));
     }
 }
