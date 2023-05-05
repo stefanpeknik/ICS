@@ -17,7 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actie.BL", "Actie.BL\Actie.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actie.BL.Tests", "Actie.BL.Tests\Actie.BL.Tests.csproj", "{64D2803B-07AD-490F-97EF-67B42D6029CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actie.App", "Actie.App\Actie.App.csproj", "{A6B8C5D1-26B3-4E55-AD64-8C6604DDDF5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Actie.App", "Actie.App\Actie.App.csproj", "{A6B8C5D1-26B3-4E55-AD64-8C6604DDDF5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{41D8E9AE-0541-4FE8-B6F6-71B0B8F723B0} = {41D8E9AE-0541-4FE8-B6F6-71B0B8F723B0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
