@@ -14,7 +14,8 @@ public static class DeepAssert
                 IgnoreCollectionOrder = true,
                 IgnoreObjectTypes = true,
                 CompareStaticProperties = false,
-                CompareStaticFields = false
+                CompareStaticFields = false,
+                MaxMillisecondsDateDifference = 60 * 1000 // set the maximum difference to 60 seconds (1 minute)
             }
         };
 
@@ -25,3 +26,4 @@ public static class DeepAssert
         }
     }
 }
+

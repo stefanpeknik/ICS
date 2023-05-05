@@ -75,8 +75,4 @@ public sealed class UserFacadeTests : FacadeTestsBase
 
         Assert.Null(user);
     }
-
-    
-
-   
 }

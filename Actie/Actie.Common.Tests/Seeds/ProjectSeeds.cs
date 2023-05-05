@@ -20,23 +20,25 @@ public static class ProjectSeeds
     };
 
     //To ensure that no tests reuse these clones for non-idempotent operations
-    public static readonly ProjectEntity ProjectEntityWithNoActivities = ProjectEntity with { Id = Guid.Parse("f57c2abe-9b9a-40e0-8b68-f833fb6f6801"), Activities = Array.Empty<ActivityEntity>()};
-    public static readonly ProjectEntity ProjectEntityUpdate = ProjectEntity with { Id = Guid.Parse("28d3add7-7b57-437e-8748-d82319fb2aae"), Activities = Array.Empty<ActivityEntity>()};
-    public static readonly ProjectEntity ProjectEntityDelete = ProjectEntity with { Id = Guid.Parse("86d802de-9b67-4f83-bde2-d50c60f658d6"), Activities = Array.Empty<ActivityEntity>()};
+    public static readonly ProjectEntity ProjectEntityWithNoActivities = ProjectEntity with { Id = Guid.Parse("f57c2abe-9b9a-40e0-8b68-f833fb6f6801"), Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>()};
+    public static readonly ProjectEntity ProjectEntityUpdate = ProjectEntity with { Id = Guid.Parse("28d3add7-7b57-437e-8748-d82319fb2aae"), Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() };
+    public static readonly ProjectEntity ProjectEntityDelete = ProjectEntity with { Id = Guid.Parse("86d802de-9b67-4f83-bde2-d50c60f658d6"), Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() };
 
     static ProjectSeeds()
     {
         ProjectEntity.Activities.Add(ActivitySeeds.ActivityEntity);
         ProjectEntity.Activities.Add(ActivitySeeds.ActivityEntity1);
+
+        ProjectEntity.Users.Add(UserProjectSeeds.UserProjectEntity);
     }
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<ProjectEntity>().HasData(
-            ProjectEntity with { Activities = Array.Empty<ActivityEntity>()},
-            ProjectEntityWithNoActivities,
-            ProjectEntityUpdate,
-            ProjectEntityDelete
+            ProjectEntity with { Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>()},
+            ProjectEntityWithNoActivities with { Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() },
+            ProjectEntityUpdate with { Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() },
+            ProjectEntityDelete with { Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() }
         );
     }
 }
