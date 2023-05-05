@@ -26,6 +26,8 @@ class UserFacade : FacadeBase<UserEntity, UserListModel, UserDetailModel, UserEn
         IQueryable<UserEntity> query = uow.GetRepository<UserEntity, UserEntityMapper>().Get();
 
         query = query.Include(u => u.Activities)
+                .ThenInclude(a => a.Tags)
+                .ThenInclude(t=> t.Tag)
             .Include(u=> u.Projects)
                 .ThenInclude(p => p.Project);
 
