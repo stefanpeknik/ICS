@@ -3,7 +3,7 @@
 
 namespace Actie.Common.Tests.Seeds;
 
-public class SeedsInit
+public class TestSeedsInit
 {
     private static bool _initialized = false;
 
