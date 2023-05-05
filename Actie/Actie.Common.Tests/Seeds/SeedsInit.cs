@@ -11,6 +11,7 @@ public class SeedsInit
     {
         if (_initialized) return;
         _initialized = true;
+        TagSeeds.LoadLists();
         UserSeeds.LoadLists();
         ProjectSeeds.LoadLists();
         ActivitySeeds.LoadLists();

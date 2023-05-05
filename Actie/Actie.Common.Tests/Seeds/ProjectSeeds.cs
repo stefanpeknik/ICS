@@ -26,7 +26,6 @@ public static class ProjectSeeds
 
     public static void LoadLists()
     {
-        var x = ActivitySeeds.ActivityEntity;
         ProjectEntity.Activities.Add(ActivitySeeds.ActivityEntity);
         ProjectEntity.Activities.Add(ActivitySeeds.ActivityEntity1);
 
