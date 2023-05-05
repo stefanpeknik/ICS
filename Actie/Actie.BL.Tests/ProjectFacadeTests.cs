@@ -33,8 +33,8 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
                     Id = Guid.Empty,
                     Name= "Nocni klus",
                     Type = "behani",
-                    Start= DateTime.Now,
-                    End= DateTime.Now,
+                    Start= DateTimeFiller.StartDateTime,
+                    End= DateTimeFiller.EndDateTime,
                 }
             }
         };
