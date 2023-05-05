@@ -69,13 +69,6 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         Assert.Null(activity);
     }
 
-    //[Fact]
-    //public async Task Delete_ActivityUsedByUser_Throws()
-    //{
-    //    // Act & Assert
-    //    await Assert.ThrowsAsync<InvalidOperationException>(async() => await _activityFacadeSUT.DeleteAsync(ActivitySeeds.ActivityEntity1.Id));
-    //}
-
     [Fact]
     public async Task Seeded_DeleteById_Deleted()
     {
