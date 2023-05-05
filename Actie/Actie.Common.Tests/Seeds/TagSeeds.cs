@@ -37,11 +37,18 @@ public static class TagSeeds
         Description = "Training seeded training 2 description"
     };
 
+    public static void LoadLists()
+    {
+        TagEntity1.Activities.Add(ActivityTagSeeds.ActivityTagEntity1);
+        TagEntity2.Activities.Add(ActivityTagSeeds.ActivityTagEntity2);
+        TagEntity2.Activities.Add(ActivityTagSeeds.ActivityTagEntity3);
+    }
+
     public static void Seed(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TagEntity>().HasData(
-            TagEntity1,
-            TagEntity2,
+            TagEntity1 with { Activities = Array.Empty<ActivityTagEntity>() },
+            TagEntity2 with { Activities = Array.Empty<ActivityTagEntity>() },
             Training,
             TrainingUpdate,
             TrainingDelete

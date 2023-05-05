@@ -1,4 +1,6 @@
-﻿using Actie.BL.Facades.Interfaces;
+﻿using System.Collections;
+using System.Runtime.InteropServices.JavaScript;
+using Actie.BL.Facades.Interfaces;
 using Actie.BL.Mappers.Interfaces;
 using Actie.BL.Models;
 using Actie.DAL.Entities;
@@ -34,5 +36,23 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
         return entity is null
             ? null
             : ModelMapper.MapToDetailModel(entity);
+    }
+
+    public async Task<IEnumerable<ActivityListModel>?> GetFiltered(Guid? userId = null, DateTime? startTime = null, DateTime? endTime = null)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+
+        IQueryable<ActivityEntity> query = uow.GetRepository<ActivityEntity, ActivityEntityMapper>().Get();
+
+        if (userId != null)
+            query = query.Where(a => a.UserId == userId);
+        if (startTime != null)
+            query = query.Where(a => a.Start > startTime);
+        if (endTime != null)
+            query = query.Where(a => a.End < endTime);
+
+        IEnumerable<ActivityEntity> entities = await query.ToListAsync();
+
+        return ModelMapper.MapToListModel(entities);
     }
 }

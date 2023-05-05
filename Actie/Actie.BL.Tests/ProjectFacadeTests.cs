@@ -104,7 +104,7 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
         detailModel.Name = "Changed name";
 
         //Act & Assert
-        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = default });
+        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = default,  Users = default});
     }
 
     [Fact]
@@ -115,7 +115,7 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
         detailModel.Name = "Changed name 1";
 
         //Act
-        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = default });
+        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = default, Users = default});
 
         //Assert
         var returnedModel = await _projectFacadeSUT.GetAsync(detailModel.Id);
@@ -128,9 +128,10 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
         //Arrange
         var detailModel = ProjectModelMapper.MapToDetailModel(ProjectSeeds.ProjectEntity);
         detailModel.Activities.Clear();
+        detailModel.Users.Clear();
 
         //Act
-        await _projectFacadeSUT.SaveAsync(detailModel);
+        await _projectFacadeSUT.SaveAsync(detailModel); //detailModel ma USERA!!!!
 
         //Assert
         var returnedModel = await _projectFacadeSUT.GetAsync(detailModel.Id);

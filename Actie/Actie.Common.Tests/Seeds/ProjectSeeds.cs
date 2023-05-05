@@ -24,7 +24,7 @@ public static class ProjectSeeds
     public static readonly ProjectEntity ProjectEntityUpdate = ProjectEntity with { Id = Guid.Parse("28d3add7-7b57-437e-8748-d82319fb2aae"), Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() };
     public static readonly ProjectEntity ProjectEntityDelete = ProjectEntity with { Id = Guid.Parse("86d802de-9b67-4f83-bde2-d50c60f658d6"), Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() };
 
-    static ProjectSeeds()
+    public static void LoadLists()
     {
         ProjectEntity.Activities.Add(ActivitySeeds.ActivityEntity);
         ProjectEntity.Activities.Add(ActivitySeeds.ActivityEntity1);

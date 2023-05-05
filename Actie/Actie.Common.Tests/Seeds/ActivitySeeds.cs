@@ -58,7 +58,7 @@ public static class ActivitySeeds
     public static readonly ActivityEntity ActivityForActivityTagEntityUpdate = ActivityEntity with { Id = Guid.Parse("4FD824C0-A7D1-48BA-8E7C-4F136CF8BF31"), Tags = Array.Empty<ActivityTagEntity>(), UserId = default, ProjectId = default, User = null, Project = null };
     public static readonly ActivityEntity ActivityForActivityTagEntityDelete = ActivityEntity with { Id = Guid.Parse("F78ED923-E094-4016-9045-3F5BB7F2EB88"), Tags = new List<ActivityTagEntity>(), UserId = default, ProjectId = default, User = null, Project = null };
 
-    static ActivitySeeds()
+    public static void LoadLists()
     {
         ActivityEntity.Tags.Add(ActivityTagSeeds.ActivityTagEntity1);
         ActivityEntity.Tags.Add(ActivityTagSeeds.ActivityTagEntity2);

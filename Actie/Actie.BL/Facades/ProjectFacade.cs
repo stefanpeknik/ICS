@@ -24,8 +24,9 @@ class ProjectFacade : FacadeBase<ProjectEntity, ProjectListModel, ProjectDetailM
         IQueryable<ProjectEntity> query = uow.GetRepository<ProjectEntity, ProjectEntityMapper>().Get();
 
         query = query.Include(p => p.Activities)
+                .ThenInclude(a => a.Tags).ThenInclude(t => t.Tag)
             .Include(p => p.Users)
-            .ThenInclude(up => up.User);
+                .ThenInclude(up => up.User);
 
         ProjectEntity? entity = await query.SingleOrDefaultAsync(e => e.Id == id);
 

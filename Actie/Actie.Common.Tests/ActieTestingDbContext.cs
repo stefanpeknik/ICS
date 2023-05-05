@@ -21,7 +21,9 @@ public class ActieTestingDbContext : ActieDbContext
         if (_seedTestingData)
         {
             TagSeeds.Seed(modelBuilder);
+
             UserSeeds.Seed(modelBuilder);
+
             ProjectSeeds.Seed(modelBuilder);
 
             ActivitySeeds.Seed(modelBuilder);
