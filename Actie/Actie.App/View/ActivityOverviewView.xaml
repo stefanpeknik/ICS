@@ -5,11 +5,9 @@
              x:Class="Actie.App.View.ActivityOverviewView">
 
 
-
-
     <Grid ColumnDefinitions="300, *">
         <Grid Grid.Column="0"
-              RowDefinitions="150,50,50, *"
+              RowDefinitions="150,50,50,50, *"
               HorizontalOptions="Center">
             <HorizontalStackLayout Grid.Row="0">
                 <Image  HorizontalOptions="Start"
@@ -28,13 +26,13 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Grid.Row="1">
-                <BoxView Color="Purple"
+                <BoxView Color="White"
                          Margin="0,0,10,0"
                          HeightRequest="15"
                          WidthRequest="15"
                          CornerRadius="15"
                 />
-                <Button Text="Projects"
+                <Button Text="All Projects"
                         HeightRequest="50"
                         WidthRequest="200"
                         FontSize="22"
@@ -48,6 +46,20 @@
                          WidthRequest="15"
                          CornerRadius="15"
                 />
+                <Button Text="My Projects"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Row="3">
+                <BoxView Color="Purple"
+                         Margin="0,0,10,0"
+                         HeightRequest="15"
+                         WidthRequest="15"
+                         CornerRadius="15"
+                />
                 <Button Text="Activities"
                         HeightRequest="50"
                         WidthRequest="200"
@@ -55,7 +67,7 @@
                         HorizontalOptions="Center"
                 />
             </HorizontalStackLayout>
-            <VerticalStackLayout Grid.Row="3"
+            <VerticalStackLayout Grid.Row="4"
                                  VerticalOptions="End"
                                  Margin="0,0,0,50">
                 <Button

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
-             x:Class="Actie.App.View.ProjectOverviewView">
+             x:Class="Actie.App.View.UserProjectOverviewView">
 
     <Grid ColumnDefinitions="300, *">
         <Grid Grid.Column="0"
@@ -25,7 +25,7 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Grid.Row="1">
-                <BoxView Color="Purple"
+                <BoxView Color="White"
                          Margin="0,0,10,0"
                          HeightRequest="15"
                          WidthRequest="15"
@@ -39,7 +39,7 @@
                 />
             </HorizontalStackLayout>
             <HorizontalStackLayout Grid.Row="2">
-                <BoxView Color="White"
+                <BoxView Color="Purple"
                         Margin="0,0,10,0"
                         HeightRequest="15"
                         WidthRequest="15"
