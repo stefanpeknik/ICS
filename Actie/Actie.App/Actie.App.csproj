@@ -64,17 +64,6 @@
 	  <ProjectReference Include="..\Actie.DAL\Actie.DAL.csproj" />
 	</ItemGroup>
 
-<!--
-  <ItemGroup>
-    <Compile Update="View\ProjectOverviewView.xaml.cs">
-      <DependentUpon>ProjectOverviewView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="View\UserProjectOverviewView.xaml.cs">
-      <DependentUpon>UserProjectOverviewView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-Toto se mi vygenerovalo, no idea co to je-->
-
 	<ItemGroup>
 	  <MauiXaml Update="Views\Activity\ActivityOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>

@@ -5,10 +5,6 @@ using Actie.BL.Models;
 using Actie.Common.Tests;
 using Actie.Common.Tests.Seeds;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Xunit;
 using Xunit.Abstractions;
 
 namespace Actie.BL.Tests;

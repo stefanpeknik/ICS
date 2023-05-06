@@ -1,15 +1,12 @@
 ﻿
 
 using Actie.App.Models;
-using Actie.App.View;
 using Actie.App.ViewModels;
 using Actie.App.ViewModels.Project;
 using Actie.App.ViewModels.User;
 using Actie.App.Views.Activity;
 using Actie.App.Views.Project;
 using Actie.App.Views.User;
-using Actie.BL.Models;
-using CommunityToolkit.Mvvm.Messaging;
 namespace Actie.App.Services;
 public class NavigationService : INavigationService
 {
