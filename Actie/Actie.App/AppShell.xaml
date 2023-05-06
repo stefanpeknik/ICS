@@ -8,7 +8,7 @@
     xmlns:proj="clr-namespace:Actie.App.Views.Project"
     xmlns:act="clr-namespace:Actie.App.Views.Activity"
 
-    Shell.FlyoutBehavior="Disabled">
+    FlyoutBehavior="Disabled">
 
     <ShellContent
         ContentTemplate="{DataTemplate act:ActivityOverviewView}"
