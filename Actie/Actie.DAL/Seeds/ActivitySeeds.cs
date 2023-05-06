@@ -61,10 +61,10 @@ public static class ActivitySeeds
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<UserEntity>().HasData(
-            ActivityEntity1Proj1 with { User = null, Project = null },
-            ActivityEntity1Proj2 with { User = null, Project = null },
-            ActivityEntity2Proj2 with { User = null, Project = null }
+        modelBuilder.Entity<ActivityEntity>().HasData(
+            ActivityEntity1Proj1 with { Tags = Array.Empty<ActivityTagEntity>(), User = null, Project = null },
+            ActivityEntity1Proj2 with { Tags = Array.Empty<ActivityTagEntity>(), User = null, Project = null },
+            ActivityEntity2Proj2 with { Tags = Array.Empty<ActivityTagEntity>(), User = null, Project = null }
         );
     }
 

@@ -34,9 +34,9 @@ public static class ProjectSeeds
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<UserEntity>().HasData(
-            ProjectEntity1 with { Activities = Array.Empty<ActivityEntity>() },
-            ProjectEntity2 with { Activities = Array.Empty<ActivityEntity>() }
+        modelBuilder.Entity<ProjectEntity>().HasData(
+            ProjectEntity1 with { Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() },
+            ProjectEntity2 with { Activities = Array.Empty<ActivityEntity>(), Users = Array.Empty<UserProjectEntity>() }
         );
     }
 

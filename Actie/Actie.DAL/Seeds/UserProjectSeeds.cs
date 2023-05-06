@@ -28,7 +28,7 @@ public static class UserProjectSeeds
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<UserEntity>().HasData(
+        modelBuilder.Entity<UserProjectEntity>().HasData(
             UserProjectEntity1 with { User = null, Project = null },
             UserProjectEntity2 with { User = null, Project = null }
             );

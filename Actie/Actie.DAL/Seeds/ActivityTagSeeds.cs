@@ -26,11 +26,9 @@ public static class ActivityTagSeeds
         Tag = TagSeeds.TagEntity2,
     };
 
-    public static void Seed(this ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<UserEntity>().HasData(
+    public static void Seed(this ModelBuilder modelBuilder) =>
+    modelBuilder.Entity<ActivityTagEntity>().HasData(
             ActivityTagEntity1 with { Activity = null, Tag = null },
             ActivityTagEntity2 with { Activity = null, Tag = null }
         );
-    }
 }
