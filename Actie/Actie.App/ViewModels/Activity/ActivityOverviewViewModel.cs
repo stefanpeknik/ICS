@@ -11,4 +11,6 @@ using Actie.BL.Models;
 
 namespace Actie.App.ViewModels;
 
-
+internal class ActivityOverviewViewModel
+{
+}
