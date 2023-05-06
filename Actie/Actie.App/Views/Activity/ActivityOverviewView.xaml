@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              x:Class="Actie.App.Views.Activity.ActivityOverviewView">
 
 
@@ -108,17 +109,48 @@
               HorizontalOptions="End" />
 
         <Grid Grid.Column="1"
-              RowDefinitions="100, *">
-            <Label Grid.Row="0"
-                   Text="Activities"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   FontSize="46"/>
-            <Line BackgroundColor="White"
+              RowDefinitions="100,200, *">
+            <Label  Grid.Row="0"
+                    Text="Activities"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    FontSize="46"/>
+            <Button Grid.Row="0"
+                    Text="Add Activity"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Margin="0,0,25,0"/>
+            <Line   Grid.Row="0"
+                    BackgroundColor="White"
                   HeightRequest="100"
                   VerticalOptions="End"/>
 
-            <ScrollView Grid.Row="1">
+        <Grid Grid.Row="1"
+              ColumnDefinitions="200, 200, 200, 200, *">
+            <Label  Grid.Column="0"
+                    Text="Filter from"
+                    VerticalOptions="Center"
+                    FontSize="24"/>
+            <DatePicker Grid.Column="1"
+                        Format="d"
+            />
+            <Label Grid.Column="2"
+                   Text="To"
+                   VerticalOptions="Center"
+                   FontSize="24"/>
+            <DatePicker Grid.Column="3"
+                        VerticalOptions="Center"
+                        Format="d"
+            />
+        </Grid>
+
+
+            <Line Grid.Row="1"
+                  BackgroundColor="White"
+                  HeightRequest="100"
+                  VerticalOptions="End"/>
+
+            <ScrollView Grid.Row="2">
 
                 <CollectionView ItemsSource="{Binding Activities}"
                                 VerticalOptions="FillAndExpand">
