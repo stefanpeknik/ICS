@@ -38,18 +38,42 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
             : ModelMapper.MapToDetailModel(entity);
     }
 
-    public async Task<IEnumerable<ActivityListModel>?> GetFiltered(Guid? userId = null, DateTime? startTime = null, DateTime? endTime = null)
+    public async Task<IEnumerable<ActivityListModel>?> GetFilteredPreciseTime(Guid? userId = null, DateTime? startsIn = null,
+        DateTime? endsIn = null)
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
 
         IQueryable<ActivityEntity> query = uow.GetRepository<ActivityEntity, ActivityEntityMapper>().Get();
 
+        query = query.Include(a => a.Tags).ThenInclude(t => t.Tag);
+
         if (userId != null)
             query = query.Where(a => a.UserId == userId);
-        if (startTime != null)
-            query = query.Where(a => a.Start > startTime);
-        if (endTime != null)
-            query = query.Where(a => a.End < endTime);
+        if (startsIn != null)
+            query = query.Where(a => a.Start == startsIn);
+        if (endsIn != null)
+            query = query.Where(a => a.End == endsIn);
+
+        IEnumerable<ActivityEntity> entities = await query.ToListAsync();
+
+        return ModelMapper.MapToListModel(entities);
+    }
+
+    public async Task<IEnumerable<ActivityListModel>?> GetFilteredBeforeOrAfter(Guid? userId = null, DateTime? startsAfter = null,
+        DateTime? startsBefore = null)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+
+        IQueryable<ActivityEntity> query = uow.GetRepository<ActivityEntity, ActivityEntityMapper>().Get();
+
+        query = query.Include(a => a.Tags).ThenInclude(t => t.Tag);
+
+        if (userId != null)
+            query = query.Where(a => a.UserId == userId);
+        if (startsBefore != null)
+            query = query.Where(a => a.Start < startsBefore);
+        if (startsAfter != null)
+            query = query.Where(a => a.Start > startsAfter);
 
         IEnumerable<ActivityEntity> entities = await query.ToListAsync();
 
