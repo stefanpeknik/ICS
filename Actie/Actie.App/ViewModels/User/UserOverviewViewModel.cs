@@ -1,27 +1,25 @@
-﻿
-
+﻿using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Messages;
 using Actie.App.Services;
 using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
-using CommunityToolkit.Mvvm.Input;
 
-namespace Actie.App.ViewModels.User;
-public partial class IntroViewModel : ViewModelBase, IRecipient<UserEditMessage>, IRecipient<UserDeleteMessage>
+namespace Actie.App.ViewModels;
+public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditMessage>, IRecipient<UserDeleteMessage>
 {
     private readonly IUserFacade _userFacade;
     private readonly INavigationService _navigationService;
 
     public IEnumerable<UserListModel> Users { get; set; } = null!;
 
-    public IntroViewModel(
-        IUserFacade ingredientFacade,
+    public UserOverviewViewModel(
+        IUserFacade userFacade,
         INavigationService navigationService,
         IMessengerService messengerService)
         : base(messengerService)
     {
-        _userFacade = ingredientFacade;
+        _userFacade = userFacade;
         _navigationService = navigationService;
     }
 
@@ -36,7 +34,7 @@ public partial class IntroViewModel : ViewModelBase, IRecipient<UserEditMessage>
     [RelayCommand]
     private async Task GoToAddUserAsync()
     {
-        await _navigationService.GoToAsync("/add");
+        await _navigationService.GoToAsync("/edit");
     }
 
     public async void Receive(UserEditMessage message)

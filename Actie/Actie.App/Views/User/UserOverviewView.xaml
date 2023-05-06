@@ -4,10 +4,12 @@
              xmlns:views="clr-namespace:Actie.App.View"
              xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
              xmlns:vm="clr-namespace:Actie.App.ViewModels"
-             x:Class="Actie.App.Views.User.IntroView"
+             x:Class="Actie.App.Views.User.UserOverviewView"
+             x:DataType="vm:UserOverviewViewModel"
              x:Name="UserListViewRoot">
-    <Grid RowDefinitions="200, Auto, *"
-          VerticalOptions="FillAndExpand">
+
+
+    <Grid RowDefinitions="200, Auto, *">
         <Label Grid.Row="0"
                         Margin="30"
                         FontSize="102"
@@ -22,9 +24,8 @@
                        FontSize="24"
                        Text=">> Debug print at vim kde jsem. Users:"/>
 
-            <!--ItemsSource="{Binding Users}"-->
             <CollectionView Grid.Row="1"
-                                VerticalOptions="FillAndExpand">
+                            ItemsSource="{Binding Users}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Horizontal"
                                          HorizontalItemSpacing="10" VerticalItemSpacing="10"
