@@ -109,7 +109,7 @@
               HorizontalOptions="End" />
 
         <Grid Grid.Column="1"
-              RowDefinitions="100,200, *">
+              RowDefinitions="100,75, *">
             <Label  Grid.Row="0"
                     Text="Activities"
                     VerticalOptions="Center"
@@ -126,9 +126,10 @@
                   VerticalOptions="End"/>
 
         <Grid Grid.Row="1"
-              ColumnDefinitions="200, 200, 200, 200, *">
+              ColumnDefinitions="175, 125, 50, 125, *">
             <Label  Grid.Column="0"
                     Text="Filter from"
+                    Margin="25,0,0,0"
                     VerticalOptions="Center"
                     FontSize="24"/>
             <DatePicker Grid.Column="1"
