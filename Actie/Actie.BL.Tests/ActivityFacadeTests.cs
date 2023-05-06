@@ -158,7 +158,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
     public async Task GetFilteredBeforeOrAfter_GetFilteredByUserIdAndAfter_ActivitiesOfUserAfter()
     {
         // Arrange
-        var after = DateTime.Parse("20.01.2023 00:00");
+        var after = DateTime.Parse("2023-01-20 00:00 AM");
         var user = UserSeeds.UserEntity;
 
         // Act
@@ -172,7 +172,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
     public async Task GetFilteredBeforeOrAfter_GetFilteredByUserIdAndBefore_ActivitiesOfUserBefore()
     {
         // Arrange
-        var before = DateTime.Parse("20.01.2023 00:00");
+        var before = DateTime.Parse("2023-01-20 00:00 AM");
         var user = UserSeeds.UserEntity;
 
         // Act
@@ -186,8 +186,8 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
     public async Task GetFilteredBeforeOrAfter_GetFilteredByUserIdAndInterval_ActivitiesOfUserInInterval()
     {
         // Arrange
-        var after = DateTime.Parse("20.12.2022 00:00");
-        var before = DateTime.Parse("20.01.2023 00:00");
+        var after = DateTime.Parse("2022-12-20 00:00 AM");
+        var before = DateTime.Parse("2023-01-20 00:00 AM");
         var user = UserSeeds.UserEntity;
 
         // Act
@@ -230,7 +230,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
     public async Task GetFilteredPreciseTime_GetFilteredByUserIdAndInStart_ActivitiesOfUserInStart()
     {
         // Arrange
-        var startsIn = DateTime.Parse("04.01.2023 12:00");
+        var startsIn = DateTime.Parse("2023-01-04 12:00 PM");
         var user = UserSeeds.UserEntity;
 
         // Act
@@ -244,7 +244,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
     public async Task GetFilteredPreciseTime_GetFilteredByUserIdAndInEnd_ActivitiesOfUserInEnd()
     {
         // Arrange
-        var endsIn = DateTime.Parse("04.01.2023 13:00");
+        var endsIn = DateTime.Parse("2023-01-04 01:00 PM");
         var user = UserSeeds.UserEntity;
 
         // Act
@@ -258,8 +258,8 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
     public async Task GetFilteredPreciseTime_GetFilteredByUserIdAndInStartAndInEnd_ActivitiesOfUserInStartAndInEnd()
     {
         // Arrange
-        var startsIn = DateTime.Parse("04.01.2023 12:00");
-        var endsIn = DateTime.Parse("04.01.2023 13:00");
+        var startsIn = DateTime.Parse("2023-01-04 12:00 PM");
+        var endsIn = DateTime.Parse("2023-01-04 01:00 PM");
         var user = UserSeeds.UserEntity;
 
         // Act
