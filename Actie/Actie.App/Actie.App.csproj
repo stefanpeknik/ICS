@@ -64,11 +64,26 @@
 	  <ProjectReference Include="..\Actie.DAL\Actie.DAL.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Views\Tag\TagAddView.xaml.cs">
+	    <DependentUpon>TagAddView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Tag\TagOverviewView.xaml.cs">
+	    <DependentUpon>TagOverviewView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
   <ItemGroup>
 	  <MauiXaml Update="Views\Activity\ActivityOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Project\AddProjectView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tag\TagAddView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tag\TagOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\User\AddUserView.xaml">

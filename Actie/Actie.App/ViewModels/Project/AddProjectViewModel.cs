@@ -9,7 +9,7 @@ using Actie.App.Services;
 using Actie.BL.Facades;
 using Actie.BL.Models;
 
-namespace Actie.App.ViewModels.Project;
+namespace Actie.App.ViewModels;
 internal class AddProjectViewModel
 {
 }

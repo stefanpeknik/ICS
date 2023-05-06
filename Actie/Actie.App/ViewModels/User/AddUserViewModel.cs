@@ -10,7 +10,7 @@ using Actie.BL.Facades;
 using Actie.BL.Models;
 using Actie.BL.Facades.Interfaces;
 
-namespace Actie.App.ViewModels.User;
+namespace Actie.App.ViewModels;
 public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessage>
 {
     private readonly IUserFacade _userFacade;

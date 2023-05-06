@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
-             x:Class="Actie.App.Views.Project.UserProjectOverviewView">
+             x:Class="Actie.App.Views.Tag.TagOverviewView">
+
 
     <Grid ColumnDefinitions="300, *">
 
@@ -41,7 +42,7 @@
                 />
             </HorizontalStackLayout>
             <HorizontalStackLayout Grid.Row="2">
-                <BoxView Color="Purple"
+                <BoxView Color="White"
                         Margin="0,0,10,0"
                         HeightRequest="15"
                         WidthRequest="15"
@@ -69,7 +70,7 @@
                 />
             </HorizontalStackLayout>
             <HorizontalStackLayout Grid.Row="4">
-                <BoxView Color="White"
+                <BoxView Color="Purple"
                          Margin="0,0,10,0"
                          HeightRequest="15"
                          WidthRequest="15"
@@ -106,10 +107,11 @@
         <Line BackgroundColor="White"
               HorizontalOptions="End" />
 
+
         <Grid Grid.Column="1"
               RowDefinitions="100, *">
             <Label Grid.Row="0"
-                   Text="My Projects"
+                   Text="Tags"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
                    FontSize="46"/>
@@ -119,8 +121,8 @@
 
             <ScrollView Grid.Row="1">
 
-                <CollectionView Grid.Column="1" ItemsSource="{Binding Projects}"
-                                    VerticalOptions="FillAndExpand">
+                <CollectionView ItemsSource="{Binding Projects}"
+                                VerticalOptions="FillAndExpand">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
                                                  HorizontalItemSpacing="10" VerticalItemSpacing="10"
@@ -128,7 +130,7 @@
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="m:ProjectListModel">
+                        <DataTemplate x:DataType="m:TagListModel">
                             <Frame Padding="0"
                                            CornerRadius="10"
                                            WidthRequest="320" HeightRequest="110"
@@ -184,6 +186,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+
             </ScrollView>
         </Grid>
     </Grid>

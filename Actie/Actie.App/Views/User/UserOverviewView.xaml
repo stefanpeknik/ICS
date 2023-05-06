@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
              xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
@@ -93,4 +93,4 @@
                 Command="{Binding GoToAddUserCommand}"
                 Margin="80,0"/>
     </Grid>
-</views:ContentPageBase>
+</ContentPage>
