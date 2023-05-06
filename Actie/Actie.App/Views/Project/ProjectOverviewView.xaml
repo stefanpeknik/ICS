@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
+             x:Class="Actie.App.Views.Project.ProjectOverviewView">
+
+    <Grid ColumnDefinitions="300, *">
+        <Grid Grid.Column="0"
+              RowDefinitions="150,50,50,50, *"
+              HorizontalOptions="Center">
+            <HorizontalStackLayout Grid.Row="0">
+                <Image  HorizontalOptions="Start"
+                       WidthRequest="50" HeightRequest="50"
+                       Source="user.jpg">
+                    <Image.Clip>
+                        <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
+                    </Image.Clip>
+                </Image>
+                <Label 
+                       FontSize="20" LineBreakMode="WordWrap"
+                       Text="Jmeno: "
+                       TextColor="White" HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Grid.Row="1">
+                <BoxView Color="Purple"
+                         Margin="0,0,10,0"
+                         HeightRequest="15"
+                         WidthRequest="15"
+                         CornerRadius="15"
+                />
+                <Button Text="All Projects"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Row="2">
+                <BoxView Color="White"
+                        Margin="0,0,10,0"
+                        HeightRequest="15"
+                        WidthRequest="15"
+                        CornerRadius="15"
+                />
+                <Button Text="My Projects"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Row="3">
+                <BoxView Color="White"
+                         Margin="0,0,10,0"
+                         HeightRequest="15"
+                         WidthRequest="15"
+                         CornerRadius="15"
+                />
+                <Button Text="Activities"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+            </HorizontalStackLayout>
+            <VerticalStackLayout Grid.Row="4"
+                                 VerticalOptions="End"
+                                 Margin="0,0,0,50">
+                <Button
+                        Text="Settings"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+                <Button
+                        Text="Log out"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+            </VerticalStackLayout>
+        </Grid>
+
+        <ScrollView BackgroundColor="AliceBlue"
+                    Grid.Column="1">
+
+            <CollectionView Grid.Column="1" ItemsSource="{Binding Projects}"
+                                VerticalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                             HorizontalItemSpacing="10" VerticalItemSpacing="10"
+                                             Span="2" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:ProjectListModel">
+                        <Frame Padding="0"
+                                       CornerRadius="10"
+                                       WidthRequest="320" HeightRequest="110"
+                                       IsClippedToBounds="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference ProjectListViewRoot}, Path=BindingContext.GoToDetailCommand}"
+                                                              CommandParameter="{Binding Id}" />
+                                <!-- what this ^^ -->
+                            </Frame.GestureRecognizers>
+
+                            <Grid>
+                                <Image Grid.Row="0"
+                                               HorizontalOptions="Fill" VerticalOptions="Fill"
+                                               Aspect="AspectFill"
+                                               WidthRequest="320" HeightRequest="240"
+                                               Source="user.jpg" />
+                                <!-- obrazek aktivity -->
+
+                                <BoxView Grid.Row="0"
+                                                 Opacity="0.25"
+                                                 Color="Black" />
+
+                                <Frame Grid.Row="0"
+                                               Margin="22" Padding="6,0"
+                                               BackgroundColor="Grey"
+                                               CornerRadius="5" HorizontalOptions="Start"
+                                               VerticalOptions="Start"
+                                               HeightRequest="20">
+                                    <HorizontalStackLayout Padding="0"
+                                                                   HorizontalOptions="Start" VerticalOptions="Center"
+                                                                   Spacing="8">
+                                    </HorizontalStackLayout>
+                                </Frame>
+
+                                <Label Grid.Row="0"
+                                           Margin="22,12"
+                                           FontSize="20" LineBreakMode="WordWrap"
+                                           Text="Activity name: "
+                                           TextColor="White" VerticalOptions="End" />
+                                <Label Grid.Row="0"
+                                           Margin="22,12"
+                                           FontSize="20" LineBreakMode="WordWrap"
+                                           Text="Date: "
+                                           TextColor="White" VerticalOptions="End" />
+                                <Label Grid.Row="0"
+                                           Margin="22,12"
+                                           FontSize="20" LineBreakMode="WordWrap"
+                                           Text="Time: "
+                                           TextColor="White" VerticalOptions="End" />
+                                <!-- slovni info o aktivite-->
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </ScrollView>
+    </Grid>
+
+
+</ContentPage>
