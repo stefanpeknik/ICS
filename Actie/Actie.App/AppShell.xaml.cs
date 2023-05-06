@@ -1,17 +1,13 @@
-﻿
-using Actie.App.Services;
+﻿// Copyright (c) .NET Foundation and contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+//
 
 namespace Actie.App;
 
-public partial class AppShell
+public partial class AppShell : Shell
 {
-    private readonly INavigationService _navigationService;
-
-    public AppShell(INavigationService navigationService)
+    public AppShell()
     {
-        _navigationService = navigationService;
-
         InitializeComponent();
     }
-
 }
