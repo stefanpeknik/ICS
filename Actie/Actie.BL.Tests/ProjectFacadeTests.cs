@@ -104,7 +104,7 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
         detailModel.Name = "Changed name";
 
         //Act & Assert
-        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = default,  Users = default});
+        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = null!,  Users = null! });
     }
 
     [Fact]
@@ -115,7 +115,7 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
         detailModel.Name = "Changed name 1";
 
         //Act
-        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = default, Users = default});
+        await _projectFacadeSUT.SaveAsync(detailModel with { Activities = null!, Users = null! });
 
         //Assert
         var returnedModel = await _projectFacadeSUT.GetAsync(detailModel.Id);
