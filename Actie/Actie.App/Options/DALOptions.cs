@@ -3,8 +3,10 @@
 namespace Actie.App.Options;
 public record DALOptions
 {
+#nullable enable
     public LocalDbOptions? LocalDb { get; init; }
     public SqliteOptions? Sqlite { get; init; }
+#nullable disable
 }
 
 public record LocalDbOptions

@@ -11,7 +11,7 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        ContentTemplate="{DataTemplate act:ActivityOverviewView}"
+        ContentTemplate="{DataTemplate user:UserOverviewView}"
         Route="IntroView" />
 
 </Shell>
