@@ -128,4 +128,148 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         // Assert
         DeepAssert.Equal(activity, ActivityModelMapper.MapToDetailModel(ingredientFromDb));
     }
+
+    [Fact]
+    public async Task GetFilteredBeforeOrAfter_GetFilteredByNonExistentUser_EmptyEnumerable()
+    {
+        // Arrange
+        var badId = Guid.Empty;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(badId);
+
+        // Assert
+        if (filtered != null)
+        {
+            Assert.Empty(filtered);
+        }
+    }
+
+    [Fact]
+    public async Task GetFilteredBeforeOrAfter_GetFilteredByUserId_ActivitiesOfUser()
+    {
+        // Arrange
+        var user = UserSeeds.UserEntity;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(user.Id);
+
+        // Assert
+        DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities));
+    }
+
+    [Fact]
+    public async Task GetFilteredBeforeOrAfter_GetFilteredByUserIdAndAfter_ActivitiesOfUserAfter()
+    {
+        // Arrange
+        var after = DateTime.Parse("20.01.2023 00:00");
+        var user = UserSeeds.UserEntity;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(user.Id, after);
+
+        // Assert
+        DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start > after)));
+    }
+
+    [Fact]
+    public async Task GetFilteredBeforeOrAfter_GetFilteredByUserIdAndBefore_ActivitiesOfUserBefore()
+    {
+        // Arrange
+        var before = DateTime.Parse("20.01.2023 00:00");
+        var user = UserSeeds.UserEntity;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(user.Id, startsBefore: before);
+
+        // Assert
+        DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start < before)));
+    }
+
+    [Fact]
+    public async Task GetFilteredBeforeOrAfter_GetFilteredByUserIdAndInterval_ActivitiesOfUserInInterval()
+    {
+        // Arrange
+        var after = DateTime.Parse("20.12.2022 00:00");
+        var before = DateTime.Parse("20.01.2023 00:00");
+        var user = UserSeeds.UserEntity;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(user.Id, startsAfter: after, startsBefore: before);
+
+        // Assert
+        DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start < before && a.Start > after)));
+    }
+
+    [Fact]
+    public async Task GetFilteredPreciseTime_GetFilteredByUserId_ActivitiesOfUser()
+    {
+        // Arrange
+        var user = UserSeeds.UserEntity;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(user.Id);
+
+        // Assert
+        DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities));
+    }
+
+    [Fact]
+    public async Task GetFilteredPreciseTime_GetFilteredByNonExistentUser_EmptyEnumerable()
+    {
+        // Arrange
+        var badId = Guid.Empty;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(badId);
+
+        // Assert
+        if (filtered != null)
+        {
+            Assert.Empty(filtered);
+        }
+    }
+
+    [Fact]
+    public async Task GetFilteredPreciseTime_GetFilteredByUserIdAndInStart_ActivitiesOfUserInStart()
+    {
+        // Arrange
+        var startsIn = DateTime.Parse("04.01.2023 12:00");
+        var user = UserSeeds.UserEntity;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(user.Id, startsIn: startsIn);
+
+        // Assert
+        DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start == startsIn)));
+    }
+
+    [Fact]
+    public async Task GetFilteredPreciseTime_GetFilteredByUserIdAndInEnd_ActivitiesOfUserInEnd()
+    {
+        // Arrange
+        var endsIn = DateTime.Parse("04.01.2023 13:00");
+        var user = UserSeeds.UserEntity;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(user.Id, endsIn: endsIn);
+
+        // Assert
+        DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.End == endsIn)));
+    }
+
+    [Fact]
+    public async Task GetFilteredPreciseTime_GetFilteredByUserIdAndInStartAndInEnd_ActivitiesOfUserInStartAndInEnd()
+    {
+        // Arrange
+        var startsIn = DateTime.Parse("04.01.2023 12:00");
+        var endsIn = DateTime.Parse("04.01.2023 13:00");
+        var user = UserSeeds.UserEntity;
+
+        // Act
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(user.Id, startsIn: startsIn, endsIn: endsIn);
+
+        // Assert
+        DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start == startsIn && a.End == endsIn)));
+    }
 }
