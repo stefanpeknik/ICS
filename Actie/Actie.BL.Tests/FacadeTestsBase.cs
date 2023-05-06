@@ -65,16 +65,11 @@ public class FacadeTestsBase : IAsyncLifetime
 
     protected UnitOfWorkFactory UnitOfWorkFactory { get; }
 
-    private static readonly object _lockObject = new object();
-
 
     public async Task InitializeAsync()
     {
         await using var dbx = await DbContextFactory.CreateDbContextAsync();
-        lock (_lockObject)
-        {
-            TestSeedsInit.LoadLists();
-        }
+        TestSeedsInit.LoadLists();
         await dbx.Database.EnsureDeletedAsync();
         await dbx.Database.EnsureCreatedAsync();
     }
