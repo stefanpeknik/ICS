@@ -19,7 +19,6 @@ class TagFacade : FacadeBase<TagEntity, TagListModel, TagDetailModel, TagEntityM
 
     protected List<string> IncludesNavigationPathDetail => new()
     {
-        $"{nameof(TagEntity.Activities)}.{nameof(ActivityTagEntity.Activity)}",
         $"{nameof(TagEntity.Activities)}.{nameof(ActivityTagEntity.Activity)}.{nameof(ActivityEntity.User)}"
     };
 
@@ -39,7 +38,9 @@ class TagFacade : FacadeBase<TagEntity, TagListModel, TagDetailModel, TagEntityM
             }
         }
 
-        query = query.Include(p => p.Activities).ThenInclude(up => up.Activity).ThenInclude(upper => upper.UserId == userId);
+        query = query.Include(t => t.Activities)
+            .ThenInclude(at => at.Activity)
+            .ThenInclude(a => a != null && a.UserId == userId);
 
         List<TagEntity> entities = await query.ToListAsync();
 

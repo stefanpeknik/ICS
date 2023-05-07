@@ -38,7 +38,8 @@ class ProjectFacade : FacadeBase<ProjectEntity, ProjectListModel, ProjectDetailM
             }
         }
 
-        query = query.Include(p => p.Users).ThenInclude(up => up.UserId == userId);
+        query = query.Include(p => p.Users)
+            .ThenInclude(up => up.UserId == userId);
 
         List<ProjectEntity> entities = await query.ToListAsync();
 
