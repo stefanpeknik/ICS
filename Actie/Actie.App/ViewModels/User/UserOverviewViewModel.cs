@@ -55,6 +55,12 @@ public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditM
             new Dictionary<string, object?> { [nameof(Id)] = Id });
     }
 
+    [RelayCommand]
+    private async Task GoToSettingsAsync()
+    {
+        await _navigationService.GoToAsync("/edit_user");
+    }
+
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();

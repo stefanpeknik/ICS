@@ -31,7 +31,7 @@
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Start date"
                            VerticalOptions="Center"/>
-                    <DatePicker Format="yyyy-MM-dd HH:mm"/>
+                    <DatePicker Format="F"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="End date"
@@ -45,15 +45,14 @@
                     <Label Text="Type"
                            VerticalOptions="Center" />
                     <Entry Placeholder="Enter activity type"
-                           WidthRequest="50"/>
+                           WidthRequest="150"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Margin="10">
                     <Label Text="Rating (out of 5)"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter activity rating"
-                           Keyboard="Numeric"
-                           WidthRequest="100"/>
+                           WidthRequest="50"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 
