@@ -115,6 +115,10 @@
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
                    FontSize="46"/>
+            <Button Text="Add Tag"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Margin="0,0,25,0"/>
             <Line BackgroundColor="White"
                   HeightRequest="100"
                   VerticalOptions="End"/>
