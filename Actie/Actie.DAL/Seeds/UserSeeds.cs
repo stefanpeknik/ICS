@@ -20,6 +20,18 @@ public static class UserSeeds
         Height = 170,
     };
 
+    public static readonly UserEntity UserEntity1 = new()
+    {
+        Id = Guid.Parse(input: "b39c4c7f-beaa-42dc-b756-66fd9c1e6bc2"),
+        Name = "Brano",
+        Surname = "Chorko",
+        Photo = null,
+        Age = 56,
+        Gender = "Branikar",
+        Weight = 100,
+        Height = 150,
+    };
+
     public static void LoadLists()
     {
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity1Proj1);
@@ -33,9 +45,9 @@ public static class UserSeeds
     public static void Seed(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<UserEntity>().HasData(
-            UserEntity with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() }
+            UserEntity with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() },
+            UserEntity1 with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() }
         );
     }
 
 }
-
