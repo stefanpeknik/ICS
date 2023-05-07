@@ -13,16 +13,31 @@ namespace Actie.App.ViewModels;
 public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditMessage>, IRecipient<UserDeleteMessage>
 {
     private readonly IUserFacade _userFacade;
+    private readonly INavigationService _navigationService;
 
     public Guid Id { get; set; }
 
     [ObservableProperty]
     public UserDetailModel user;
 
-    public UserOverviewViewModel(IUserFacade userFacade, IMessengerService messengerService)
+    public UserOverviewViewModel(IUserFacade userFacade, INavigationService navigationService, IMessengerService messengerService)
         : base(messengerService)
     {
         _userFacade = userFacade;
+        _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task GoToAllProjectsAsync()
+    {
+        await _navigationService.GoToAsync("/all_projects");
+    }
+
+    [RelayCommand]
+    private async Task GoToMyProjectsAsync(Guid id)
+    {
+        await _navigationService.GoToAsync<UserOverviewViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = id });
     }
 
     protected override async Task LoadDataAsync()
