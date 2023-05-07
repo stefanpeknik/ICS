@@ -1,0 +1,59 @@
+﻿using Actie.App.Messages;
+using Actie.App.Services;
+using Actie.BL.Facades.Interfaces;
+using Actie.BL.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+
+namespace Actie.App.ViewModels;
+
+public partial class LogInViewModel : ViewModelBase
+{
+    private readonly IUserFacade _userFacade;
+    private readonly INavigationService _navigationService;
+
+    [ObservableProperty]
+    private IEnumerable<UserListModel> users = Array.Empty<UserListModel>();
+
+    public LogInViewModel(
+        IUserFacade userFacade,
+        INavigationService navigationService,
+        IMessengerService messengerService)
+        : base(messengerService)
+    {
+        _userFacade = userFacade;
+        _navigationService = navigationService;
+    }
+
+    protected override async Task LoadDataAsync()
+    {
+        await base.LoadDataAsync();
+
+        Users = await _userFacade.GetAsync();
+    }
+
+
+    [RelayCommand]
+    private async Task GoToAddUserAsync()
+    {
+        await _navigationService.GoToAsync("//users/add");
+    }
+
+    [RelayCommand]
+    private async Task LogInAsync(Guid id)
+    {
+        await _navigationService.GoToAsync<UserOverviewViewModel>(
+            new Dictionary<string, object?> { [nameof(UserOverviewViewModel.Id)] = id });
+        //await _navigationService.GoToAsync("//users/home");
+    }
+
+    public async void Receive(UserEditMessage message)
+    {
+        await LoadDataAsync();
+    }
+
+    public async void Receive(UserDeleteMessage message)
+    {
+        await LoadDataAsync();
+    }
+}

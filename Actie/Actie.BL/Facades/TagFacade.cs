@@ -17,21 +17,33 @@ class TagFacade : FacadeBase<TagEntity, TagListModel, TagDetailModel, TagEntityM
     {
     }
 
-    //protected override string IncludesNavigationPathDetail => $"{nameof(TagEntity.Activities)}.{nameof(ActivityTagEntity.Activity)}";
+    protected List<string> IncludesNavigationPathDetail => new()
+    {
+        $"{nameof(TagEntity.Activities)}.{nameof(ActivityTagEntity.Activity)}.{nameof(ActivityEntity.User)}"
+    };
 
-    public override async Task<TagDetailModel?> GetAsync(Guid id)
+    public async Task<IEnumerable<TagListModel>> GetByUserIdAsync(Guid userId)
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
 
         IQueryable<TagEntity> query = uow.GetRepository<TagEntity, TagEntityMapper>().Get();
 
+        if (IncludesNavigationPathDetails.Any())
+        {
+            foreach (string includesNavigationPathDetail in IncludesNavigationPathDetails)
+            {
+                query = string.IsNullOrWhiteSpace(includesNavigationPathDetail)
+                    ? query
+                    : query.Include(includesNavigationPathDetail);
+            }
+        }
+
         query = query.Include(t => t.Activities)
-            .ThenInclude(a => a.Activity);
+            .ThenInclude(at => at.Activity)
+            .ThenInclude(a => a != null && a.UserId == userId);
 
-        TagEntity? entity = await query.SingleOrDefaultAsync(e => e.Id == id);
+        List<TagEntity> entities = await query.ToListAsync();
 
-        return entity is null
-            ? null
-            : ModelMapper.MapToDetailModel(entity);
+        return ModelMapper.MapToListModel(entities);
     }
 }

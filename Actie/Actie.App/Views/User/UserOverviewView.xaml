@@ -9,70 +9,76 @@
              x:Name="UserListViewRoot">
 
 
-    <Grid RowDefinitions="200, auto, *">
+    <Grid RowDefinitions="*,*,*"
+        HorizontalOptions="Center">
         <HorizontalStackLayout Grid.Row="0">
-            <Label Margin="30"
-                   FontSize="102"
-                   Text="Actie"/>
-            <Button Text="Add User"
-                    HeightRequest="75"
-                    WidthRequest="150"
-                    FontSize="22"
-                    Command="{Binding GoToAddUserCommand}"
-                    Margin="80,0"/>
-
+            <Image HorizontalOptions="Start"
+                   WidthRequest="50" HeightRequest="50"
+                   Source="{Binding User.Photo, TargetNullValue='user.jpg'}">
+                <Image.Clip>
+                    <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
+                </Image.Clip>
+            </Image>
+            <Label FontSize="45" LineBreakMode="WordWrap"
+                   Text="{Binding User.Name}"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   Margin="10, 0, 0, 0"
+            />
+            <Label FontSize="45" LineBreakMode="WordWrap"
+                   Text="{Binding User.Surname}"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   Margin="5, 0, 0, 0"
+            />
         </HorizontalStackLayout>
-        <Grid HorizontalOptions="FillAndExpand"
-                Grid.Row="1"
-              RowDefinitions="Auto, *"
-              RowSpacing="20"
-              Margin="{OnIdiom Phone='10, 0'}">
 
-            <CollectionView Grid.Row="1"
-                            ItemsSource="{Binding Users}"
-                            VerticalOptions="FillAndExpand">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Horizontal"
-                                     HorizontalItemSpacing="10" VerticalItemSpacing="10"
-                                         Span="2" />
-                </CollectionView.ItemsLayout>
+        <HorizontalStackLayout Grid.Row="1">
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="m:UserListModel">
-                        <Frame Padding="0"
-                               BorderColor="White"
-                                   CornerRadius="5"
-                                   WidthRequest="250" HeightRequest="300"
-                                   IsClippedToBounds="True">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={x:Reference UserListViewRoot}, Path=BindingContext.LogInCommand}"
-                                                          CommandParameter="{Binding Id}" />
-                            </Frame.GestureRecognizers>
+            <Button Text="All Projects"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
 
+            <Button Text="My Projects"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
 
-                            <Grid RowDefinitions="220, 80, *">
-                                <Image Grid.Row="0"
-                                       HeightRequest="250"
-                                       Source="user.jpg">
-                                </Image>
+            <Button Text="Activities"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
 
-                                <VerticalStackLayout Grid.Row="1"
-                                                     BackgroundColor="Black">
+            <Button Text="Tags"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                />
+        </HorizontalStackLayout>
 
-                                    <Label FontSize="20" LineBreakMode="WordWrap"
-                                           Margin="10,5"
-                                               Text="{Binding Name}"
-                                               TextColor="White"/>
-                                    <Label FontSize="20" LineBreakMode="WordWrap"
-                                           Margin="10,5"
-                                           Text="{Binding Surname}"
-                                           TextColor="White"/>
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
+        <HorizontalStackLayout Grid.Row="2">
+            <Button
+                    Text="Settings"
+                    HeightRequest="50"
+                    WidthRequest="200"
+                    FontSize="22"
+                    HorizontalOptions="Center"
+                />
+            <Button
+                    Text="Log out"
+                    HeightRequest="50"
+                    WidthRequest="200"
+                    FontSize="22"
+                    HorizontalOptions="Center"
+                />
+        </HorizontalStackLayout>
     </Grid>
 </views:ContentPageBase>

@@ -3,6 +3,7 @@ using Actie.DAL.Entities;
 
 namespace Actie.BL.Facades.Interfaces;
 
-internal interface IProjectFacade : IFacade<ProjectEntity, ProjectListModel, ProjectDetailModel>
+public interface IProjectFacade : IFacade<ProjectEntity, ProjectListModel, ProjectDetailModel>
 {
+    Task<IEnumerable<ProjectListModel>> GetByUserIdAsync(Guid userId);
 }

@@ -8,11 +8,12 @@
     xmlns:proj="clr-namespace:Actie.App.Views.Project"
     xmlns:act="clr-namespace:Actie.App.Views.Activity"
     xmlns:tag="clr-namespace:Actie.App.Views.Tag"
+    xmlns:views="clr-namespace:Actie.App.Views"
 
     FlyoutBehavior="Disabled">
 
     <ShellContent
-        ContentTemplate="{DataTemplate user:UserOverviewView}"
+        ContentTemplate="{DataTemplate views:LogInView}"
         Route="IntroView" />
 
 </Shell>

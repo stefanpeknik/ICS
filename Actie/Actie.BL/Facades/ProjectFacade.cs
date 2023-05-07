@@ -17,21 +17,32 @@ class ProjectFacade : FacadeBase<ProjectEntity, ProjectListModel, ProjectDetailM
     {
     }
 
-    public override async Task<ProjectDetailModel?> GetAsync(Guid id)
+    protected override List<string> IncludesNavigationPathDetails => new(){
+        $"{nameof(ProjectEntity.Activities)}.{nameof(ActivityEntity.Tags)}.{nameof(ActivityTagEntity.Tag)}",
+        $"{nameof(ProjectEntity.Users)}.{nameof(UserProjectEntity.User)}"
+    };
+
+    public async Task<IEnumerable<ProjectListModel>> GetByUserIdAsync(Guid userId)
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
 
         IQueryable<ProjectEntity> query = uow.GetRepository<ProjectEntity, ProjectEntityMapper>().Get();
 
-        query = query.Include(p => p.Activities)
-                .ThenInclude(a => a.Tags).ThenInclude(t => t.Tag)
-            .Include(p => p.Users)
-                .ThenInclude(up => up.User);
+        if (IncludesNavigationPathDetails.Any())
+        {
+            foreach (string includesNavigationPathDetail in IncludesNavigationPathDetails)
+            {
+                query = string.IsNullOrWhiteSpace(includesNavigationPathDetail)
+                    ? query
+                    : query.Include(includesNavigationPathDetail);
+            }
+        }
 
-        ProjectEntity? entity = await query.SingleOrDefaultAsync(e => e.Id == id);
+        query = query.Include(p => p.Users)
+            .ThenInclude(up => up.UserId == userId);
 
-        return entity is null
-            ? null
-            : ModelMapper.MapToDetailModel(entity);
+        List<ProjectEntity> entities = await query.ToListAsync();
+
+        return ModelMapper.MapToListModel(entities);
     }
 }

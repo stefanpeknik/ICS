@@ -1,46 +1,35 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Messages;
 using Actie.App.Services;
 using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Actie.App.ViewModels;
+
+[QueryProperty(nameof(Id), nameof(Id))]
 public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditMessage>, IRecipient<UserDeleteMessage>
 {
     private readonly IUserFacade _userFacade;
-    private readonly INavigationService _navigationService;
 
-    public IEnumerable<UserListModel> Users { get; set; } = null!;
+    public Guid Id { get; set; }
 
-    public UserOverviewViewModel(
-        IUserFacade userFacade,
-        INavigationService navigationService,
-        IMessengerService messengerService)
+    [ObservableProperty]
+    public UserDetailModel user;
+
+    public UserOverviewViewModel(IUserFacade userFacade, IMessengerService messengerService)
         : base(messengerService)
     {
         _userFacade = userFacade;
-        _navigationService = navigationService;
     }
 
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
 
-        Users = await _userFacade.GetAsync();
-    }
-
-
-    [RelayCommand]
-    private async Task GoToAddUserAsync()
-    {
-        await _navigationService.GoToAsync("//user/add");
-    }
-
-    [RelayCommand]
-    private async Task LogInAsync()
-    {
-        await _navigationService.GoToAsync("//project/overview");
+        User = (await _userFacade.GetAsync(Id))!;
     }
 
     public async void Receive(UserEditMessage message)

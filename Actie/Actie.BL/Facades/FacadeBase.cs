@@ -28,7 +28,7 @@ public abstract class
         ModelMapper = modelMapper;
     }
 
-    protected virtual string IncludesNavigationPathDetail => string.Empty;
+    protected virtual List<string> IncludesNavigationPathDetails => new();
 
     public async Task DeleteAsync(Guid id)
     {
@@ -50,9 +50,14 @@ public abstract class
 
         IQueryable<TEntity> query = uow.GetRepository<TEntity, TEntityMapper>().Get();
 
-        if (string.IsNullOrWhiteSpace(IncludesNavigationPathDetail) is false)
+        if (IncludesNavigationPathDetails.Any())
         {
-            query = query.Include(IncludesNavigationPathDetail);
+            foreach (string includesNavigationPathDetail in IncludesNavigationPathDetails)
+            {
+                query = string.IsNullOrWhiteSpace(includesNavigationPathDetail)
+                    ? query
+                    : query.Include(includesNavigationPathDetail);
+            }
         }
 
         TEntity? entity = await query.SingleOrDefaultAsync(e => e.Id == id);
@@ -65,10 +70,20 @@ public abstract class
     public virtual async Task<IEnumerable<TListModel>> GetAsync()
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
-        List<TEntity> entities = await uow
-            .GetRepository<TEntity, TEntityMapper>()
-            .Get()
-            .ToListAsync();
+
+        IQueryable<TEntity> query = uow.GetRepository<TEntity, TEntityMapper>().Get();
+
+        if (IncludesNavigationPathDetails.Any())
+        {
+            foreach (string includesNavigationPathDetail in IncludesNavigationPathDetails)
+            {
+                query = string.IsNullOrWhiteSpace(includesNavigationPathDetail)
+                    ? query
+                    : query.Include(includesNavigationPathDetail);
+            }
+        }
+
+        List<TEntity> entities = await query.ToListAsync();
 
         return ModelMapper.MapToListModel(entities);
     }

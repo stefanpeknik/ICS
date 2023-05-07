@@ -3,6 +3,7 @@
 #nullable enable
 using Actie.App.Models;
 using Actie.App.ViewModels;
+using Actie.App.Views;
 using Actie.App.Views.Activity;
 using Actie.App.Views.Project;
 using Actie.App.Views.User;
@@ -12,15 +13,8 @@ public class NavigationService : INavigationService
 
     public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
     {
-        new("//user", typeof(UserOverviewView), typeof(UserOverviewViewModel)),
-        new("//user/add", typeof(AddUserView), typeof(AddUserViewModel)),
-
-        new("//project/add", typeof(AddProjectView), typeof(AddProjectViewModel)),
-        new("//project/overview", typeof(ProjectOverviewView), typeof(ProjectOverviewViewModel)),
-        new("//project/overview/user", typeof(UserProjectOverviewView), typeof(UserProjectOverviewViewModel)),
-
-        new("//overview/activity", typeof(ActivityOverviewView), typeof(ActivityOverviewViewModel)),
-        
+        new("//users", typeof(LogInView), typeof(LogInViewModel)),
+        new("//users/home", typeof(UserOverviewView), typeof(UserOverviewViewModel))   
     };
 
     public async Task GoToAsync<TViewModel>()
