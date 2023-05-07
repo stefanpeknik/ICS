@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Messages;
@@ -16,6 +14,7 @@ namespace Actie.App.ViewModels;
 public partial class ProjectOverviewViewModel : ViewModelBase
 {
     private readonly IProjectFacade _projectFacade;
+    private readonly INavigationService _navigationService;
 
     // User Id
     public Guid? Id { get; set; } = null;
@@ -23,9 +22,17 @@ public partial class ProjectOverviewViewModel : ViewModelBase
     [ObservableProperty]
     private IEnumerable<ProjectListModel> projects = Array.Empty<ProjectListModel>();
 
-    public ProjectOverviewViewModel(IProjectFacade projectFacade, IMessengerService messengerService) : base(messengerService)
+    public ProjectOverviewViewModel(IProjectFacade projectFacade, INavigationService navigationService, IMessengerService messengerService)
+        : base(messengerService)
     {
         _projectFacade = projectFacade;
+        _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task GoToAddProjectAsync()
+    {
+        await _navigationService.GoToAsync("/add_to_all_projects");
     }
 
     protected override async Task LoadDataAsync()
