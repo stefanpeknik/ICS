@@ -3,10 +3,79 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
              x:Class="Actie.App.Views.User.AddUserView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI! AddUserView"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid RowDefinitions="100, Auto, *">
+        <Label Grid.Row="0"
+               Text="Add Users"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="46"/>
+
+        <Line BackgroundColor="White"
+              VerticalOptions="End" />
+
+
+        <Grid Grid.Row="1"
+              RowDefinitions="100,100,100,100">
+
+            <VerticalStackLayout Grid.Row="0"
+                                 Margin="10">
+                <Label Text="Name"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="Enter your name"
+                       HeightRequest="50"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1"
+                                 Margin="10">
+                    <Label Text="Surname"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your surname" />
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout Grid.Row="2"
+                                 Margin="10">
+                <Label Text="Picture"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="Enter picture url" />
+            </VerticalStackLayout>
+            <HorizontalStackLayout Grid.Row="3"
+                                   Margin="10">
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Age"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your age" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Gender"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your gender" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Height"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your height" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Weight"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your weight" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+        </Grid>
+        <Button Grid.Row="2"
+                Text="Save User"
+                HorizontalOptions="End"
+                HeightRequest="50"
+                WidthRequest="100"
+                Margin="0,0,50,50"/>
+
+    </Grid>
+
+    <!--
+Jmeno Prijmeni Fotka Vek Gender Vyska Vaha
+    -->
+
+
 </views:ContentPageBase>
