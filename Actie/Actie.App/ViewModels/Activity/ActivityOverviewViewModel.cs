@@ -5,31 +5,30 @@ using Actie.App.Messages;
 using Actie.App.Services;
 using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Actie.App.ViewModels;
 
+[QueryProperty(nameof(Id), nameof(Id))]
 public partial class ActivityOverviewViewModel : ViewModelBase
 {
-
     private readonly IActivityFacade _activityFacade;
-    private readonly INavigationService _navigationService;
 
-    public IEnumerable<ActivityListModel> Activities { get; set; } = null!;
+    // User Id
+    public Guid Id { get; set; }
 
-    public ActivityOverviewViewModel(
-        IActivityFacade activityFacade,
-        INavigationService navigationService,
-        IMessengerService messengerService)
-        : base(messengerService)
+    [ObservableProperty]
+    private IEnumerable<ActivityListModel> activities = Array.Empty<ActivityListModel>();
+
+    public ActivityOverviewViewModel( IActivityFacade activityFacade, IMessengerService messengerService) : base(messengerService)
     {
         _activityFacade = activityFacade;
-        _navigationService = navigationService;
     }
 
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
 
-        Activities = await _activityFacade.GetAsync();
+        Activities = await _activityFacade.GetByUserIdAsync(Id);
     }
 }
