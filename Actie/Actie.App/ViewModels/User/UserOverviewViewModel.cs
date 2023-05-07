@@ -34,7 +34,13 @@ public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditM
     [RelayCommand]
     private async Task GoToAddUserAsync()
     {
-        await _navigationService.GoToAsync("/add");
+        await _navigationService.GoToAsync("//user/add");
+    }
+
+    [RelayCommand]
+    private async Task LogInAsync()
+    {
+        await _navigationService.GoToAsync("//project/overview");
     }
 
     public async void Receive(UserEditMessage message)

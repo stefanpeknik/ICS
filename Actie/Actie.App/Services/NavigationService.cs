@@ -1,5 +1,6 @@
 ﻿
 
+#nullable enable
 using Actie.App.Models;
 using Actie.App.ViewModels;
 using Actie.App.Views.Activity;
@@ -15,8 +16,8 @@ public class NavigationService : INavigationService
         new("//user/add", typeof(AddUserView), typeof(AddUserViewModel)),
 
         new("//project/add", typeof(AddProjectView), typeof(AddProjectViewModel)),
-        new("//overview/project", typeof(ProjectOverviewView), typeof(ProjectOverviewViewModel)),
-        new("//overview/user/project", typeof(UserProjectOverviewView), typeof(UserProjectOverviewViewModel)),
+        new("//project/overview", typeof(ProjectOverviewView), typeof(ProjectOverviewViewModel)),
+        new("//project/overview/user", typeof(UserProjectOverviewView), typeof(UserProjectOverviewViewModel)),
 
         new("//overview/activity", typeof(ActivityOverviewView), typeof(ActivityOverviewViewModel)),
         
@@ -28,6 +29,7 @@ public class NavigationService : INavigationService
         var route = GetRouteByViewModel<TViewModel>();
         await Shell.Current.GoToAsync(route);
     }
+
     public async Task GoToAsync<TViewModel>(IDictionary<string, object?> parameters)
         where TViewModel : IViewModel
     {

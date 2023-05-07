@@ -124,7 +124,7 @@
 
             <ScrollView Grid.Row="1">
 
-                <CollectionView Grid.Column="1" ItemsSource="{Binding Projects}"
+                <CollectionView ItemsSource="{Binding Projects}"
                                     VerticalOptions="FillAndExpand">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
