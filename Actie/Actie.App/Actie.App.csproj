@@ -74,6 +74,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Project\DetailProjectView.xaml.cs">
+	    <DependentUpon>DetailProjectView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Tag\TagAddView.xaml.cs">
 	    <DependentUpon>TagAddView.xaml</DependentUpon>
 	  </Compile>
@@ -90,6 +93,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Project\AddProjectView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Project\DetailProjectView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Tag\TagAddView.xaml">
