@@ -28,14 +28,16 @@
                                  Margin="10">
                 <Label Text="Name"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="{Binding Tag.Name}" />
+                <Entry Placeholder="Tag name" />
+                <!-- {Binding Tag.Name} -->
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
                                  Margin="10">
                 <Label Text="Description"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="{Binding Tag.Description}" />
+                <Entry Placeholder="Tag description" />
+                <!-- {Binding Tag.Description} -->
             </VerticalStackLayout>
 
         </Grid>
