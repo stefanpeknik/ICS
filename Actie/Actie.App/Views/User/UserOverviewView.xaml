@@ -40,7 +40,7 @@
                         WidthRequest="200"
                         FontSize="22"
                         HorizontalOptions="Center"
-                        Command="{Binding Source={x:Reference UserOverviewViewRoot}, Path=BindingContext.GoToAllProjectsCommand}"
+                        Command="{Binding GoToAllProjectsCommand}"
             />
 
             <Button Text="My Projects"
@@ -48,7 +48,7 @@
                         WidthRequest="200"
                         FontSize="22"
                         HorizontalOptions="Center"
-                        Command="{Binding Source={x:Reference UserOverviewViewRoot}, Path=BindingContext.GoToMyProjectsCommand}"
+                        Command="{Binding GoToMyProjectsCommand}"
                         CommandParameter="{Binding Id}"
                 />
 

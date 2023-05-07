@@ -38,9 +38,9 @@ class TagFacade : FacadeBase<TagEntity, TagListModel, TagDetailModel, TagEntityM
             }
         }
 
-        query = query.Include(t => t.Activities)
-            .ThenInclude(at => at.Activity)
-            .ThenInclude(a => a != null && a.UserId == userId);
+        query = query.Where(tag => tag.Activities.Any(at => at.Activity != null
+                                                            && at.Activity.UserId != null
+                                                            && at.Activity.UserId == userId));
 
         List<TagEntity> entities = await query.ToListAsync();
 
