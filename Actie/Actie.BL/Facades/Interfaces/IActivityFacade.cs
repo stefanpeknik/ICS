@@ -9,4 +9,7 @@ public interface IActivityFacade : IFacade<ActivityEntity, ActivityListModel, Ac
 
     public Task<IEnumerable<ActivityListModel>?> GetFilteredBeforeOrAfter(Guid? userId = null, DateTime? startsAfter = null,
         DateTime? startsBefore = null);
+
+    public Task<IEnumerable<ActivityListModel>> GetByUserIdAsync(Guid userId);
+    
 }

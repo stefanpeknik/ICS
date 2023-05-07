@@ -64,4 +64,27 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
 
         return ModelMapper.MapToListModel(entities);
     }
+
+    public async Task<IEnumerable<ActivityListModel>> GetByUserIdAsync(Guid userId)
+    {
+        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
+
+        IQueryable<ActivityEntity> query = uow.GetRepository<ActivityEntity, ActivityEntityMapper>().Get();
+
+        if (IncludesNavigationPathDetails.Any())
+        {
+            foreach (string includesNavigationPathDetail in IncludesNavigationPathDetails)
+            {
+                query = string.IsNullOrWhiteSpace(includesNavigationPathDetail)
+                    ? query
+                    : query.Include(includesNavigationPathDetail);
+            }
+        }
+
+        query = query.Where(activity => activity.UserId == userId);
+
+        List<ActivityEntity> entities = await query.ToListAsync();
+
+        return ModelMapper.MapToListModel(entities);
+    }
 }
