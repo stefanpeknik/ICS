@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Actie.App.View"
+             xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             x:Class="Actie.App.Views.User.EditUserView"
+             x:DataType="vm:EditUserViewModel"
+             x:Name="EditUserViewRoot">
+
+    <Grid RowDefinitions="100, Auto, *">
+        <Label Grid.Row="0"
+               Text="Add Users"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="46"/>
+
+        <Line BackgroundColor="White"
+              VerticalOptions="End" />
+
+
+        <Grid Grid.Row="1"
+              RowDefinitions="100,100,100,100">
+
+            <VerticalStackLayout Grid.Row="0"
+                                 Margin="10">
+                <Label Text="Name"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="Enter your name" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1"
+                                 Margin="10">
+                <Label Text="Surname"
+                           VerticalOptions="Center"/>
+                <Entry Placeholder="Enter your surname" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="2"
+                                 Margin="10">
+                <Label Text="Picture"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="Enter picture url" />
+            </VerticalStackLayout>
+            <HorizontalStackLayout Grid.Row="3"
+                                   Margin="10">
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Age"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your age"
+                           WidthRequest="150"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Gender"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your gender"
+                           WidthRequest="150"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Height"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your height"
+                           WidthRequest="150"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Weight"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter your weight"
+                           WidthRequest="150"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+        </Grid>
+        <Button Grid.Row="2"
+                Text="Save User"
+                HorizontalOptions="End"
+                HeightRequest="50"
+                WidthRequest="100"
+                Margin="0,0,50,50"/>
+
+    </Grid>
+
+</views:ContentPageBase>
