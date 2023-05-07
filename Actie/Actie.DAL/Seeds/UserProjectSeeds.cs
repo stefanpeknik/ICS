@@ -26,11 +26,31 @@ public static class UserProjectSeeds
         Project = ProjectSeeds.ProjectEntity2,
     };
 
+    public static readonly UserProjectEntity UserProjectEntity3 = new()
+    {
+        Id = Guid.Parse(input: "234af95d-f481-43f0-bfb1-512364833011"),
+        UserId = UserSeeds.Chados.Id,
+        User = UserSeeds.Chados,
+        ProjectId = ProjectSeeds.Muscles.Id,
+        Project = ProjectSeeds.Muscles,
+    };
+
+    public static readonly UserProjectEntity UserProjectEntity4 = new()
+    {
+        Id = Guid.Parse(input: "24797d0d-7f2e-42e0-a3c4-ac60d2f5586b"),
+        UserId = UserSeeds.Chados.Id,
+        User = UserSeeds.Chados,
+        ProjectId = ProjectSeeds.Wmn.Id,
+        Project = ProjectSeeds.Wmn,
+    };
+
     public static void Seed(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<UserProjectEntity>().HasData(
             UserProjectEntity1 with { User = null, Project = null },
-            UserProjectEntity2 with { User = null, Project = null }
+            UserProjectEntity2 with { User = null, Project = null },
+            UserProjectEntity3 with { User = null, Project = null },
+            UserProjectEntity4 with { User = null, Project = null }
             );
     }
 

@@ -32,21 +32,40 @@ public static class UserSeeds
         Height = 150,
     };
 
+    public static readonly UserEntity Chados = new()
+    {
+        Id = Guid.Parse(input: "c5e7d0ca-e936-403c-8565-e7f72d0825db"),
+        Name = "Gigga",
+        Surname = "Chaddo",
+        Photo = null,
+        Age = 31,
+        Gender = "AlphaMale",
+        Weight = 110,
+        Height = 170,
+    };
+
     public static void LoadLists()
     {
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity1Proj1);
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity1Proj2);
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity2Proj2);
+        Chados.Activities.Add(ActivitySeeds.FastWalk);
+        Chados.Activities.Add(ActivitySeeds.RomWalk);
+        Chados.Activities.Add(ActivitySeeds.Nnch);
+        Chados.Activities.Add(ActivitySeeds.Gym);
 
         UserEntity.Projects.Add(UserProjectSeeds.UserProjectEntity1);
         UserEntity.Projects.Add(UserProjectSeeds.UserProjectEntity2);
+        Chados.Projects.Add(UserProjectSeeds.UserProjectEntity3);
+        Chados.Projects.Add(UserProjectSeeds.UserProjectEntity4);
     }
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<UserEntity>().HasData(
             UserEntity with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() },
-            UserEntity1 with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() }
+            UserEntity1 with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() },
+            Chados with { Activities = Array.Empty<ActivityEntity>(), Projects = Array.Empty<UserProjectEntity>() }
         );
     }
 
