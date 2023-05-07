@@ -44,22 +44,26 @@
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Age"
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your age" />
+                    <Entry Placeholder="Enter your age"
+                           MinimumWidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Gender"
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your gender" />
+                    <Entry Placeholder="Enter your gender"
+                           MinimumWidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Height"
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your height" />
+                    <Entry Placeholder="Enter your height"
+                           MinimumWidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Weight"
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your weight" />
+                    <Entry Placeholder="Enter your weight"
+                           MinimumWidthRequest="150"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 
