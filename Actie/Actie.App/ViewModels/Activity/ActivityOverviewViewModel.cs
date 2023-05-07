@@ -13,6 +13,7 @@ namespace Actie.App.ViewModels;
 public partial class ActivityOverviewViewModel : ViewModelBase
 {
     private readonly IActivityFacade _activityFacade;
+    private readonly INavigationService _navigationService;
 
     // User Id
     public Guid Id { get; set; }
@@ -20,9 +21,17 @@ public partial class ActivityOverviewViewModel : ViewModelBase
     [ObservableProperty]
     private IEnumerable<ActivityListModel> activities = Array.Empty<ActivityListModel>();
 
-    public ActivityOverviewViewModel( IActivityFacade activityFacade, IMessengerService messengerService) : base(messengerService)
+    public ActivityOverviewViewModel( IActivityFacade activityFacade, INavigationService navigationService, IMessengerService messengerService)
+        : base(messengerService)
     {
         _activityFacade = activityFacade;
+        _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task GoToAddActivityAsync()
+    {
+        await _navigationService.GoToAsync("/add_activity");
     }
 
     protected override async Task LoadDataAsync()

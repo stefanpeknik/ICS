@@ -16,7 +16,9 @@
                     Text="Add Activity"
                     VerticalOptions="Center"
                     HorizontalOptions="End"
-                    Margin="0,0,25,0"/>
+                    Margin="0,0,25,0"
+                    Command="{Binding GoToAddActivityCommand}"
+                    />
             <Line   Grid.Row="0"
                     BackgroundColor="White"
                   HeightRequest="100"
