@@ -23,7 +23,6 @@ public class NavigationService : INavigationService
         new("//home/activities", typeof(ActivityOverviewView), typeof(ActivityOverviewViewModel)),
         new("//home/tags", typeof(TagOverviewView), typeof(TagOverviewViewModel)),
         
-
         new("//home/all_projects/add", typeof(AddProjectView), typeof(AddProjectViewModel)),
         new("//home/all_projects/detail", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO detail
         new("//home/all_projects/detail/edit", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO edit
