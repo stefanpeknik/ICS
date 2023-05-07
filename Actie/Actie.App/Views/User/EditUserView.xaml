@@ -10,7 +10,7 @@
 
     <Grid RowDefinitions="100, Auto, *">
         <Label Grid.Row="0"
-               Text="Add Users"
+               Text="User Edit"
                VerticalOptions="Center"
                HorizontalOptions="Center"
                FontSize="46"/>
