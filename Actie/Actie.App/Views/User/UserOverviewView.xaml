@@ -49,8 +49,7 @@
                         FontSize="22"
                         HorizontalOptions="Center"
                         Command="{Binding GoToMyProjectsCommand}"
-                        CommandParameter="{Binding Id}"
-                />
+            />
 
             <Button Text="Activities"
                         HeightRequest="50"

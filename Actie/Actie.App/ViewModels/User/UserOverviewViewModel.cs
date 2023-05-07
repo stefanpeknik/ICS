@@ -34,10 +34,10 @@ public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditM
     }
 
     [RelayCommand]
-    private async Task GoToMyProjectsAsync(Guid id)
+    private async Task GoToMyProjectsAsync()
     {
-        await _navigationService.GoToAsync<UserOverviewViewModel>(
-            new Dictionary<string, object?> { [nameof(Id)] = id });
+        await _navigationService.GoToAsync<UserProjectOverviewViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = Id });
     }
 
     protected override async Task LoadDataAsync()
