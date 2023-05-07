@@ -6,7 +6,7 @@
              xmlns:vm="clr-namespace:Actie.App.ViewModels"
              x:Class="Actie.App.Views.User.UserOverviewView"
              x:DataType="vm:UserOverviewViewModel"
-             x:Name="UserListViewRoot">
+             x:Name="UserOverviewViewRoot">
 
 
     <Grid RowDefinitions="*,*,*"
@@ -40,13 +40,16 @@
                         WidthRequest="200"
                         FontSize="22"
                         HorizontalOptions="Center"
-                />
+                        Command="{Binding Source={x:Reference UserOverviewViewRoot}, Path=BindingContext.GoToAllProjectsCommand}"
+            />
 
             <Button Text="My Projects"
                         HeightRequest="50"
                         WidthRequest="200"
                         FontSize="22"
                         HorizontalOptions="Center"
+                        Command="{Binding Source={x:Reference UserOverviewViewRoot}, Path=BindingContext.GoToMyProjectsCommand}"
+                        CommandParameter="{Binding Id}"
                 />
 
             <Button Text="Activities"
