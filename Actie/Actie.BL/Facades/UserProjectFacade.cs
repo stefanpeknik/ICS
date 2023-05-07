@@ -11,7 +11,7 @@ class UserProjectFacade : FacadeBase<UserProjectEntity, UserProjectListModel, Us
 {
     public UserProjectFacade(
         IUnitOfWorkFactory unitOfWorkFactory,
-        IModelMapper<UserProjectEntity, UserProjectListModel, UserProjectDetailModel> modelMapper
+        IUserProjectModelMapper modelMapper
     ) : base(unitOfWorkFactory, modelMapper)
     {
     }

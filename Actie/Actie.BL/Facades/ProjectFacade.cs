@@ -12,7 +12,7 @@ class ProjectFacade : FacadeBase<ProjectEntity, ProjectListModel, ProjectDetailM
 {
     public ProjectFacade(
         IUnitOfWorkFactory unitOfWorkFactory,
-        IModelMapper<ProjectEntity, ProjectListModel, ProjectDetailModel> modelMapper
+        IProjectModelMapper modelMapper
     ) : base(unitOfWorkFactory, modelMapper)
     {
     }

@@ -12,7 +12,7 @@ class ActivityTagFacade : FacadeBase<ActivityTagEntity, ActivityTagListModel, Ac
 {
     public ActivityTagFacade(
         IUnitOfWorkFactory unitOfWorkFactory,
-        IModelMapper<ActivityTagEntity, ActivityTagListModel, ActivityTagDetailModel> modelMapper
+        IActivityTagModelMapper modelMapper
     ) : base(unitOfWorkFactory, modelMapper)
     {
     }

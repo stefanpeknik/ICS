@@ -12,7 +12,7 @@ class UserFacade : FacadeBase<UserEntity, UserListModel, UserDetailModel, UserEn
 {
     public UserFacade(
         IUnitOfWorkFactory unitOfWorkFactory,
-        IModelMapper<UserEntity, UserListModel, UserDetailModel> modelMapper
+        IUserModelMapper modelMapper
     ) : base(unitOfWorkFactory, modelMapper)
     {
     }

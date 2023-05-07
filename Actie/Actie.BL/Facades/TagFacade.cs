@@ -12,7 +12,7 @@ class TagFacade : FacadeBase<TagEntity, TagListModel, TagDetailModel, TagEntityM
 {
     public TagFacade(
         IUnitOfWorkFactory unitOfWorkFactory,
-        IModelMapper<TagEntity, TagListModel, TagDetailModel> modelMapper
+        ITagModelMapper modelMapper
     ) : base(unitOfWorkFactory, modelMapper)
     {
     }
