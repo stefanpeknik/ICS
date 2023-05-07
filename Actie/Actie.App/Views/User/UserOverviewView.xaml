@@ -76,13 +76,6 @@
                     FontSize="22"
                     HorizontalOptions="Center"
                 />
-            <Button
-                    Text="Log out"
-                    HeightRequest="50"
-                    WidthRequest="200"
-                    FontSize="22"
-                    HorizontalOptions="Center"
-                />
         </HorizontalStackLayout>
     </Grid>
 </views:ContentPageBase>
