@@ -40,6 +40,13 @@ public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditM
             new Dictionary<string, object?> { [nameof(Id)] = Id });
     }
 
+    [RelayCommand]
+    private async Task GoToMyTagsAsync()
+    {
+        await _navigationService.GoToAsync<TagOverviewViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = Id });
+    }
+
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
