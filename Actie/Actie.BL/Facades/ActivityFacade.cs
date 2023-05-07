@@ -23,7 +23,7 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
     protected override List<string> IncludesNavigationPathDetails => new(){
         $"{nameof(ActivityEntity.Tags)}.{nameof(ActivityTagEntity.Tag)}"};
 
-    public async Task<IEnumerable<ActivityListModel>?> GetFilteredPreciseTime(Guid? userId = null, DateTime? startsIn = null,
+    public async Task<IEnumerable<ActivityListModel>?> GetFilteredPreciseTime(Guid userId, DateTime? startsIn = null,
         DateTime? endsIn = null)
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
@@ -32,8 +32,8 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
 
         query = query.Include(a => a.Tags).ThenInclude(t => t.Tag);
 
-        if (userId != null)
-            query = query.Where(a => a.UserId == userId);
+        
+        query = query.Where(a => a.UserId == userId);
         if (startsIn != null)
             query = query.Where(a => a.Start == startsIn);
         if (endsIn != null)
@@ -44,7 +44,7 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
         return ModelMapper.MapToListModel(entities);
     }
 
-    public async Task<IEnumerable<ActivityListModel>?> GetFilteredBeforeOrAfter(Guid? userId = null, DateTime? startsAfter = null,
+    public async Task<IEnumerable<ActivityListModel>?> GetFilteredBeforeOrAfter(Guid userId, DateTime? startsAfter = null,
         DateTime? startsBefore = null)
     {
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
@@ -53,8 +53,8 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
 
         query = query.Include(a => a.Tags).ThenInclude(t => t.Tag);
 
-        if (userId != null)
-            query = query.Where(a => a.UserId == userId);
+        
+        query = query.Where(a => a.UserId == userId);
         if (startsBefore != null)
             query = query.Where(a => a.Start < startsBefore);
         if (startsAfter != null)
