@@ -12,9 +12,11 @@ public class NavigationService : INavigationService
 
     public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
     {
-        new("//user", typeof(UserOverviewView), typeof(UserOverviewViewModel)),
-        new("//user/add", typeof(AddUserView), typeof(AddUserViewModel)),
+        new("//users", typeof(UserOverviewView), typeof(UserOverviewViewModel)),
+        new("//users/add", typeof(AddUserView), typeof(AddUserViewModel)),
+        new("//users/own-projects", typeof(UserOverviewView), typeof(ProjectOverviewView)),
 
+        // needs overhaul
         new("//project/add", typeof(AddProjectView), typeof(AddProjectViewModel)),
         new("//project/overview", typeof(ProjectOverviewView), typeof(ProjectOverviewViewModel)),
         new("//project/overview/user", typeof(UserProjectOverviewView), typeof(UserProjectOverviewViewModel)),
