@@ -14,23 +14,23 @@
             <Label Grid.Column="0"
                    Margin="30"
                    FontSize="102"
-                   Text="{Binding Project.Name}"/>
+                   Text="Project name"/>
+            <!-- Text="{Binding Project.Name}" -->
 
-            <Label Grid.Column="1"  />
-            <!-- This will act as a spacer -->
 
             <Button Grid.Column="2"
                     Text="Edit Project"
                     HeightRequest="75"
                     WidthRequest="150"
                     FontSize="22"
-                    Command="{Binding GoToAddProjectCommand}"
                     Margin="80,0"/>
+            
 
         </Grid>
 
         <Label Grid.Row="1"
-               Text="{Binding Project.Description}"/>
+               Text="Project description" />
+               <!-- Text="{Binding Project.Description}"/> -->
     </Grid>
 
 

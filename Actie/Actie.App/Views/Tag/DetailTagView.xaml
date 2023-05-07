@@ -16,23 +16,22 @@
             <Label Grid.Column="0"
                    Margin="30"
                    FontSize="102"
-                   Text="{Binding Tag.Name}"/>
+                   Text="Tag Name" />
+                   <!-- Text="{Binding Tag.Name}" -->
 
-            <Label Grid.Column="1"  />
-            <!-- This will act as a spacer -->
 
             <Button Grid.Column="2"
                     Text="Edit Tag"
                     HeightRequest="75"
                     WidthRequest="150"
                     FontSize="22"
-                    Command="{Binding GoToAddTagCommand}"
                     Margin="80,0"/>
 
         </Grid>
 
         <Label Grid.Row="1"
-               Text="{Binding Tag.Description}"/>
+                Text="Tag Description" />
+               <!-- Text="{Binding Tag.Description}" -->
     </Grid>
 
 </views:ContentPageBase>
