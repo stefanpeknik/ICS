@@ -36,7 +36,7 @@ public partial class LogInViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToAddUserAsync()
     {
-        await _navigationService.GoToAsync("/add");
+        await _navigationService.GoToAsync("/add_user");
     }
 
     [RelayCommand]

@@ -28,7 +28,7 @@ public partial class ProjectOverviewViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToAddProjectAsync()
     {
-        await _navigationService.GoToAsync("/add_to_all_projects");
+        await _navigationService.GoToAsync("/add_project");
     }
 
     protected override async Task LoadDataAsync()

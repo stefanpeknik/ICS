@@ -15,7 +15,7 @@ public class NavigationService : INavigationService
     public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
     {
         new("//users", typeof(LogInView), typeof(LogInViewModel)),
-        new("//users/add", typeof(AddUserView), typeof(AddUserViewModel)),
+        new("//users/add_user", typeof(AddUserView), typeof(AddUserViewModel)),
 
         new("//users/home", typeof(UserOverviewView), typeof(UserOverviewViewModel)),
         new("//users/home/all_projects", typeof(ProjectOverviewView), typeof(ProjectOverviewViewModel)),
@@ -24,21 +24,21 @@ public class NavigationService : INavigationService
         new("//users/home/tags", typeof(TagOverviewView), typeof(TagOverviewViewModel)),
         
 
-        new("//users/home/all_projects/add_to_all_projects", typeof(AddProjectView), typeof(AddProjectViewModel)),
-        new("//users/home/all_projects/detail", typeof(DetailProjectView), typeof(DetailProjectViewModel)), 
-        new("//users/home/all_projects/detail/edit", typeof(EditProjectView), typeof(EditProjectViewModel)), 
+        new("//users/home/all_projects/add_project", typeof(AddProjectView), typeof(AddProjectViewModel)),
+        new("//users/home/all_projects/detail_project", typeof(DetailProjectView), typeof(DetailProjectViewModel)), 
+        new("//users/home/all_projects/detail/edit_project", typeof(EditProjectView), typeof(EditProjectViewModel)), 
 
-        new("//users/home/my_projects/add", typeof(AddProjectView), typeof(AddProjectViewModel)),
-        new("//users/home/my_projects/detail", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO detail
-        new("//users/home/my_projects/detail/edit", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO edit
+        new("//users/home/my_projects/add_project", typeof(AddProjectView), typeof(AddProjectViewModel)),
+        new("//users/home/my_projects/detail_project", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO detail
+        new("//users/home/my_projects/detail/edit_project", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO edit
 
-        new("//users/home/activities/add", typeof(AddActivityView), typeof(AddActivityViewModel)), 
-        new("//users/home/activities/detail", typeof(DetailActivityView), typeof(DetailActivityViewModel)), 
-        new("//users/home/activities/detail/edit", typeof(EditActivityView), typeof(EditActivityViewModel)), 
+        new("//users/home/activities/add_activity", typeof(AddActivityView), typeof(AddActivityViewModel)), 
+        new("//users/home/activities/detail_activity", typeof(DetailActivityView), typeof(DetailActivityViewModel)), 
+        new("//users/home/activities/detail/edit_activity", typeof(EditActivityView), typeof(EditActivityViewModel)), 
 
-        new("//users/home/tags/add", typeof(TagAddView), typeof(TagAddViewModel)), 
-        new("//users/home/tags/detail", typeof(DetailTagView), typeof(DetailTagViewModel)), 
-        new("//users/home/tags/detail/edit", typeof(EditTagView), typeof(EditTagViewModel)), 
+        new("//users/home/tags/add_tag", typeof(TagAddView), typeof(TagAddViewModel)), 
+        new("//users/home/tags/detail_tag", typeof(DetailTagView), typeof(DetailTagViewModel)), 
+        new("//users/home/tags/detail/edit_tag", typeof(EditTagView), typeof(EditTagViewModel)), 
     };
 
     public async Task GoToAsync<TViewModel>()
