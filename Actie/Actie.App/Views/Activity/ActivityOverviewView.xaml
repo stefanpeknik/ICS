@@ -133,15 +133,14 @@
                     VerticalOptions="Center"
                     FontSize="24"/>
             <DatePicker Grid.Column="1"
-                        Format="d"
+                        Format="yyyy-MM-dd HH:mm"
             />
             <Label Grid.Column="2"
                    Text="To"
                    VerticalOptions="Center"
                    FontSize="24"/>
             <DatePicker Grid.Column="3"
-                        VerticalOptions="Center"
-                        Format="d"
+                        Format="yyyy-MM-dd HH:mm"
             />
         </Grid>
 

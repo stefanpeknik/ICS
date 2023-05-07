@@ -3,10 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
              x:Class="Actie.App.Views.Activity.AddActivityView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Add Activity"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+
+    <Grid RowDefinitions="100, Auto, *">
+        <Label Grid.Row="0"
+               Text="Add Activity"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="46"/>
+
+        <Line BackgroundColor="White"
+              VerticalOptions="End" />
+
+
+        <Grid Grid.Row="1"
+              RowDefinitions="100,100,100,100">
+
+            <VerticalStackLayout Grid.Row="0"
+                                 Margin="10">
+                <Label Text="Name"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="Enter  name" />
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout Grid.Row="1"
+                                   Margin="10">
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Start date"
+                           VerticalOptions="Center"/>
+                    <DatePicker Format="yyyy-MM-dd HH:mm"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="End date"
+                           VerticalOptions="Center"/>
+                    <DatePicker Format="yyyy-MM-dd HH:mm"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Grid.Row="2">
+                <VerticalStackLayout Margin="10">
+                    <Label Text="Type"
+                           VerticalOptions="Center" />
+                    <Entry Placeholder="Enter activity type"
+                           WidthRequest="50"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Margin="10">
+                    <Label Text="Rating (out of 5)"
+                           VerticalOptions="Center"/>
+                    <Entry Placeholder="Enter activity rating"
+                           Keyboard="Numeric"
+                           WidthRequest="100"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout Grid.Row="3"
+                                     Margin="10">
+                <Label Text="Description"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="Enter activity description" />
+            </VerticalStackLayout>
+
+        </Grid>
+        <Button Grid.Row="2"
+                Text="Save Activity"
+                HorizontalOptions="End"
+                HeightRequest="50"
+                WidthRequest="100"
+                Margin="0,0,50,50"/>
+
+    </Grid>
+
+    <!-- Jmeno Start date Konec date Typ Hodnoceni Popis -->
+
 </views:ContentPageBase>

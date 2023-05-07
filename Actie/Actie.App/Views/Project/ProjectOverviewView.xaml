@@ -50,6 +50,7 @@
                                             FontSize="20" LineBreakMode="WordWrap"
                                             Text="{Binding Name}"
                                             TextColor="White" VerticalOptions="End" />
+
                                     </VerticalStackLayout>
                                 </Grid>
                             </Frame>

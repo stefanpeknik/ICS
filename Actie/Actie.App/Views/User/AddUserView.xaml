@@ -22,8 +22,7 @@
                                  Margin="10">
                 <Label Text="Name"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="Enter your name"
-                       HeightRequest="50"/>
+                <Entry Placeholder="Enter your name" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
@@ -45,25 +44,25 @@
                     <Label Text="Age"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter your age"
-                           MinimumWidthRequest="150"/>
+                           WidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Gender"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter your gender"
-                           MinimumWidthRequest="150"/>
+                           WidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Height"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter your height"
-                           MinimumWidthRequest="150"/>
+                           WidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Weight"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter your weight"
-                           MinimumWidthRequest="150"/>
+                           WidthRequest="150"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 
