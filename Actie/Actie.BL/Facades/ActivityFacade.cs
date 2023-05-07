@@ -20,23 +20,8 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
     {
     }
 
-    //protected override string IncludesNavigationPathDetail =>
-    //    $"{nameof(ActivityEntity.Tags)}.{nameof(ActivityTagEntity.Tag)}";
-
-    public override async Task<ActivityDetailModel?> GetAsync(Guid id)
-    {
-        await using IUnitOfWork uow = UnitOfWorkFactory.Create();
-
-        IQueryable<ActivityEntity> query = uow.GetRepository<ActivityEntity, ActivityEntityMapper>().Get();
-
-        query = query.Include(a => a.Tags).ThenInclude(t => t.Tag);
-
-        ActivityEntity? entity = await query.SingleOrDefaultAsync(e => e.Id == id);
-
-        return entity is null
-            ? null
-            : ModelMapper.MapToDetailModel(entity);
-    }
+    protected override List<string> IncludesNavigationPathDetails => new(){
+        $"{nameof(ActivityEntity.Tags)}.{nameof(ActivityTagEntity.Tag)}"};
 
     public async Task<IEnumerable<ActivityListModel>?> GetFilteredPreciseTime(Guid? userId = null, DateTime? startsIn = null,
         DateTime? endsIn = null)
