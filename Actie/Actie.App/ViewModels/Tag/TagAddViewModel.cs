@@ -6,6 +6,9 @@ using Actie.BL.Facades;
 using Actie.BL.Models;
 
 namespace Actie.App.ViewModels;
-internal class TagAddViewModel
+public partial class TagAddViewModel : ViewModelBase
 {
+    public TagAddViewModel(IMessengerService messengerService) : base(messengerService)
+    {
+    }
 }

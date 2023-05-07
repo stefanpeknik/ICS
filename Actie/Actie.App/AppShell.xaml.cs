@@ -1,8 +1,6 @@
 ﻿
 using Actie.App.Services;
 
-using Actie.App.Services;
-
 namespace Actie.App;
 
 public partial class AppShell

@@ -1,8 +1,11 @@
+using Actie.App.ViewModels;
+
 namespace Actie.App.Views.Tag;
 
 public partial class TagAddView
 {
-	public TagAddView()
+	public TagAddView(TagAddViewModel viewModel)
+        : base(viewModel)
 	{
 		InitializeComponent();
 	}

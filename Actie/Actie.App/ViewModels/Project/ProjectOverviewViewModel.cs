@@ -8,6 +8,9 @@ using Actie.BL.Facades;
 using Actie.BL.Models;
 
 namespace Actie.App.ViewModels;
-internal class ProjectOverviewViewModel
+public partial class ProjectOverviewViewModel : ViewModelBase
 {
+    public ProjectOverviewViewModel(IMessengerService messengerService) : base(messengerService)
+    {
+    }
 }
