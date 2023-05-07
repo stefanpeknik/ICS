@@ -2,12 +2,15 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
-             x:Class="Actie.App.Views.Project.AddProjectView">
-
+             xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             x:Class="Actie.App.Views.Project.DetailProjectView"
+             x:DataType="vm:DetailProjectViewModel"
+             x:Name="DetailProjectViewRoot">
 
     <VerticalStackLayout>
         <Label 
-            Text="Add Project"
+            Text="Detail Project"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

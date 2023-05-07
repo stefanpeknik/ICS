@@ -74,6 +74,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Activity\AddActivityView.xaml.cs">
+	    <DependentUpon>AddActivityView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Activity\DetailActivityView.xaml.cs">
+	    <DependentUpon>DetailActivityView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Activity\EditActivityView.xaml.cs">
+	    <DependentUpon>EditActivityView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Project\DetailProjectView.xaml.cs">
+	    <DependentUpon>DetailProjectView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Project\EditProjectView.xaml.cs">
+	    <DependentUpon>EditProjectView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Tag\DetailTagView.xaml.cs">
+	    <DependentUpon>DetailTagView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Tag\EditTagView.xaml.cs">
+	    <DependentUpon>EditTagView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Tag\TagAddView.xaml.cs">
 	    <DependentUpon>TagAddView.xaml</DependentUpon>
 	  </Compile>
@@ -86,10 +107,31 @@
 	  <MauiXaml Update="Views\Activity\ActivityOverviewView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Activity\AddActivityView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Activity\DetailActivityView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Activity\EditActivityView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\LogInView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Project\AddProjectView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Project\DetailProjectView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Project\EditProjectView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tag\DetailTagView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Tag\EditTagView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Tag\TagAddView.xaml">

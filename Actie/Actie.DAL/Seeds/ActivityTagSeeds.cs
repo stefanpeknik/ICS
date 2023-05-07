@@ -26,9 +26,29 @@ public static class ActivityTagSeeds
         Tag = TagSeeds.TagEntity2,
     };
 
+    public static readonly ActivityTagEntity ActivityTagEntity3 = new()
+    {
+        Id = Guid.Parse(input: "b106b8bc-48cd-47b3-89cf-b6bf0fdc5472"),
+        ActivityId = ActivitySeeds.FastWalk.Id,
+        TagId = TagSeeds.Cut.Id,
+        Activity = ActivitySeeds.FastWalk,
+        Tag = TagSeeds.Cut,
+    };
+
+    public static readonly ActivityTagEntity ActivityTagEntity4 = new()
+    {
+        Id = Guid.Parse(input: "47363885-1784-4422-9ffe-8883dffcc55d"),
+        ActivityId = ActivitySeeds.RomWalk.Id,
+        TagId = TagSeeds.Rom.Id,
+        Activity = ActivitySeeds.RomWalk,
+        Tag = TagSeeds.Rom,
+    };
+
     public static void Seed(this ModelBuilder modelBuilder) =>
     modelBuilder.Entity<ActivityTagEntity>().HasData(
             ActivityTagEntity1 with { Activity = null, Tag = null },
-            ActivityTagEntity2 with { Activity = null, Tag = null }
+            ActivityTagEntity2 with { Activity = null, Tag = null },
+            ActivityTagEntity3 with { Activity = null, Tag = null },
+            ActivityTagEntity4 with { Activity = null, Tag = null }
         );
 }

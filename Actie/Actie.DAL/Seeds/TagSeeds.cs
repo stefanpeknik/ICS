@@ -22,17 +22,35 @@ public static class TagSeeds
         Description = "Training seeded training 2 description"
     };
 
+    public static TagEntity Cut = new()
+    {
+        Id = Guid.Parse(input: "e507bdb7-b16e-45fe-8148-28d041a4465b"),
+        Name = "Cut",
+        Description = "Cut phase."
+    };
+
+    public static TagEntity Rom = new()
+    {
+        Id = Guid.Parse(input: "decced87-f00b-4828-95f6-4884b9c85c5b"),
+        Name = "Romantic stuff",
+        Description = "--"
+    };
+
     public static void LoadLists()
     {
        TagEntity1.Activities.Add(ActivityTagSeeds.ActivityTagEntity1);
        TagEntity2.Activities.Add(ActivityTagSeeds.ActivityTagEntity2);
+       Cut.Activities.Add(ActivityTagSeeds.ActivityTagEntity3);
+       Rom.Activities.Add(ActivityTagSeeds.ActivityTagEntity4);
     }
     
     public static void Seed(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TagEntity>().HasData(
             TagEntity1 with { Activities = Array.Empty<ActivityTagEntity>() },
-            TagEntity2 with { Activities = Array.Empty<ActivityTagEntity>() }
+            TagEntity2 with { Activities = Array.Empty<ActivityTagEntity>() },
+            Cut with { Activities = Array.Empty<ActivityTagEntity>() },
+            Rom with { Activities = Array.Empty<ActivityTagEntity>() }
             );
     }
 }
