@@ -63,7 +63,7 @@
                         <DataTemplate x:DataType="m:ActivityListModel">
                             <Frame Padding="0"
                                        CornerRadius="10"
-                                       WidthRequest="320" HeightRequest="110"
+                                       WidthRequest="320" HeightRequest="160"
                                        IsClippedToBounds="True">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.GoToDetailCommand}"
@@ -77,17 +77,17 @@
                                     <Label Grid.Row="0"
                                            Margin="22,12"
                                            FontSize="20" LineBreakMode="WordWrap"
-                                           Text="Activity name: "
+                                           Text="{Binding Name}"
                                            TextColor="White" VerticalOptions="End" />
                                     <Label Grid.Row="0"
                                            Margin="22,12"
                                            FontSize="20" LineBreakMode="WordWrap"
-                                           Text="Date: "
+                                           Text="{Binding Start}"
                                            TextColor="White" VerticalOptions="End" />
                                     <Label Grid.Row="0"
                                            Margin="22,12"
                                            FontSize="20" LineBreakMode="WordWrap"
-                                           Text="Time: "
+                                           Text="{Binding End}"
                                            TextColor="White" VerticalOptions="End" />
                             </VerticalStackLayout>
                             </Grid>
