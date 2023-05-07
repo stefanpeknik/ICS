@@ -17,7 +17,9 @@
     <Button Text="Add Tag"
             VerticalOptions="Center"
             HorizontalOptions="End"
-            Margin="0,0,25,0"/>
+            Margin="0,0,25,0"
+            Command="{Binding GoToAddTagCommand}"
+            />
     <Line BackgroundColor="White"
           HeightRequest="100"
           VerticalOptions="End"/>
@@ -61,11 +63,11 @@
                                            CornerRadius="5" HorizontalOptions="Start"
                                            VerticalOptions="Start"
                                            HeightRequest="20">
-                                <HorizontalStackLayout Padding="0"
+                                    <HorizontalStackLayout Padding="0"
                                                                HorizontalOptions="Start" VerticalOptions="Center"
                                                                Spacing="8">
-                                </HorizontalStackLayout>
-                            </Frame>
+                                    </HorizontalStackLayout>
+                                </Frame>
 
                             <Label Grid.Row="0"
                                        Margin="22,12"

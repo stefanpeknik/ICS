@@ -13,6 +13,7 @@ namespace Actie.App.ViewModels;
 public partial class TagOverviewViewModel : ViewModelBase
 {
     private readonly ITagFacade _tagFacade;
+    private readonly INavigationService _navigationService;
 
     // User Id
     public Guid Id { get; set; }
@@ -20,9 +21,17 @@ public partial class TagOverviewViewModel : ViewModelBase
     [ObservableProperty]
     private IEnumerable<TagListModel> tags = Array.Empty<TagListModel>();
 
-    public TagOverviewViewModel(ITagFacade tagFacade, IMessengerService messengerService) : base(messengerService)
+    public TagOverviewViewModel(ITagFacade tagFacade, INavigationService navigationService, IMessengerService messengerService)
+        : base(messengerService)
     {
         _tagFacade = tagFacade;
+        _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task GoToAddTagAsync()
+    {
+        await _navigationService.GoToAsync("/add_tag");
     }
 
     protected override async Task LoadDataAsync()
