@@ -44,7 +44,6 @@ public partial class LogInViewModel : ViewModelBase
     {
         await _navigationService.GoToAsync<UserOverviewViewModel>(
             new Dictionary<string, object?> { [nameof(UserOverviewViewModel.Id)] = id });
-        //await _navigationService.GoToAsync("//users/home");
     }
 
     public async void Receive(UserEditMessage message)
