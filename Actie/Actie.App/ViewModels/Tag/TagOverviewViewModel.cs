@@ -15,7 +15,7 @@ public partial class TagOverviewViewModel : ViewModelBase
     private readonly ITagFacade _tagFacade;
 
     // User Id
-    public Guid? Id { get; set; } = null;
+    public Guid Id { get; set; }
 
     [ObservableProperty]
     private IEnumerable<TagListModel> tags = Array.Empty<TagListModel>();
@@ -29,6 +29,6 @@ public partial class TagOverviewViewModel : ViewModelBase
     {
         await base.LoadDataAsync();
 
-        Tags = await _tagFacade.GetByUserIdAsync((Guid)Id); // gets all tags of a specific user
+        Tags = await _tagFacade.GetByUserIdAsync(Id);
     }
 }

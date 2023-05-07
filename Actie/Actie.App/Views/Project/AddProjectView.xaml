@@ -5,10 +5,44 @@
              x:Class="Actie.App.Views.Project.AddProjectView">
 
 
-    <VerticalStackLayout>
-        <Label 
-            Text="Add Project"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="100, Auto, *">
+        <Label Grid.Row="0"
+               Text="Add Project"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="46"/>
+
+        <Line BackgroundColor="White"
+              VerticalOptions="End" />
+
+
+        <Grid Grid.Row="1"
+              RowDefinitions="100,*">
+
+            <VerticalStackLayout Grid.Row="0"
+                                 Margin="10">
+                <Label Text="Name"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="Enter project name" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1"
+                                 Margin="10">
+                <Label Text="Description"
+                           VerticalOptions="Center"/>
+                <Entry Placeholder="Enter project description" />
+            </VerticalStackLayout>
+
+        </Grid>
+        <Button Grid.Row="2"
+                Text="Save Project"
+                HorizontalOptions="End"
+                HeightRequest="50"
+                WidthRequest="100"
+                Margin="0,0,50,50"/>
+
+    </Grid>
+
+    <!-- Jmeno Popis -->
+
 </views:ContentPageBase>

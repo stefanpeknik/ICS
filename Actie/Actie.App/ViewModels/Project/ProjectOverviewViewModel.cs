@@ -10,14 +10,10 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Actie.App.ViewModels;
 
-[QueryProperty(nameof(Id), nameof(Id))]
 public partial class ProjectOverviewViewModel : ViewModelBase
 {
     private readonly IProjectFacade _projectFacade;
     private readonly INavigationService _navigationService;
-
-    // User Id
-    public Guid? Id { get; set; } = null;
 
     [ObservableProperty]
     private IEnumerable<ProjectListModel> projects = Array.Empty<ProjectListModel>();
@@ -39,8 +35,6 @@ public partial class ProjectOverviewViewModel : ViewModelBase
     {
         await base.LoadDataAsync();
 
-        Projects = Id is null
-            ? await _projectFacade.GetAsync() // gets all projects
-            : await _projectFacade.GetByUserIdAsync((Guid)Id); // gets all projects of a specific user
+        Projects = await _projectFacade.GetAsync();
     }
 }

@@ -2,11 +2,37 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
-             x:Class="Actie.App.Views.Tag.DetailTagView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Detail Tag"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             x:Class="Actie.App.Views.Tag.DetailTagView"
+             x:DataType="vm:DetailTagViewModel"
+             x:Name="DetailTagViewRoot">
+
+
+
+    <Grid RowDefinitions="200, *">
+        <Grid Grid.Row="0"
+              ColumnDefinitions="auto, *, auto">
+            <Label Grid.Column="0"
+                   Margin="30"
+                   FontSize="102"
+                   Text="{Binding Tag.Name}"/>
+
+            <Label Grid.Column="1"  />
+            <!-- This will act as a spacer -->
+
+            <Button Grid.Column="2"
+                    Text="Edit Tag"
+                    HeightRequest="75"
+                    WidthRequest="150"
+                    FontSize="22"
+                    Command="{Binding GoToAddTagCommand}"
+                    Margin="80,0"/>
+
+        </Grid>
+
+        <Label Grid.Row="1"
+               Text="{Binding Tag.Description}"/>
+    </Grid>
+
 </views:ContentPageBase>

@@ -40,7 +40,7 @@
                         WidthRequest="200"
                         FontSize="22"
                         HorizontalOptions="Center"
-                        Command="{Binding Source={x:Reference UserOverviewViewRoot}, Path=BindingContext.GoToAllProjectsCommand}"
+                        Command="{Binding GoToAllProjectsCommand}"
             />
 
             <Button Text="My Projects"
@@ -48,9 +48,8 @@
                         WidthRequest="200"
                         FontSize="22"
                         HorizontalOptions="Center"
-                        Command="{Binding Source={x:Reference UserOverviewViewRoot}, Path=BindingContext.GoToMyProjectsCommand}"
-                        CommandParameter="{Binding Id}"
-                />
+                        Command="{Binding GoToMyProjectsCommand}"
+            />
 
             <Button Text="Activities"
                         HeightRequest="50"
@@ -64,7 +63,8 @@
                         WidthRequest="200"
                         FontSize="22"
                         HorizontalOptions="Center"
-                />
+                        Command="{Binding GoToMyTagsCommand}"
+            />
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Grid.Row="2">

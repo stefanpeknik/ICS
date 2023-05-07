@@ -2,11 +2,51 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
-             x:Class="Actie.App.Views.Tag.EditTagView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Edit Tag"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             x:Class="Actie.App.Views.Tag.EditTagView"
+             x:DataType="vm:EditTagViewModel"
+             x:Name="EditTagViewRoot">
+
+
+
+    <Grid RowDefinitions="100, Auto, *">
+        <Label Grid.Row="0"
+               Text="Edit Tag"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="46"/>
+
+        <Line BackgroundColor="White"
+              VerticalOptions="End" />
+
+
+        <Grid Grid.Row="1"
+              RowDefinitions="100,*">
+
+            <VerticalStackLayout Grid.Row="0"
+                                 Margin="10">
+                <Label Text="Name"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="{Binding Tag.Name}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1"
+                                 Margin="10">
+                <Label Text="Description"
+                       VerticalOptions="Center"/>
+                <Entry Placeholder="{Binding Tag.Description}" />
+            </VerticalStackLayout>
+
+        </Grid>
+        <Button Grid.Row="2"
+                Text="Save Tag"
+                HorizontalOptions="End"
+                HeightRequest="50"
+                WidthRequest="100"
+                Margin="0,0,50,50"/>
+
+    </Grid>
+
+
 </views:ContentPageBase>
