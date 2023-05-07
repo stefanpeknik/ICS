@@ -7,8 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Actie.App.Services;
 
-namespace Actie.App.ViewModels.Tag;
-internal class DetailTagViewModel
+namespace Actie.App.ViewModels;
+public partial class DetailTagViewModel : ViewModelBase
 {
+    public DetailTagViewModel(IMessengerService messengerService) : base(messengerService)
+    {
+    }
 }

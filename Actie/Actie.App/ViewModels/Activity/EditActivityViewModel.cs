@@ -7,8 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Actie.App.Services;
 
-namespace Actie.App.ViewModels.Activity;
-internal class EditActivityViewModel
+namespace Actie.App.ViewModels;
+public partial class EditActivityViewModel : ViewModelBase
 {
+    public EditActivityViewModel(IMessengerService messengerService) : base(messengerService)
+    {
+    }
 }
