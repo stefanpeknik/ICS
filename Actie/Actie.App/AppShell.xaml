@@ -14,7 +14,7 @@
 
     <ShellContent
         ContentTemplate="{DataTemplate views:LogInView}"
-        Route="IntroView" />
+        Route="users" />
 
 </Shell>
 
