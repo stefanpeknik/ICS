@@ -25,20 +25,20 @@ public class NavigationService : INavigationService
         
 
         new("//users/home/all_projects/add", typeof(AddProjectView), typeof(AddProjectViewModel)),
-        new("//users/home/all_projects/detail", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO detail
-        new("//users/home/all_projects/detail/edit", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO edit
+        new("//users/home/all_projects/detail", typeof(DetailProjectView), typeof(DetailProjectViewModel)), 
+        new("//users/home/all_projects/detail/edit", typeof(EditProjectView), typeof(EditProjectViewModel)), 
 
         new("//users/home/my_projects/add", typeof(AddProjectView), typeof(AddProjectViewModel)),
         new("//users/home/my_projects/detail", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO detail
         new("//users/home/my_projects/detail/edit", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO edit
 
-        new("//users/home/activities/add", typeof(AddUserView), typeof(AddUserViewModel)), //TODO add
-        new("//users/home/activities/detail", typeof(AddUserView), typeof(AddUserViewModel)), //TODO detail
-        new("//users/home/activities/detail/edit", typeof(AddUserView), typeof(AddUserViewModel)), //TODO edit
+        new("//users/home/activities/add", typeof(AddActivityView), typeof(AddActivityViewModel)), 
+        new("//users/home/activities/detail", typeof(DetailActivityView), typeof(DetailActivityViewModel)), 
+        new("//users/home/activities/detail/edit", typeof(EditActivityView), typeof(EditActivityViewModel)), 
 
-        new("//users/home/tags/add", typeof(AddUserView), typeof(AddUserViewModel)), //TODO add
-        new("//users/home/tags/detail", typeof(AddUserView), typeof(AddUserViewModel)), //TODO detail
-        new("//users/home/tags/detail/edit", typeof(AddUserView), typeof(AddUserViewModel)), //TODO edit
+        new("//users/home/tags/add", typeof(TagAddView), typeof(TagAddViewModel)), 
+        new("//users/home/tags/detail", typeof(DetailTagView), typeof(DetailTagViewModel)), 
+        new("//users/home/tags/detail/edit", typeof(EditTagView), typeof(EditTagViewModel)), 
     };
 
     public async Task GoToAsync<TViewModel>()
