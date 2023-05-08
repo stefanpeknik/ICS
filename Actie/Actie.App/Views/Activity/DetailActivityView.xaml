@@ -10,7 +10,7 @@
 
 
 
-    <Grid RowDefinitions="Auto, Auto, *">
+    <Grid RowDefinitions="Auto, Auto, Auto, *">
         <VerticalStackLayout Grid.Row="0"
                              Margin="30">
             <HorizontalStackLayout>
@@ -34,7 +34,8 @@
         </VerticalStackLayout>
 
         <Grid Grid.Row="1"
-              RowDefinitions="Auto, Auto, Auto">
+              RowDefinitions="Auto, Auto, Auto"
+              >
 
             <HorizontalStackLayout Grid.Row="0">
                 <Label Text="Activity start:"
@@ -61,13 +62,49 @@
             
             <Label Grid.Row="2"
                    FontSize="24"
-                   Margin="35"
+                   Margin="35,0,0,0"
                    LineBreakMode="WordWrap"
                    Text="{Binding Activity.Description}"/>
 
         </Grid>
 
-        <Button Grid.Row="2"
+        <CollectionView Grid.Row="2"
+                        Margin="50,0"
+                        MaximumHeightRequest="250"
+                        ItemsSource="{Binding Tags}"
+                        HorizontalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="3" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:ActivityListModel">
+                    <Frame Padding="0"
+                               Margin="0,25,0,0"
+                               BorderColor="White"
+                               CornerRadius="10"
+                               WidthRequest="320" HeightRequest="75">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DetailActivityViewModel}}, Path=GoToTagDetailCommand}"
+                                                      CommandParameter="{Binding Id}" />
+                        </Frame.GestureRecognizers>
+
+                        <ScrollView>
+                            <VerticalStackLayout>
+                                <Label
+                                           Margin="22,12"
+                                           FontSize="20" LineBreakMode="WordWrap"
+                                           Text="{Binding Name}"
+                                           TextColor="White" VerticalOptions="End" />
+                            </VerticalStackLayout>
+                        </ScrollView>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="3"
                 VerticalOptions="End"
                 HorizontalOptions="End"
                 Text="Edit Activity"
@@ -76,7 +113,7 @@
                 FontSize="22"
                 Margin="0,0,50,50"
                 Command="{Binding GoToEditCommand}"/>
-        <Button Grid.Row="2"
+        <Button Grid.Row="3"
                 VerticalOptions="End"
                 HorizontalOptions="Start"
                 BackgroundColor="Red"
