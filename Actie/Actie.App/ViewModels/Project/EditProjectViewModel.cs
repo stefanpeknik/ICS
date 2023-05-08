@@ -39,8 +39,6 @@ public partial class EditProjectViewModel : ViewModelBase
         _navigationService.SendBackButtonPressed();
     }
 
-
-
     private async Task ReloadDataAsync()
     {
         Project = await _projectFacade.GetAsync(Project.Id)
