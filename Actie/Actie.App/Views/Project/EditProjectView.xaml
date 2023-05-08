@@ -24,23 +24,23 @@
                                  Margin="10">
                 <Label Text="Name"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="{Binding Project.Name}" />
+                <Entry Text="{Binding Project.Name}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
                                  Margin="10">
                 <Label Text="Description"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="{Binding Project.Description}" />
+                <Entry Text="{Binding Project.Description}" />
             </VerticalStackLayout>
 
         </Grid>
         <Button Grid.Row="2"
-                Text="Save Project"
+                Text="Save Changes"
                 HorizontalOptions="End"
                 HeightRequest="50"
-                WidthRequest="100"
-                Margin="0,0,50,50"/>
+                WidthRequest="150"
+                Margin="0,0,25,0"/>
 
     </Grid>
 

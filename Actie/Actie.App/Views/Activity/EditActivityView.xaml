@@ -4,10 +4,43 @@
              xmlns:views="clr-namespace:Actie.App.View"
              x:Class="Actie.App.Views.Activity.EditActivityView">
 
-    <VerticalStackLayout>
-        <Label 
-            Text="Edit Activity"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="100, Auto, *">
+        <Label Grid.Row="0"
+               Text="Edit Acitivty"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="46"/>
+
+        <Line BackgroundColor="White"
+              VerticalOptions="End" />
+
+
+        <Grid Grid.Row="1"
+              RowDefinitions="100,*">
+
+            <VerticalStackLayout Grid.Row="0"
+                                 Margin="10">
+                <Label Text="Name"
+                       VerticalOptions="Center"/>
+                <Entry Text="{Binding Activity.Name}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1"
+                                 Margin="10">
+                <Label Text="Description"
+                       VerticalOptions="Center"/>
+                <Entry Text="{Binding Activity.Description}" />
+            </VerticalStackLayout>
+
+        </Grid>
+        <Button Grid.Row="2"
+                Text="Save Changes"
+                HorizontalOptions="End"
+                HeightRequest="50"
+                WidthRequest="150"
+                Margin="0,0,25,0"/>
+
+    </Grid>
+
+
 </views:ContentPageBase>
