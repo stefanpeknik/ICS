@@ -30,7 +30,8 @@ public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditM
     [RelayCommand]
     private async Task GoToAllProjectsAsync()
     {
-        await _navigationService.GoToAsync("/all_projects");
+        await _navigationService.GoToAsync<ProjectOverviewViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = Id });
     }
 
     [RelayCommand]

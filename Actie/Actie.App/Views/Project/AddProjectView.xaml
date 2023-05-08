@@ -2,7 +2,9 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
-             x:Class="Actie.App.Views.Project.AddProjectView">
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             x:Class="Actie.App.Views.Project.AddProjectView"
+             x:DataType="vm:AddProjectViewModel">
 
 
     <Grid RowDefinitions="100, Auto, *">
@@ -23,14 +25,16 @@
                                  Margin="10">
                 <Label Text="Name"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="Enter project name" />
+                <Entry Placeholder="Enter project name"
+                       Text="{Binding Project.Name}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
                                  Margin="10">
                 <Label Text="Description"
                            VerticalOptions="Center"/>
-                <Entry Placeholder="Enter project description" />
+                <Entry Placeholder="Enter project description"
+                       Text="{Binding Project.Description}" />
             </VerticalStackLayout>
 
         </Grid>
@@ -39,7 +43,8 @@
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="100"
-                Margin="0,0,50,50"/>
+                Margin="0,0,50,50"
+                Command="{Binding SaveCommand}"/>
 
     </Grid>
 

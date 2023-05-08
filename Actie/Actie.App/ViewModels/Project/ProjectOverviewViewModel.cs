@@ -10,10 +10,13 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Actie.App.ViewModels;
 
-public partial class ProjectOverviewViewModel : ViewModelBase
+[QueryProperty(nameof(Id), nameof(Id))]
+public partial class ProjectOverviewViewModel : ViewModelBase, IRecipient<ProjectEditMessage>
 {
     private readonly IProjectFacade _projectFacade;
     private readonly INavigationService _navigationService;
+
+    public Guid Id { get; set; }
 
     [ObservableProperty]
     private IEnumerable<ProjectListModel> projects = Array.Empty<ProjectListModel>();
@@ -28,7 +31,8 @@ public partial class ProjectOverviewViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToAddProjectAsync()
     {
-        await _navigationService.GoToAsync("/add_project");
+        await _navigationService.GoToAsync<AddProjectViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = Id });
     }
 
     protected override async Task LoadDataAsync()
@@ -36,5 +40,10 @@ public partial class ProjectOverviewViewModel : ViewModelBase
         await base.LoadDataAsync();
 
         Projects = await _projectFacade.GetAsync();
+    }
+
+    public async void Receive(ProjectEditMessage message)
+    {
+        await LoadDataAsync();
     }
 }
