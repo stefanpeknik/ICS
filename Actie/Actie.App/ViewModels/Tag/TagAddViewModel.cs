@@ -45,7 +45,7 @@ public partial class TagAddViewModel : ViewModelBase
     [RelayCommand]
     private async Task SaveAsync()
     {
-        await _tagFacade.SaveAsync(Tag, Id);
+        await _tagFacade.SaveAsync(Tag);
 
         MessengerService.Send(new TagEditMessage { TagId = Tag.Id });
 

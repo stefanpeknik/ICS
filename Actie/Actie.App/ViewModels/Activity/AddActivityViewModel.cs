@@ -31,7 +31,7 @@ public partial class AddActivityViewModel : ViewModelBase
     public IList<ProjectListModel> myProjects;
 
     [ObservableProperty]
-    public ProjectListModel? selectedProject;
+    public ProjectListModel selectedProject;
 
     [ObservableProperty]
     public ActivityDetailModel activityModel = ActivityDetailModel.Empty with {Start = DateTime.Now - TimeSpan.FromHours(1), End = DateTime.Now};
