@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Actie.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class ActivityOverviewViewModel : ViewModelBase, IRecipient<ActivityEditMessage>
+public partial class ActivityOverviewViewModel : ViewModelBase, IRecipient<ActivityEditMessage>, IRecipient<ActivityDeleteMessage>
 {
     public class DateRangePicker
     {
@@ -162,6 +162,11 @@ public partial class ActivityOverviewViewModel : ViewModelBase, IRecipient<Activ
     }
 
     public async void Receive(ActivityEditMessage message)
+    {
+        await LoadDataAsync();
+    }
+
+    public async void Receive(ActivityDeleteMessage message)
     {
         await LoadDataAsync();
     }

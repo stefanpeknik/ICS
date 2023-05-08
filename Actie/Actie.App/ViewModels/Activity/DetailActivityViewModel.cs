@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Messages;
@@ -29,6 +30,19 @@ public partial class DetailActivityViewModel: ViewModelBase
     {
         _activityFacade = activityFacade;
         _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task DeleteAsync()
+    {
+        if (Activity is not null)
+        {
+            await _activityFacade.DeleteAsync(Id);
+
+            MessengerService.Send(new ActivityDeleteMessage());
+
+            _navigationService.SendBackButtonPressed();
+        }
     }
 
     protected override async Task LoadDataAsync()
