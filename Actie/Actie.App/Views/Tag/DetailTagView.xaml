@@ -25,7 +25,9 @@
                     HeightRequest="75"
                     WidthRequest="150"
                     FontSize="22"
-                    Margin="80,0"/>
+                    Margin="80,0"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:DetailTagViewModel}}, Path=GoToEditTagCommand}"
+                    CommandParameter="{Binding Id}" />
 
         </Grid>
 

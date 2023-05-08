@@ -23,11 +23,11 @@
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="150"
+                Command="{Binding DeleteCommand}"
                 Margin="0,0,25,0"/>
 
         <Line BackgroundColor="White"
               VerticalOptions="End" />
-
 
         <Grid Grid.Row="1"
               RowDefinitions="100,*">
@@ -52,8 +52,8 @@
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="150"
-                Margin="0,0,25,0"/>
-
+                Margin="0,0,25,0"
+        Command="{Binding SaveCommand}"/>
     </Grid>
 
 

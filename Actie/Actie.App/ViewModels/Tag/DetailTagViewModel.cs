@@ -11,6 +11,7 @@ using Actie.App.Services;
 using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Actie.App.ViewModels;
 
@@ -18,16 +19,25 @@ namespace Actie.App.ViewModels;
 public partial class DetailTagViewModel : ViewModelBase
 {
     private readonly ITagFacade _tagFacade;
+    private readonly INavigationService _navigationService;
 
     [ObservableProperty]
-    private TagDetailModel tag;
+    private TagDetailModel tag = TagDetailModel.Empty;
 
     public Guid Id { get; set; }
 
 
-    public DetailTagViewModel(ITagFacade tagFacade, IMessengerService messengerService) : base(messengerService)
+    public DetailTagViewModel(ITagFacade tagFacade, IMessengerService messengerService, INavigationService navigationService) : base(messengerService)
     {
         _tagFacade = tagFacade;
+        _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task GoToEditTagAsync()
+    {
+        await _navigationService.GoToAsync<EditTagViewModel>(
+            new Dictionary<string, object?> { [nameof(EditTagViewModel.Id)] = Tag.Id });
     }
 
     protected override async Task LoadDataAsync()
