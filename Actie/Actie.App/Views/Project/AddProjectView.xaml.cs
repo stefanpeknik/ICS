@@ -4,7 +4,7 @@ namespace Actie.App.Views.Project;
 
 public partial class AddProjectView
 {
-	public AddProjectView(AddUserViewModel viewModel) : base(viewModel)
+	public AddProjectView(AddProjectViewModel viewModel) : base(viewModel)
 	{
 		InitializeComponent();
 	}
