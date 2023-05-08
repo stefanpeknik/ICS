@@ -95,9 +95,9 @@
                                        WidthRequest="320" HeightRequest="160"
                                        IsClippedToBounds="True">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.GoToDetailCommand}"
-                                                              CommandParameter="{Binding Id}" />
-                                    <!-- what this ^^ -->
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ActivityOverviewViewModel}}, Path=GoToActivityDetailCommand}"
+                                                                            CommandParameter="{Binding Id}" />
+                                <!-- what this ^^ -->
                                 </Frame.GestureRecognizers>
 
                                 <Grid>
