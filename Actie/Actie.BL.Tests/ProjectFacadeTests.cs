@@ -15,7 +15,7 @@ public sealed class ProjectFacadeTests : FacadeTestsBase
     private readonly IProjectFacade _projectFacadeSUT;
     public ProjectFacadeTests(ITestOutputHelper output) : base(output)
     {
-        _projectFacadeSUT = new ProjectFacade(UnitOfWorkFactory, ProjectModelMapper);
+        _projectFacadeSUT = new ProjectFacade(UnitOfWorkFactory, UserProjectModelMapper, ProjectModelMapper);
     }
 
     [Fact]

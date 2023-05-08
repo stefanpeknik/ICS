@@ -132,7 +132,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var badId = Guid.Empty;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(badId);
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfterDateTime(badId);
 
         // Assert
         if (filtered != null)
@@ -148,7 +148,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var user = UserSeeds.UserEntity;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(user.Id);
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfterDateTime(user.Id);
 
         // Assert
         DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities));
@@ -162,7 +162,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var user = UserSeeds.UserEntity;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(user.Id, after);
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfterDateTime(user.Id, after);
 
         // Assert
         DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start > after)));
@@ -176,7 +176,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var user = UserSeeds.UserEntity;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(user.Id, startsBefore: before);
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfterDateTime(user.Id, startsBefore: before);
 
         // Assert
         DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start < before)));
@@ -191,7 +191,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var user = UserSeeds.UserEntity;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfter(user.Id, startsAfter: after, startsBefore: before);
+        var filtered = await _activityFacadeSUT.GetFilteredBeforeOrAfterDateTime(user.Id, startsAfter: after, startsBefore: before);
 
         // Assert
         DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start < before && a.Start > after)));
@@ -204,7 +204,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var user = UserSeeds.UserEntity;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(user.Id);
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseDateTime(user.Id);
 
         // Assert
         DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities));
@@ -217,7 +217,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var badId = Guid.Empty;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(badId);
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseDateTime(badId);
 
         // Assert
         if (filtered != null)
@@ -234,7 +234,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var user = UserSeeds.UserEntity;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(user.Id, startsIn: startsIn);
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseDateTime(user.Id, startsIn: startsIn);
 
         // Assert
         DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start == startsIn)));
@@ -248,7 +248,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var user = UserSeeds.UserEntity;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(user.Id, endsIn: endsIn);
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseDateTime(user.Id, endsIn: endsIn);
 
         // Assert
         DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.End == endsIn)));
@@ -263,7 +263,7 @@ public sealed class ActivityFacadeTests : FacadeTestsBase
         var user = UserSeeds.UserEntity;
 
         // Act
-        var filtered = await _activityFacadeSUT.GetFilteredPreciseTime(user.Id, startsIn: startsIn, endsIn: endsIn);
+        var filtered = await _activityFacadeSUT.GetFilteredPreciseDateTime(user.Id, startsIn: startsIn, endsIn: endsIn);
 
         // Assert
         DeepAssert.Equal(filtered, ActivityModelMapper.MapToListModel(user.Activities.Where(a => a.Start == startsIn && a.End == endsIn)));
