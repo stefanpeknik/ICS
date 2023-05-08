@@ -27,19 +27,19 @@ public class NavigationService : INavigationService
 
         new("//users/home/all_projects/add_project", typeof(AddProjectView), typeof(AddProjectViewModel)),
         new("//users/home/all_projects/detail_project", typeof(DetailProjectView), typeof(DetailProjectViewModel)), 
-        new("//users/home/all_projects/detail/edit_project", typeof(EditProjectView), typeof(EditProjectViewModel)), 
+        new("//users/home/all_projects/detail_project/edit_project", typeof(EditProjectView), typeof(EditProjectViewModel)), 
 
         new("//users/home/my_projects/add_project", typeof(AddProjectView), typeof(AddProjectViewModel)),
         new("//users/home/my_projects/detail_project", typeof(DetailProjectView), typeof(DetailProjectViewModel)), 
-        new("//users/home/my_projects/detail/edit_project", typeof(EditProjectView), typeof(EditProjectViewModel)), 
+        new("//users/home/my_projects/detail_project/edit_project", typeof(EditProjectView), typeof(EditProjectViewModel)), 
 
         new("//users/home/activities/add_activity", typeof(AddActivityView), typeof(AddActivityViewModel)), 
         new("//users/home/activities/detail_activity", typeof(DetailActivityView), typeof(DetailActivityViewModel)), 
-        new("//users/home/activities/detail/edit_activity", typeof(EditActivityView), typeof(EditActivityViewModel)), 
+        new("//users/home/activities/detail_activity/edit_activity", typeof(EditActivityView), typeof(EditActivityViewModel)), 
 
         new("//users/home/tags/add_tag", typeof(TagAddView), typeof(TagAddViewModel)), 
         new("//users/home/tags/detail_tag", typeof(DetailTagView), typeof(DetailTagViewModel)), 
-        new("//users/home/tags/detail/edit_tag", typeof(EditTagView), typeof(EditTagViewModel)), 
+        new("//users/home/tags/detail_tag/edit_tag", typeof(EditTagView), typeof(EditTagViewModel)), 
     };
 
     public async Task GoToAsync<TViewModel>()

@@ -8,31 +8,40 @@
              x:DataType="vm:DetailProjectViewModel"
              x:Name="DetailProjectViewRoot">
 
-    <Grid RowDefinitions="200, *">
-        <Grid Grid.Row="0"
-              ColumnDefinitions="auto, *, auto">
-            <Label Grid.Column="0"
-                   Margin="30"
-                   FontSize="102"
-                   Text="{Binding Project.Name}"
-                   TextColor="White"/>
+    <Grid RowDefinitions="Auto, Auto, *">
+        <Label Grid.Row="0"
+               Margin="30"
+               FontSize="46"
+               Text="{Binding Project.Name}"
+               LineBreakMode="WordWrap"
+               MaximumHeightRequest="400"/>
 
-
-            <Button Grid.Column="2"
-                    Text="Edit Project"
-                    HeightRequest="75"
-                    WidthRequest="150"
-                    FontSize="22"
-                    Margin="80,0"/>
-            
-
-        </Grid>
 
         <Label Grid.Row="1"
                FontSize="24"
                Margin="35,0"
-               Text="{Binding Project.Description}"
-               TextColor="White"/>
+               LineBreakMode="WordWrap"
+               Text="{Binding Project.Description}"/>
+
+        <Button Grid.Row="2"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Text="Edit Project"
+                HeightRequest="75"
+                WidthRequest="150"
+                FontSize="22"
+                Margin="0,0,50,50"/>
+        <Button Grid.Row="2"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                BackgroundColor="Red"
+                TextColor="White"
+                Text="Delete Project"
+                Command="{Binding DeleteCommand}"
+                HeightRequest="75"
+                WidthRequest="200"
+                FontSize="22"
+                Margin="50,0,0,50"/>
     </Grid>
 
 

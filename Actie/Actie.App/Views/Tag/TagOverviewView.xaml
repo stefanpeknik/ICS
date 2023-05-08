@@ -41,9 +41,9 @@
                                    WidthRequest="320" HeightRequest="110"
                                    IsClippedToBounds="True">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference TagListViewRoot}, Path=BindingContext.GoToDetailCommand}"
-                                                          CommandParameter="{Binding Id}" />
-                        </Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:TagOverviewViewModel}}, Path=GoToTagDetailCommand}"
+                                                  CommandParameter="{Binding Id}" />
+                            </Frame.GestureRecognizers>
 
                         <Grid>
                             <VerticalStackLayout>

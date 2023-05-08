@@ -18,6 +18,7 @@ namespace Actie.App.ViewModels;
 public partial class DetailProjectViewModel : ViewModelBase
 {
     private readonly IProjectFacade _projectFacade;
+    private readonly INavigationService _navigationService;
 
     [ObservableProperty]
     private ProjectDetailModel project;
@@ -25,9 +26,27 @@ public partial class DetailProjectViewModel : ViewModelBase
     public Guid Id { get; set; }
 
     
-    public DetailProjectViewModel(IProjectFacade projectFacade, IMessengerService messengerService) : base(messengerService)
+    public DetailProjectViewModel(
+        IProjectFacade projectFacade,
+        INavigationService navigationService,
+        IMessengerService messengerService) : base(messengerService)
     {
         _projectFacade = projectFacade;
+        _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task DeleteAsync()
+    {
+        if (Project is not null)
+        {
+            await _projectFacade.DeleteAsync(Project.Id);
+
+            MessengerService.Send(new ProjectDeleteMessage());
+
+            _navigationService.SendBackButtonPressed();
+
+        }
     }
 
     protected override async Task LoadDataAsync()

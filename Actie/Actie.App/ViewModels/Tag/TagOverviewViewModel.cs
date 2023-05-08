@@ -34,6 +34,13 @@ public partial class TagOverviewViewModel : ViewModelBase, IRecipient<TagEditMes
         await _navigationService.GoToAsync("/add_tag");
     }
 
+    [RelayCommand]
+    private async Task GoToTagDetailAsync(Guid id)
+    {
+        await _navigationService.GoToAsync<DetailTagViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = id });
+    }
+
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();
