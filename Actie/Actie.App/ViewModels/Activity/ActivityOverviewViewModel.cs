@@ -147,6 +147,13 @@ public partial class ActivityOverviewViewModel : ViewModelBase, IRecipient<Activ
         await _navigationService.GoToAsync("/add_activity", new Dictionary<string, object?> { [nameof(Id)] = Id});
     }
 
+    [RelayCommand]
+    private async Task GoToActivityDetailAsync(Guid id)
+    {
+        await _navigationService.GoToAsync<DetailActivityViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = id });
+    }
+
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();

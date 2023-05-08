@@ -85,13 +85,18 @@
                        Text="{Binding ActivityModel.Description}"/>
             </VerticalStackLayout>
 
-            <HorizontalStackLayout Grid.Row="4">
+            <VerticalStackLayout Grid.Row="4"
+                                   Margin="10">
+                <Label Text="Add to project"
+                       VerticalOptions="Center"/>
                 <Picker
+                    WidthRequest="200"
+                    HorizontalOptions="Start"
                     ItemsSource="{Binding MyProjects}"
                     ItemDisplayBinding="{Binding Name}"
                     SelectedItem="{Binding SelectedProject}">
                 </Picker>
-            </HorizontalStackLayout>
+            </VerticalStackLayout>
 
 
         </Grid>
