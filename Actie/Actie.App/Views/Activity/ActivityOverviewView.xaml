@@ -24,24 +24,19 @@
                   HeightRequest="100"
                   VerticalOptions="End"/>
 
-        <Grid Grid.Row="1"
-              ColumnDefinitions="175, 125, 50, 125, *">
-            <Label  Grid.Column="0"
-                    Text="Filter from"
+        <HorizontalStackLayout Grid.Row="1">
+            <Label  Text="Filter from"
                     Margin="25,0,0,0"
                     VerticalOptions="Center"
                     FontSize="24"/>
-            <DatePicker Grid.Column="1"
-                        Format="yyyy-MM-dd HH:mm"
-            />
-            <Label Grid.Column="2"
-                   Text="To"
+            <DatePicker Margin="10,0"/>
+            <TimePicker Margin="0,12,0,0"/>
+            <Label Text="To"
                    VerticalOptions="Center"
                    FontSize="24"/>
-            <DatePicker Grid.Column="3"
-                        Format="yyyy-MM-dd HH:mm"
-            />
-        </Grid>
+            <DatePicker Margin="10,0"/>
+            <TimePicker Margin="0,12,0,0"/>
+        </HorizontalStackLayout>
 
 
             <Line Grid.Row="1"
