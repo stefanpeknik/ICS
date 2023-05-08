@@ -38,6 +38,13 @@ public partial class UserProjectOverviewViewModel : ViewModelBase
             new Dictionary<string, object?> { [nameof(Id)] = Id });
     }
 
+    [RelayCommand]
+    private async Task GoToProjectDetailAsync(Guid id)
+    {
+        await _navigationService.GoToAsync<DetailProjectViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = id });
+    }
+
     protected override async Task LoadDataAsync()
     {
         await base.LoadDataAsync();

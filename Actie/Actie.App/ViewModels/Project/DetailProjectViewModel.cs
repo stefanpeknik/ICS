@@ -13,9 +13,30 @@ using Actie.BL.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Actie.App.ViewModels;
+
+[QueryProperty(nameof(Id), nameof(Id))]
 public partial class DetailProjectViewModel : ViewModelBase
 {
-    public DetailProjectViewModel(IMessengerService messengerService) : base(messengerService)
+    private readonly IProjectFacade _projectFacade;
+
+    [ObservableProperty]
+    private ProjectDetailModel project;
+
+    public Guid Id { get; set; }
+
+    
+    public DetailProjectViewModel(IProjectFacade projectFacade, IMessengerService messengerService) : base(messengerService)
     {
+        _projectFacade = projectFacade;
     }
+
+    protected override async Task LoadDataAsync()
+    {
+        await base.LoadDataAsync();
+
+        Project = await _projectFacade.GetAsync(Id);
+    }
+
 }
+
+
