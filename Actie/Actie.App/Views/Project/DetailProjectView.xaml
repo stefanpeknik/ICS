@@ -16,7 +16,6 @@
                    FontSize="102"
                    Text="{Binding Project.Name}"
                    TextColor="White"/>
-            <!-- Text="{Binding Project.Name}" -->
 
 
             <Button Grid.Column="2"
@@ -30,9 +29,10 @@
         </Grid>
 
         <Label Grid.Row="1"
+               FontSize="24"
+               Margin="35,0"
                Text="{Binding Project.Description}"
                TextColor="White"/>
-               <!-- Text="{Binding Project.Description}"/> -->
     </Grid>
 
 
