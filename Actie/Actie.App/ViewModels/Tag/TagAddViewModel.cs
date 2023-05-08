@@ -26,6 +26,21 @@ public partial class TagAddViewModel : ViewModelBase
         _tagFacade = tagFacade;
         _navigationService = navigationService;
     }
+    public string Name
+    {
+        get => Tag.Name;
+        set
+        {
+            if (Tag.Name != value)
+            {
+                Tag.Name = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
+            }
+        }
+    }
+   
+    public bool CanSave => Tag.Name != string.Empty;
 
     [RelayCommand]
     private async Task SaveAsync()

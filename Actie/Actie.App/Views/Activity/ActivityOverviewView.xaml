@@ -86,18 +86,17 @@
                                  Span="3" />
             </CollectionView.ItemsLayout>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="m:ActivityListModel">
-                    <Frame Padding="0"
-                           Margin="0,25,0,0"
-                           BorderColor="White"
-                               CornerRadius="10"
-                               WidthRequest="320" HeightRequest="160"
-                               >
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.GoToDetailCommand}"
-                                                      CommandParameter="{Binding Id}" />
-                        </Frame.GestureRecognizers>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="m:ActivityListModel">
+                            <Frame Padding="0"
+                                   Margin="0,25,0,0"
+                                       CornerRadius="10"
+                                       WidthRequest="320" HeightRequest="160"
+                                       >
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ActivityOverviewViewModel}}, Path=GoToActivityDetailCommand}"
+                                                                                CommandParameter="{Binding Id}" />
+                                </Frame.GestureRecognizers>
 
                        
                         <ScrollView>

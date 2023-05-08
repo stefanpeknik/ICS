@@ -38,6 +38,36 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
         _alertService = alertService;
     }
 
+
+
+    public string Name
+    {
+        get => User.Name;
+        set
+        {
+            if (User.Name != value)
+            {
+                User.Name = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
+            }
+        }
+    }
+    public string Surname
+    {
+        get => User.Surname;
+        set
+        {
+            if (User.Surname != value)
+            {
+                User.Surname = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
+            }
+        }
+    }
+    public bool CanSave => User.Name != string.Empty && User.Surname != string.Empty;
+
     [RelayCommand]
     private async Task SaveAsync()
     {
@@ -48,6 +78,7 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
         _navigationService.SendBackButtonPressed();
     }
 
+    
     public async void Receive(UserEditMessage message)
     {
         await ReloadDataAsync();

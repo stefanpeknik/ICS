@@ -41,7 +41,7 @@ public class NavigationService : INavigationService
         new("//users/home/tags/detail_tag", typeof(DetailTagView), typeof(DetailTagViewModel)), 
         new("//users/home/tags/detail_tag/edit_tag", typeof(EditTagView), typeof(EditTagViewModel)), 
     };
-
+    
     public async Task GoToAsync<TViewModel>()
         where TViewModel : IViewModel
     {

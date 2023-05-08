@@ -8,5 +8,6 @@ public partial class AddUserView
     : base(viewModel)
 	{
 		InitializeComponent();
+        SaveButton.IsEnabled = false;
 	}
 }

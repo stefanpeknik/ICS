@@ -25,7 +25,7 @@
                 <Label Text="Name"
                        VerticalOptions="Center"/>
                 <Entry Placeholder="Enter your name"
-                       Text="{Binding User.Name}"/>
+                       Text="{Binding Name}"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
@@ -33,7 +33,7 @@
                     <Label Text="Surname"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter your surname"
-                           Text="{Binding User.Surname}"/>
+                           Text="{Binding Surname}"/>
             </VerticalStackLayout>
             
             <VerticalStackLayout Grid.Row="2"
@@ -77,11 +77,13 @@
 
         </Grid>
         <Button Grid.Row="2"
+                x:Name="SaveButton"
                 Text="Save User"
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="100"
                 Margin="0,0,50,50"
+                IsEnabled="{Binding CanSave, Mode=TwoWay}"
                 Command="{Binding SaveCommand}"/>
 
     </Grid>

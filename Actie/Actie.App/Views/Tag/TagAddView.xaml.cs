@@ -8,5 +8,6 @@ public partial class TagAddView
         : base(viewModel)
 	{
 		InitializeComponent();
-	}
+        SaveButton.IsEnabled = false;
+    }
 }

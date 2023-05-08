@@ -25,7 +25,7 @@
                 <Label Text="Name"
                        VerticalOptions="Center"/>
                 <Entry Placeholder="Enter tag name"
-                Text="{Binding Tag.Name}" />
+                Text="{Binding Name}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
@@ -38,11 +38,13 @@
 
         </Grid>
         <Button Grid.Row="2"
+                x:Name="SaveButton"
                 Text="Save Tag"
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="100"
                 Margin="0,25,25,0"
+                IsEnabled="{Binding CanSave, Mode=TwoWay}"
                 Command="{Binding SaveCommand}"
                 />
     </Grid>
