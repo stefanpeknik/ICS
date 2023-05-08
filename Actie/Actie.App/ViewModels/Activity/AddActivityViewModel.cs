@@ -75,6 +75,7 @@ public partial class AddActivityViewModel : ViewModelBase
                 ActivityModel.Start = new DateTime(value.Year, value.Month, value.Day);
                 ActivityModel.Start = ActivityModel.Start.Add(time);
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
             }
         }
     }
@@ -90,6 +91,7 @@ public partial class AddActivityViewModel : ViewModelBase
                 ActivityModel.End = new DateTime(value.Year, value.Month, value.Day);
                 ActivityModel.End = ActivityModel.End.Add(time);
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
             }
         }
     }
@@ -103,6 +105,7 @@ public partial class AddActivityViewModel : ViewModelBase
             {
                 ActivityModel.Start = new DateTime(ActivityModel.Start.Year, ActivityModel.Start.Month, ActivityModel.Start.Day, value.Hours, value.Minutes, value.Seconds);
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
             }
         }
     }
@@ -116,11 +119,13 @@ public partial class AddActivityViewModel : ViewModelBase
             {
                 ActivityModel.End = new DateTime(ActivityModel.End.Year, ActivityModel.End.Month, ActivityModel.End.Day, value.Hours, value.Minutes, value.Seconds);
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
             }
         }
     }
 
-    public bool CanSave => ActivityModel.Name != string.Empty && ActivityModel.Type != string.Empty && !MyProjects.IsNullOrEmpty();
+    public bool CanSave => ActivityModel.Name != string.Empty && ActivityModel.Type != string.Empty && !MyProjects.IsNullOrEmpty() &&
+                           (ActivityModel.Start < ActivityModel.End);
 
     public AddActivityViewModel(IProjectFacade projectFacade, IActivityFacade activityFacade, INavigationService navigationService, IMessengerService messengerService) : base(messengerService)
     {
