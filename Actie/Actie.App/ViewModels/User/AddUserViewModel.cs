@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 //
 
+using ABI.Windows.System;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Messages;
@@ -22,8 +23,7 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
 
     public Guid Id { get; set; }
 
-    [ObservableProperty]
-    public UserDetailModel user = UserDetailModel.Empty;
+    [ObservableProperty] public UserDetailModel user = UserDetailModel.Empty;
 
 
     public AddUserViewModel(
@@ -53,6 +53,7 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
             }
         }
     }
+
     public string Surname
     {
         get => User.Surname;

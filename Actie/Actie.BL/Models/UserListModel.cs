@@ -4,7 +4,7 @@ public record UserListModel : ModelBase
 {
     public required string Name { get; set; }
     public required string Surname { get; set; }
-    public Uri? Photo { get; set; }
+    public string? Photo { get; set; }
 
     public static UserListModel Empty => new()
     {

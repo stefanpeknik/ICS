@@ -44,7 +44,6 @@ public static class UserSeeds
         UserEntity.Activities.Add(ActivitySeeds.ActivityEntity1);
         UserEntity.Projects.Add(UserProjectSeeds.UserProjectEntity);
 
-        UserForUserProjectEntityDelete.Projects.Add(UserProjectSeeds.UserProjectEntityDelete);
     }
 
     public static void Seed(this ModelBuilder modelBuilder)

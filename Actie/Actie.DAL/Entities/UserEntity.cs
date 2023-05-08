@@ -6,7 +6,7 @@ public record UserEntity : IEntity
 
     public required string Name { get; set; }
     public required string Surname { get; set; }
-    public Uri? Photo { get; set; }
+    public string? Photo { get; set; }
     public int? Age { get; set; }
     public string? Gender { get; set; }
     public float? Weight { get; set; }
