@@ -11,6 +11,8 @@ using Actie.BL.Models;
 using Actie.BL.Facades.Interfaces;
 
 namespace Actie.App.ViewModels;
+
+[QueryProperty(nameof(User), nameof(User))]
 public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessage>
 {
     private readonly IUserFacade _userFacade;
@@ -18,9 +20,8 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
     private readonly IAlertService _alertService;
 
     public Guid Id { get; set; }
+    public UserDetailModel User { get; set; } = UserDetailModel.Empty;
 
-    #nullable enable
-    public UserDetailModel? User { get; private set; }
 
     public AddUserViewModel(
         IUserFacade userFacade,
@@ -33,17 +34,30 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
         _navigationService = navigationService;
         _alertService = alertService;
     }
-    protected override async Task LoadDataAsync()
-    {
-        await base.LoadDataAsync();
 
-        User = await _userFacade.GetAsync(Id);
+    [RelayCommand]
+    private async Task SaveAsync()
+    {
+        await _userFacade.SaveAsync(User);
+
+        MessengerService.Send(new UserEditMessage { UserId = User.Id });
+
+        _navigationService.SendBackButtonPressed();
     }
+
     public async void Receive(UserEditMessage message)
     {
-        if (message.UserId == User?.Id)
-        {
-            await LoadDataAsync();
-        }
+        await ReloadDataAsync();
+    }
+
+    public async void Receive(UserDeleteMessage message)
+    {
+        await ReloadDataAsync();
+    }
+
+    private async Task ReloadDataAsync()
+    {
+        User = await _userFacade.GetAsync(User.Id)
+                 ?? UserDetailModel.Empty;
     }
 }
