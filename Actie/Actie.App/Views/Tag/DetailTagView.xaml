@@ -10,28 +10,33 @@
 
 
 
-    <Grid RowDefinitions="200, *">
+    <Grid RowDefinitions="Auto, Auto, *">
         <Grid Grid.Row="0"
               ColumnDefinitions="auto, *, auto">
             <Label Grid.Column="0"
                    Margin="30"
-                   FontSize="102"
-                   Text="{Binding Tag.Name}"/>
-                   <!-- Text="{Binding Tag.Name}" -->
+                   FontSize="46"
+                   Text="{Binding Tag.Name}"
+                   LineBreakMode="WordWrap"
+                   MaximumHeightRequest="400"/>
 
-
-            <Button Grid.Column="2"
-                    Text="Edit Tag"
-                    HeightRequest="75"
-                    WidthRequest="150"
-                    FontSize="22"
-                    Margin="80,0"/>
 
         </Grid>
 
         <Label Grid.Row="1"
+               FontSize="24"
+               Margin="35,0"
+               LineBreakMode="WordWrap"
                Text="{Binding Tag.Description}"/>
-               <!-- Text="{Binding Tag.Description}" -->
+
+        <Button Grid.Row="2"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Text="Edit Tag"
+                HeightRequest="75"
+                WidthRequest="150"
+                FontSize="22"
+                Margin="0,0,50,50"/>
     </Grid>
 
 </views:ContentPageBase>
