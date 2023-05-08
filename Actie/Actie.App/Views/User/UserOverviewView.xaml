@@ -70,7 +70,7 @@
 
         <HorizontalStackLayout Grid.Row="2">
             <Button
-                    Text="Settings"
+                    Text="Edit user"
                     HeightRequest="50"
                     WidthRequest="200"
                     FontSize="22"
