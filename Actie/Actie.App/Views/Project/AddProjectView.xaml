@@ -7,7 +7,7 @@
              x:DataType="vm:AddProjectViewModel">
 
 
-    <Grid RowDefinitions="100, Auto, *">
+    <Grid RowDefinitions="100, Auto, Auto">
         <Label Grid.Row="0"
                Text="Add Project"
                VerticalOptions="Center"

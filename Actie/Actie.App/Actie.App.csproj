@@ -101,6 +101,9 @@
 	  <Compile Update="Views\Tag\TagOverviewView.xaml.cs">
 	    <DependentUpon>TagOverviewView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\User\EditUserView.xaml.cs">
+	    <DependentUpon>EditUserView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
   <ItemGroup>
@@ -144,6 +147,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ContentPageBase.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\User\EditUserView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\User\UserOverviewView.xaml">

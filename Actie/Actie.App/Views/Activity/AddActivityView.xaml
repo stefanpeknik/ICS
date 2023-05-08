@@ -5,7 +5,7 @@
              x:Class="Actie.App.Views.Activity.AddActivityView">
 
 
-    <Grid RowDefinitions="100, Auto, *">
+    <Grid RowDefinitions="100, Auto, Auto">
         <Label Grid.Row="0"
                Text="Add Activity"
                VerticalOptions="Center"
@@ -27,33 +27,44 @@
             </VerticalStackLayout>
 
             <HorizontalStackLayout Grid.Row="1"
-                                   Margin="10">
+                                   Margin="4,10,10,10">
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Start date"
                            VerticalOptions="Center"/>
-                    <DatePicker Format="yyyy-MM-dd HH:mm"/>
+                    <DatePicker/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="Start time"
+                           VerticalOptions="Center"/>
+                    <TimePicker Margin="0,7,0,0"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="End date"
                            VerticalOptions="Center"/>
-                    <DatePicker Format="yyyy-MM-dd HH:mm"/>
+                    <DatePicker />
                 </VerticalStackLayout>
+                <VerticalStackLayout Margin="10,0">
+                    <Label Text="End time"
+                           VerticalOptions="Center"/>
+                    <TimePicker Margin="0,7,0,0"/>
+                </VerticalStackLayout>
+                
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Grid.Row="2">
+
                 <VerticalStackLayout Margin="10">
                     <Label Text="Type"
                            VerticalOptions="Center" />
                     <Entry Placeholder="Enter activity type"
-                           WidthRequest="50"/>
+                           WidthRequest="150"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Margin="10">
                     <Label Text="Rating (out of 5)"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter activity rating"
-                           Keyboard="Numeric"
-                           WidthRequest="100"/>
+                           WidthRequest="150"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 
@@ -69,8 +80,8 @@
                 Text="Save Activity"
                 HorizontalOptions="End"
                 HeightRequest="50"
-                WidthRequest="100"
-                Margin="0,0,50,50"/>
+                WidthRequest="150"
+                Margin="0,0,25,0"/>
 
     </Grid>
 

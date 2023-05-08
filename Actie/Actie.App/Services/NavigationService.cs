@@ -18,6 +18,7 @@ public class NavigationService : INavigationService
         new("//users/add_user", typeof(AddUserView), typeof(AddUserViewModel)),
 
         new("//users/home", typeof(UserOverviewView), typeof(UserOverviewViewModel)),
+        new("//users/home/edit_user", typeof(EditUserView), typeof(EditUserViewModel)),
         new("//users/home/all_projects", typeof(ProjectOverviewView), typeof(ProjectOverviewViewModel)),
         new("//users/home/my_projects", typeof(UserProjectOverviewView), typeof(UserProjectOverviewViewModel)),
         new("//users/home/activities", typeof(ActivityOverviewView), typeof(ActivityOverviewViewModel)),

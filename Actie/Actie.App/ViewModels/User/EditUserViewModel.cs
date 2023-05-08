@@ -1,38 +1,26 @@
-﻿// Copyright (c) .NET Foundation and contributors. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-//
-
-using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
+﻿
 using Actie.App.Messages;
 using Actie.App.Services;
-using Actie.BL.Facades;
-using Actie.BL.Models;
 using Actie.BL.Facades.Interfaces;
+using Actie.BL.Models;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace Actie.App.ViewModels;
-
 [QueryProperty(nameof(User), nameof(User))]
-public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessage>
+public partial class EditUserViewModel : ViewModelBase, IRecipient<UserEditMessage>, IRecipient<UserDeleteMessage>
 {
     private readonly IUserFacade _userFacade;
     private readonly INavigationService _navigationService;
-    private readonly IAlertService _alertService;
-
-    public Guid Id { get; set; }
     public UserDetailModel User { get; set; } = UserDetailModel.Empty;
-
-
-    public AddUserViewModel(
-        IUserFacade userFacade,
+    public EditUserViewModel(
+        IUserFacade ingredientFacade,
         INavigationService navigationService,
-        IMessengerService messengerService,
-        IAlertService alertService)
+        IMessengerService messengerService)
         : base(messengerService)
     {
-        _userFacade = userFacade;
+        _userFacade = ingredientFacade;
         _navigationService = navigationService;
-        _alertService = alertService;
     }
 
     [RelayCommand]
@@ -44,7 +32,6 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
 
         _navigationService.SendBackButtonPressed();
     }
-
     public async void Receive(UserEditMessage message)
     {
         await ReloadDataAsync();
@@ -54,7 +41,6 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
     {
         await ReloadDataAsync();
     }
-
     private async Task ReloadDataAsync()
     {
         User = await _userFacade.GetAsync(User.Id)
