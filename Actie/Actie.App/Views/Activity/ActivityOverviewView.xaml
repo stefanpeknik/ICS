@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
              xmlns:views="clr-namespace:Actie.App.View"
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="vm:ActivityOverviewViewModel"
              x:Class="Actie.App.Views.Activity.ActivityOverviewView">
 
 
@@ -25,22 +28,27 @@
                   VerticalOptions="End"/>
 
         <HorizontalStackLayout Grid.Row="1">
-            <Label  Text="Filter from"
+            <Label  Text="From: "
                     Margin="25,0,0,0"
                     VerticalOptions="Center"
                     FontSize="24"/>
-            <DatePicker Margin="10,0"/>
-            <TimePicker Margin="0,12,0,0"/>
-            <Label Text="To"
+            <DatePicker Margin="10,0"
+                        Date="{Binding FromDate}">
+            </DatePicker>
+            <TimePicker Margin="0,12,0,0"
+                        Time="{Binding FromTime}">
+            </TimePicker>
+
+            <Label Text="To: "
                    VerticalOptions="Center"
                    FontSize="24"/>
-            <DatePicker Margin="10,0"/>
-            <TimePicker Margin="0,12,0,0"/>
-            <Picker Title="Choose filter" Grid.Row="3"
-                    WidthRequest="100">
-                <Picker.Items>
-                    <x:String>Week</x:String>
-                    <x:String>Month</x:String>
+            <DatePicker Margin="10,0"
+                        Date="{Binding ToDate}">
+            </DatePicker>
+            <TimePicker Margin="0,12,0,0"
+                        Time="{Binding ToTime}">
+            </TimePicker>
+
                     <x:String>Year</x:String>
                 </Picker.Items>
             </Picker>
@@ -77,17 +85,17 @@
                                 <Grid>
                                     
                             <VerticalStackLayout>
-                                    <Label Grid.Row="0"
+                                    <Label
                                            Margin="22,12"
                                            FontSize="20" LineBreakMode="WordWrap"
                                            Text="{Binding Name}"
                                            TextColor="White" VerticalOptions="End" />
-                                    <Label Grid.Row="0"
+                                    <Label
                                            Margin="22,12"
                                            FontSize="20" LineBreakMode="WordWrap"
                                            Text="{Binding Start}"
                                            TextColor="White" VerticalOptions="End" />
-                                    <Label Grid.Row="0"
+                                    <Label
                                            Margin="22,12"
                                            FontSize="20" LineBreakMode="WordWrap"
                                            Text="{Binding End}"
