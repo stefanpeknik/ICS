@@ -13,7 +13,7 @@ namespace Actie.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
 [QueryProperty(nameof(UserId), nameof(UserId))]
-public partial class DetailActivityViewModel: ViewModelBase
+public partial class DetailActivityViewModel: ViewModelBase, IRecipient<ActivityEditMessage>
 {
     private readonly ITagFacade _tagFacade;
     private readonly IActivityFacade _activityFacade;
@@ -65,5 +65,10 @@ public partial class DetailActivityViewModel: ViewModelBase
     private async Task GoToEditAsync()
     {
         await _navigationService.GoToAsync("/edit_activity", new Dictionary<string, object> { [nameof(Id)] = Id, [nameof(UserId)] = UserId });
+    }
+
+    public async void Receive(ActivityEditMessage message)
+    {
+        await LoadDataAsync();
     }
 }

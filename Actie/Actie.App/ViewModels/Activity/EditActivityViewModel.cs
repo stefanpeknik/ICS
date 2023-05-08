@@ -15,6 +15,7 @@ using Actie.BL.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Actie.App.ViewModels;
 
@@ -31,7 +32,7 @@ public partial class EditActivityViewModel : ViewModelBase, IRecipient<ActivityE
     public Guid UserId { get; set; }
 
     [ObservableProperty]
-    public ActivityDetailModel activity;
+    public ActivityDetailModel activity = ActivityDetailModel.Empty with { Start = DateTime.Now - TimeSpan.FromHours(1), End = DateTime.Now };
 
     [ObservableProperty]
     public IList<ProjectListModel> myProjects;
@@ -72,6 +73,68 @@ public partial class EditActivityViewModel : ViewModelBase, IRecipient<ActivityE
 
         SelectedProject = MyProjects.First(p => p.Id == Activity.ProjectId);
     }
+    public DateTime StartDate
+    {
+        get => Activity.Start;
+        set
+        {
+            if (Activity.Start != value)
+            {
+                TimeSpan time = Activity.Start.TimeOfDay;
+                Activity.Start = new DateTime(value.Year, value.Month, value.Day);
+                Activity.Start = Activity.Start.Add(time);
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
+            }
+        }
+    }
+
+    public DateTime EndDate
+    {
+        get => Activity.End;
+        set
+        {
+            if (Activity.End != value)
+            {
+                TimeSpan time = Activity.End.TimeOfDay;
+                Activity.End = new DateTime(value.Year, value.Month, value.Day);
+                Activity.End = Activity.End.Add(time);
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
+            }
+        }
+    }
+
+    public TimeSpan StartTime
+    {
+        get => Activity.Start.TimeOfDay;
+        set
+        {
+            if (Activity.Start.TimeOfDay != value)
+            {
+                Activity.Start = new DateTime(Activity.Start.Year, Activity.Start.Month, Activity.Start.Day, value.Hours, value.Minutes, value.Seconds);
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
+            }
+        }
+    }
+
+    public TimeSpan EndTime
+    {
+        get => Activity.End.TimeOfDay;
+        set
+        {
+            if (Activity.End.TimeOfDay != value)
+            {
+                Activity.End = new DateTime(Activity.End.Year, Activity.End.Month, Activity.End.Day, value.Hours, value.Minutes, value.Seconds);
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
+            }
+        }
+    }
+    public bool CanSave => Activity.Name != string.Empty && Activity.Type != string.Empty && !MyProjects.IsNullOrEmpty() &&
+                           (Activity.Start < Activity.End);
+
 
     [RelayCommand]
     public async Task AddTagAsync()
@@ -97,7 +160,7 @@ public partial class EditActivityViewModel : ViewModelBase, IRecipient<ActivityE
     [RelayCommand]
     public async Task SaveAsync()
     {
-        Activity = await _activityFacade.SaveAsync(Activity);
+        Activity = await _activityFacade.SaveAsync(Activity with { Tags = null!});
 
         MessengerService.Send(new ActivityEditMessage { ActivityId = Activity.Id });
 
