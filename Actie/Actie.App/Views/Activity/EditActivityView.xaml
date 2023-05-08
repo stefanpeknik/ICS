@@ -2,9 +2,11 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             x:DataType="vm:EditActivityViewModel"
              x:Class="Actie.App.Views.Activity.EditActivityView">
 
-    <Grid RowDefinitions="100, Auto, *">
+    <Grid RowDefinitions="100, Auto, Auto, *">
         <Label Grid.Row="0"
                Text="Edit Acitivty"
                VerticalOptions="Center"
@@ -33,7 +35,16 @@
             </VerticalStackLayout>
 
         </Grid>
-        <Button Grid.Row="2"
+
+        <Picker
+            WidthRequest="200"
+            HorizontalOptions="Start"
+            ItemsSource="{Binding MyProjects}"
+            ItemDisplayBinding="{Binding Name}"
+            SelectedItem="{Binding SelectedProject}">
+        </Picker>
+
+        <Button Grid.Row="3"
                 Text="Save Changes"
                 HorizontalOptions="End"
                 HeightRequest="50"

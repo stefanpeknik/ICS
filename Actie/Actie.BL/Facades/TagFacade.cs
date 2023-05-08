@@ -25,18 +25,27 @@ class TagFacade : FacadeBase<TagEntity, TagListModel, TagDetailModel, TagEntityM
         $"{nameof(TagEntity.Activities)}.{nameof(ActivityTagEntity.Activity)}.{nameof(ActivityEntity.User)}"
     };
 
-    
-    public async Task SaveAsync(TagDetailModel tag, Guid userId)
+    public virtual async Task<IEnumerable<TagListModel>?> GetTagsOfActivityAsync(Guid activityId)
     {
-        tag.Id = Guid.NewGuid();
-        TagEntity tagEntity = ModelMapper.MapToEntity(tag);
-
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
 
+        IQueryable<TagEntity> query = uow.GetRepository<TagEntity, TagEntityMapper>().Get();
 
-        IRepository<TagEntity> tagRepository = uow.GetRepository<TagEntity, TagEntityMapper>();
-        await tagRepository.InsertAsync(tagEntity);
+        if (IncludesNavigationPathDetails.Any())
+        {
+            foreach (string includesNavigationPathDetail in IncludesNavigationPathDetails)
+            {
+                query = string.IsNullOrWhiteSpace(includesNavigationPathDetail)
+                    ? query
+                    : query.Include(includesNavigationPathDetail);
+            }
+        }
 
-        await uow.CommitAsync();
+        query = query.Where(t => t.Activities.Any(at => at.ActivityId == activityId));
+
+        var entities = await query.ToListAsync();
+
+        return ModelMapper.MapToListModel(entities);
     }
+
 }
