@@ -39,7 +39,7 @@
             </VerticalStackLayout>
 
         </Grid>
-        <Button Grid.Row="2"
+        <Button Grid.Row="0"
                 Text="Save Changes"
                 HorizontalOptions="End"
                 VerticalOptions="End"
