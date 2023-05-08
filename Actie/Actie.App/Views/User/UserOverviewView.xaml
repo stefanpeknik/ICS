@@ -9,14 +9,15 @@
              x:Name="UserOverviewViewRoot">
 
 
-    <Grid RowDefinitions="*,*,*"
-        HorizontalOptions="Center">
-        <HorizontalStackLayout Grid.Row="0">
+    <Grid RowDefinitions="150,*,150">
+        <HorizontalStackLayout Grid.Row="0"
+                               Margin="50,0,0,0">
             <Image HorizontalOptions="Start"
-                   WidthRequest="50" HeightRequest="50"
+                   Margin="0,5,0,0"
+                   WidthRequest="75" HeightRequest="76"
                    Source="{Binding User.Photo, TargetNullValue='user.jpg'}">
                 <Image.Clip>
-                    <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
+                    <EllipseGeometry Center="38,38" RadiusX="38" RadiusY="38" />
                 </Image.Clip>
             </Image>
             <Label FontSize="45" LineBreakMode="WordWrap"
@@ -32,51 +33,60 @@
                    Margin="5, 0, 0, 0"
             />
         </HorizontalStackLayout>
+        
 
-        <HorizontalStackLayout Grid.Row="1">
+        <Grid Grid.Row="1"
+              VerticalOptions="Center"
+              HorizontalOptions="Center"
+              ColumnDefinitions="300,300,300,300">
 
-            <Button Text="All Projects"
-                        HeightRequest="50"
-                        WidthRequest="200"
-                        FontSize="22"
+            <Button Grid.Column="0"
+                    Text="All Projects"
+                        HeightRequest="75"
+                        WidthRequest="250"
+                        FontSize="32"
                         HorizontalOptions="Center"
                         Command="{Binding GoToAllProjectsCommand}"
             />
 
-            <Button Text="My Projects"
-                        HeightRequest="50"
-                        WidthRequest="200"
-                        FontSize="22"
+            <Button Grid.Column="1"
+                Text="My Projects"
+                        HeightRequest="75"
+                        WidthRequest="250"
+                        FontSize="32"
                         HorizontalOptions="Center"
                         Command="{Binding GoToMyProjectsCommand}"
             />
 
-            <Button Text="Activities"
-                        HeightRequest="50"
-                        WidthRequest="200"
-                        FontSize="22"
+            <Button Grid.Column="2"
+                Text="Activities"
+                        HeightRequest="75"
+                        WidthRequest="250"
+                        FontSize="32"
                         HorizontalOptions="Center"
                         Command="{Binding GoToMyActivitiesCommand}"
                 />
 
-            <Button Text="Tags"
-                        HeightRequest="50"
-                        WidthRequest="200"
-                        FontSize="22"
+            <Button Grid.Column="3"
+                Text="Tags"
+                        HeightRequest="75"
+                        WidthRequest="250"
+                        FontSize="32"
                         HorizontalOptions="Center"
                         Command="{Binding GoToMyTagsCommand}"
             />
-        </HorizontalStackLayout>
+        </Grid>
 
-        <HorizontalStackLayout Grid.Row="2">
-            <Button
-                    Text="Edit user"
-                    HeightRequest="50"
-                    WidthRequest="200"
-                    FontSize="22"
-                    HorizontalOptions="Center"
-                    Command="{Binding GoToSettingsCommand}"
-                />
-        </HorizontalStackLayout>
+        <Button Grid.Row="2"
+                Text="Edit User"
+                HeightRequest="75"
+                WidthRequest="250"
+                FontSize="32"
+                HorizontalOptions="End"
+                Margin="0,25,45,25"
+                Command="{Binding GoToSettingsCommand}"
+        />
+
+
     </Grid>
 </views:ContentPageBase>
