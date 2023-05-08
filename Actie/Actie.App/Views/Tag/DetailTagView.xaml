@@ -16,7 +16,7 @@
             <Label Grid.Column="0"
                    Margin="30"
                    FontSize="102"
-                   Text="Tag Name" />
+                   Text="{Binding Tag.Name}"/>
                    <!-- Text="{Binding Tag.Name}" -->
 
 
@@ -30,7 +30,7 @@
         </Grid>
 
         <Label Grid.Row="1"
-                Text="Tag Description" />
+               Text="{Binding Tag.Description}"/>
                <!-- Text="{Binding Tag.Description}" -->
     </Grid>
 
