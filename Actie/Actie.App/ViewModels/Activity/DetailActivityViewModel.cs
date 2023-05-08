@@ -12,6 +12,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Actie.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
+[QueryProperty(nameof(UserId), nameof(UserId))]
 public partial class DetailActivityViewModel: ViewModelBase
 {
     private readonly ITagFacade _tagFacade;
@@ -25,7 +26,7 @@ public partial class DetailActivityViewModel: ViewModelBase
     private IList<TagListModel> tags;
 
     public Guid Id { get; set; }
-
+    public Guid UserId { get; set; }
 
     public DetailActivityViewModel(
         ITagFacade tagFacade,
@@ -63,6 +64,6 @@ public partial class DetailActivityViewModel: ViewModelBase
     [RelayCommand]
     private async Task GoToEditAsync()
     {
-        await _navigationService.GoToAsync("/edit_activity", new Dictionary<string, object> { [nameof(Id)] = Id });
+        await _navigationService.GoToAsync("/edit_activity", new Dictionary<string, object> { [nameof(Id)] = Id, [nameof(UserId)] = UserId });
     }
 }

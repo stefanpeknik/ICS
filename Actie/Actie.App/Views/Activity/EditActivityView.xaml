@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
              xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
              x:DataType="vm:EditActivityViewModel"
-             x:Class="Actie.App.Views.Activity.EditActivityView">
+             x:Class="Actie.App.Views.Activity.EditActivityView"
+             x:Name="EditActivityViewRoot">
 
-    <Grid RowDefinitions="100, Auto, Auto, *">
+    <Grid RowDefinitions="100, Auto, Auto, Auto, *">
         <Label Grid.Row="0"
                Text="Edit Acitivty"
                VerticalOptions="Center"
@@ -36,20 +38,65 @@
 
         </Grid>
 
-        <Picker
+        <!--<Picker Grid.Row="2"
             WidthRequest="200"
             HorizontalOptions="Start"
             ItemsSource="{Binding MyProjects}"
             ItemDisplayBinding="{Binding Name}"
             SelectedItem="{Binding SelectedProject}">
-        </Picker>
+        </Picker>-->
 
-        <Button Grid.Row="3"
+        <VerticalStackLayout Grid.Row="3">
+            <HorizontalStackLayout>
+                <Picker
+                        ItemsSource="{Binding MyProjects}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedProject}">
+                </Picker>
+                <Picker
+                        ItemsSource="{Binding Tags}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedTag}"></Picker>
+                <Button Text="Add Tag"
+                            Command="{Binding AddTagCommand}"></Button>
+
+            </HorizontalStackLayout>
+            <ScrollView>
+                <CollectionView ItemsSource="{Binding SelectedTags}"
+                                    VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                             HorizontalItemSpacing="10" VerticalItemSpacing="10"
+                                             Span="2" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="m:TagListModel">
+                            <Frame Padding="0"
+                                       CornerRadius="10"
+                                       WidthRequest="200" HeightRequest="200"
+                                       IsClippedToBounds="True">
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Name}"></Label>
+                                    <Button Text="X"
+                                            BackgroundColor="DarkRed"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:EditActivityViewModel}}, Path=RemoveTagCommand}"
+                                            CommandParameter="{Binding Id}" />
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </VerticalStackLayout>
+
+        <Button Grid.Row="4"
                 Text="Save Changes"
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="150"
-                Margin="0,0,25,0"/>
+                Margin="0,0,25,0"
+                Command="{Binding SaveCommand}"/>
 
     </Grid>
 
