@@ -9,10 +9,11 @@ using Actie.App.Services;
 using Actie.BL.Facades;
 using Actie.BL.Models;
 using Actie.BL.Facades.Interfaces;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Actie.App.ViewModels;
 
-[QueryProperty(nameof(User), nameof(User))]
+
 public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessage>
 {
     private readonly IUserFacade _userFacade;
@@ -20,7 +21,9 @@ public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessag
     private readonly IAlertService _alertService;
 
     public Guid Id { get; set; }
-    public UserDetailModel User { get; set; } = UserDetailModel.Empty;
+
+    [ObservableProperty]
+    public UserDetailModel user = UserDetailModel.Empty;
 
 
     public AddUserViewModel(

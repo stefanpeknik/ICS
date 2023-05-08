@@ -4,10 +4,11 @@ using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace Actie.App.ViewModels;
 
-public partial class LogInViewModel : ViewModelBase
+public partial class LogInViewModel : ViewModelBase, IRecipient<UserEditMessage>
 {
     private readonly IUserFacade _userFacade;
     private readonly INavigationService _navigationService;
