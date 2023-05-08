@@ -50,7 +50,8 @@
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter your age"
                            WidthRequest="150"
-                           Text="{Binding User.Age}"/>
+                           Text="{Binding User.Age}"
+                           Keyboard="Numeric"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Gender"
@@ -64,14 +65,16 @@
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter your height"
                            WidthRequest="150"
-                           Text="{Binding User.Height}"/>
+                           Text="{Binding User.Height}"
+                           Keyboard="Numeric"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Weight"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter your weight"
                            WidthRequest="150"
-                           Text="{Binding User.Weight}"/>
+                           Text="{Binding User.Weight}"
+                           Keyboard="Numeric"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 

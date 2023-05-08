@@ -73,7 +73,8 @@
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter activity rating"
                            WidthRequest="150"
-                           Text="{Binding ActivityModel.Rating}"/>
+                           Text="{Binding ActivityModel.Rating}"
+                           Keyboard="Numeric"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 

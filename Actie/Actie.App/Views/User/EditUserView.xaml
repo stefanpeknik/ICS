@@ -58,7 +58,8 @@
                     <Label Text="Age"
                            VerticalOptions="Center"/>
                     <Entry Text="{Binding User.Age}"
-                           WidthRequest="150"/>
+                           WidthRequest="150"
+                           Keyboard="Numeric"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Gender"
@@ -70,13 +71,15 @@
                     <Label Text="Height"
                            VerticalOptions="Center"/>
                     <Entry Text="{Binding User.Height}"
-                           WidthRequest="150"/>
+                           WidthRequest="150"
+                           Keyboard="Numeric"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Weight"
                            VerticalOptions="Center"/>
                     <Entry Text="{Binding User.Weight}"
-                           WidthRequest="150"/>
+                           WidthRequest="150"
+                           Keyboard="Numeric"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 
