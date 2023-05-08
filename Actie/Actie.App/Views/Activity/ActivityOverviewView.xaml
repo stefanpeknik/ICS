@@ -25,38 +25,55 @@
                   HeightRequest="100"
                   VerticalOptions="End"/>
 
-        <HorizontalStackLayout Grid.Row="1">
-            <Label  Text="From: "
-                    Margin="25,0,0,0"
-                    VerticalOptions="Center"
-                    FontSize="24"/>
-            <DatePicker Margin="10,0"
-                        Date="{Binding FromDate}">
-            </DatePicker>
-            <TimePicker Margin="0,12,0,0"
-                        Time="{Binding FromTime}">
-            </TimePicker>
+            <Grid Grid.Row="1"
+                  ColumnDefinitions="*, auto">
 
-            <Label Text="To: "
-                   VerticalOptions="Center"
-                   FontSize="24"/>
-            <DatePicker Margin="10,0"
-                        Date="{Binding ToDate}">
-            </DatePicker>
-            <TimePicker Margin="0,12,0,0"
-                        Time="{Binding ToTime}">
-            </TimePicker>
+                <HorizontalStackLayout Grid.Column="0">
+                    <Label  Text="From: "
+                            Margin="25,0,0,0"
+                            VerticalOptions="Center"
+                            FontSize="24"/>
+                    <DatePicker Margin="10,0"
+                                Date="{Binding FromDate}">
+                    </DatePicker>
+                    <TimePicker Margin="0,12,0,0"
+                                Time="{Binding FromTime}">
+                    </TimePicker>
 
-            <Picker Title="Filter:"
-                    ItemsSource="{Binding PickerItems}"
-                    ItemDisplayBinding="{Binding Range}"
-                    SelectedItem="{Binding SelectedPicker}">
-            </Picker>
+                    <Label Text="To: "
+                           Margin="10,0,0,0"
+                           VerticalOptions="Center"
+                           FontSize="24"/>
+                    <DatePicker Margin="10,0"
+                                Date="{Binding ToDate}">
+                    </DatePicker>
+                    <TimePicker Margin="0,12,0,0"
+                                Time="{Binding ToTime}">
+                    </TimePicker>
 
-        </HorizontalStackLayout>
+                    
+
+                </HorizontalStackLayout>
+
+            <HorizontalStackLayout Grid.Column="1">
+                <Label Text="Fast filter"
+                       VerticalOptions="Center"
+                       FontSize="24"></Label>
+
+                <Picker HeightRequest="50"
+                        WidthRequest="175"
+                        Margin="15,0"
+                        HorizontalOptions="End"
+                        ItemsSource="{Binding PickerItems}"
+                        ItemDisplayBinding="{Binding Range}"
+                        SelectedItem="{Binding SelectedPicker}">
+                </Picker>
+                </HorizontalStackLayout>
+
+        </Grid>
 
 
-            <Line Grid.Row="1"
+        <Line Grid.Row="1"
                   BackgroundColor="White"
                   HeightRequest="100"
                   VerticalOptions="End"/>
