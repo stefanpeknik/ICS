@@ -48,7 +48,10 @@
             <TimePicker Margin="0,12,0,0"
                         Time="{Binding ToTime}">
             </TimePicker>
-
+            <Picker>
+                <Picker.Items>
+                    <x:String>Week</x:String>
+                    <x:String>Month</x:String>
                     <x:String>Year</x:String>
                 </Picker.Items>
             </Picker>
