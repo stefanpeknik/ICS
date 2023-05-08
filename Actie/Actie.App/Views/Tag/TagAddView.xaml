@@ -6,7 +6,7 @@
              x:Class="Actie.App.Views.Tag.TagAddView"
             x:DataType="viewModels:TagAddViewModel">
 
-    <Grid RowDefinitions="100, Auto, Auto">
+    <Grid RowDefinitions="100, Auto, *">
         <Label Grid.Row="0"
                Text="Add Tag"
                VerticalOptions="Center"
@@ -41,9 +41,10 @@
                 x:Name="SaveButton"
                 Text="Save Tag"
                 HorizontalOptions="End"
+                VerticalOptions="End"
                 HeightRequest="50"
                 WidthRequest="100"
-                Margin="0,25,25,0"
+                Margin="0,25,25,25"
                 IsEnabled="{Binding CanSave, Mode=TwoWay}"
                 Command="{Binding SaveCommand}"
                 />

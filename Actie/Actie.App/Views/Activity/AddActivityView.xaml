@@ -9,7 +9,7 @@
              x:Class="Actie.App.Views.Activity.AddActivityView">
 
 
-    <Grid RowDefinitions="100, Auto, Auto">
+    <Grid RowDefinitions="100, Auto, *">
         <Label Grid.Row="0"
                Text="Add Activity"
                VerticalOptions="Center"
@@ -104,9 +104,10 @@
                 Grid.Row="2"
                 Text="Save Activity"
                 HorizontalOptions="End"
+                VerticalOptions="End"
                 HeightRequest="50"
                 WidthRequest="150"
-                Margin="0,0,25,0"
+                Margin="0,0,25,25"
                 IsEnabled="{Binding CanSave, Mode=TwoWay}"
                 Command="{Binding SaveCommand}"/>
 

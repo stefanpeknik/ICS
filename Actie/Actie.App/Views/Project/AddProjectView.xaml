@@ -7,7 +7,7 @@
              x:DataType="vm:AddProjectViewModel">
 
 
-    <Grid RowDefinitions="100, Auto, Auto">
+    <Grid RowDefinitions="100, Auto, *">
         <Label Grid.Row="0"
                Text="Add Project"
                VerticalOptions="Center"
@@ -41,9 +41,10 @@
         <Button Grid.Row="2"
                 Text="Save Project"
                 HorizontalOptions="End"
+                VerticalOptions="End"
                 HeightRequest="50"
                 WidthRequest="150"
-                Margin="0,0,50,50"
+                Margin="0,0,25,25"
                 Command="{Binding SaveCommand}"/>
 
     </Grid>

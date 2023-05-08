@@ -41,9 +41,10 @@
         <Button Grid.Row="2"
                 Text="Save Changes"
                 HorizontalOptions="End"
+                VerticalOptions="End"
                 HeightRequest="50"
                 WidthRequest="150"
-                Margin="0,0,25,0"
+                Margin="0,0,25,25"
         Command="{Binding SaveCommand}"/>
     </Grid>
 
