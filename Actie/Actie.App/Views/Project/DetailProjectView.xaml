@@ -8,7 +8,7 @@
              x:DataType="vm:DetailProjectViewModel"
              x:Name="DetailProjectViewRoot">
 
-    <Grid RowDefinitions="Auto, Auto, *">
+    <Grid RowDefinitions="Auto, Auto, 200, *">
         <Label Grid.Row="0"
                Margin="30"
                FontSize="46"
@@ -23,7 +23,54 @@
                LineBreakMode="WordWrap"
                Text="{Binding Project.Description}"/>
 
-        <Button Grid.Row="2"
+        <ScrollView Grid.Row="2">
+
+            <CollectionView ItemsSource="{Binding Project.Activities}"
+                                VerticalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                             HorizontalItemSpacing="10" VerticalItemSpacing="10"
+                                             Span="2" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:ActivityListModel">
+                        <Frame Padding="0"
+                                       CornerRadius="10"
+                                       WidthRequest="320" HeightRequest="160"
+                                       IsClippedToBounds="True">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.GoToDetailCommand}"
+                                                              CommandParameter="{Binding Id}" />
+                                <!-- what this ^^ -->
+                            </Frame.GestureRecognizers>
+
+                            <Grid>
+                                <VerticalStackLayout>
+                                    <Label
+                                           Margin="22,12"
+                                           FontSize="20" LineBreakMode="WordWrap"
+                                           Text="{Binding Name}"
+                                           TextColor="White" VerticalOptions="End" />
+                                    <Label
+                                           Margin="22,12"
+                                           FontSize="20" LineBreakMode="WordWrap"
+                                           Text="{Binding Start}"
+                                           TextColor="White" VerticalOptions="End" />
+                                    <Label
+                                           Margin="22,12"
+                                           FontSize="20" LineBreakMode="WordWrap"
+                                           Text="{Binding End}"
+                                           TextColor="White" VerticalOptions="End" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <Button Grid.Row="3"
                 VerticalOptions="End"
                 HorizontalOptions="End"
                 Text="Edit Project"
@@ -31,17 +78,37 @@
                 WidthRequest="150"
                 FontSize="22"
                 Margin="0,0,50,50"/>
-        <Button Grid.Row="2"
+        <Button Grid.Row="3"
                 VerticalOptions="End"
-                HorizontalOptions="Start"
-                BackgroundColor="Red"
-                TextColor="White"
-                Text="Delete Project"
-                Command="{Binding DeleteCommand}"
+                HorizontalOptions="Center"
+                Text="Join Project"
+                HeightRequest="75"
+                WidthRequest="150"
+                FontSize="22"
+                Margin="0,0,50,50"
+                IsVisible="{Binding SeeJoin}"
+                Command="{Binding JoinProjectCommand}"/>
+        <Button Grid.Row="3"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Text="Leave Project"
                 HeightRequest="75"
                 WidthRequest="200"
                 FontSize="22"
-                Margin="50,0,0,50"/>
+                Margin="0,0,50,50"
+                IsVisible="{Binding SeeLeave}"
+                Command="{Binding LeaveProjectCommand}"/>
+        <Button Grid.Row="3"
+            VerticalOptions="End"
+            HorizontalOptions="Start"
+            BackgroundColor="Red"
+            TextColor="White"
+            Text="Delete Project"
+            Command="{Binding DeleteCommand}"
+            HeightRequest="75"
+            WidthRequest="200"
+            FontSize="22"
+            Margin="50,0,0,50"/>
     </Grid>
 
 
