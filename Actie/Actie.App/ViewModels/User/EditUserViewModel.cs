@@ -17,12 +17,12 @@ public partial class EditUserViewModel : ViewModelBase, IRecipient<UserEditMessa
     [ObservableProperty]
     public UserDetailModel user = UserDetailModel.Empty;
     public EditUserViewModel(
-        IUserFacade ingredientFacade,
+        IUserFacade userFacade,
         INavigationService navigationService,
         IMessengerService messengerService)
         : base(messengerService)
     {
-        _userFacade = ingredientFacade;
+        _userFacade = userFacade;
         _navigationService = navigationService;
     }
 
