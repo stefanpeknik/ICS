@@ -3,6 +3,7 @@ using Actie.BL.Mappers.Interfaces;
 using Actie.BL.Models;
 using Actie.DAL.Entities;
 using Actie.DAL.Mappers;
+using Actie.DAL.Repositories;
 using Actie.DAL.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,8 @@ namespace Actie.BL.Facades;
 
 class TagFacade : FacadeBase<TagEntity, TagListModel, TagDetailModel, TagEntityMapper>, ITagFacade
 {
+    private readonly IActivityTagModelMapper _activityTagModelMapper;
+
     public TagFacade(
         IUnitOfWorkFactory unitOfWorkFactory,
         ITagModelMapper modelMapper
@@ -22,28 +25,18 @@ class TagFacade : FacadeBase<TagEntity, TagListModel, TagDetailModel, TagEntityM
         $"{nameof(TagEntity.Activities)}.{nameof(ActivityTagEntity.Activity)}.{nameof(ActivityEntity.User)}"
     };
 
-    public async Task<IEnumerable<TagListModel>> GetByUserIdAsync(Guid userId)
+    
+    public async Task SaveAsync(TagDetailModel tag, Guid userId)
     {
+        tag.Id = Guid.NewGuid();
+        TagEntity tagEntity = ModelMapper.MapToEntity(tag);
+
         await using IUnitOfWork uow = UnitOfWorkFactory.Create();
 
-        IQueryable<TagEntity> query = uow.GetRepository<TagEntity, TagEntityMapper>().Get();
 
-        if (IncludesNavigationPathDetails.Any())
-        {
-            foreach (string includesNavigationPathDetail in IncludesNavigationPathDetails)
-            {
-                query = string.IsNullOrWhiteSpace(includesNavigationPathDetail)
-                    ? query
-                    : query.Include(includesNavigationPathDetail);
-            }
-        }
+        IRepository<TagEntity> tagRepository = uow.GetRepository<TagEntity, TagEntityMapper>();
+        await tagRepository.InsertAsync(tagEntity);
 
-        query = query.Where(tag => tag.Activities.Any(at => at.Activity != null
-                                                            && at.Activity.UserId != null
-                                                            && at.Activity.UserId == userId));
-
-        List<TagEntity> entities = await query.ToListAsync();
-
-        return ModelMapper.MapToListModel(entities);
+        await uow.CommitAsync();
     }
 }

@@ -4,5 +4,5 @@ using Actie.DAL.Entities;
 namespace Actie.BL.Facades.Interfaces;
 public interface ITagFacade : IFacade<TagEntity, TagListModel, TagDetailModel>
 {
-    Task<IEnumerable<TagListModel>> GetByUserIdAsync(Guid userId);
+    public Task SaveAsync(TagDetailModel tag, Guid userId);
 }
