@@ -17,15 +17,6 @@
                HorizontalOptions="Center"
                FontSize="46"/>
 
-        <Button Grid.Row="0"
-                Text="Delete Project"
-                BackgroundColor="Red"
-                HorizontalOptions="End"
-                HeightRequest="50"
-                WidthRequest="150"
-                Command="{Binding DeleteCommand}"
-                Margin="0,0,25,0"/>
-
         <Line BackgroundColor="White"
               VerticalOptions="End" />
 

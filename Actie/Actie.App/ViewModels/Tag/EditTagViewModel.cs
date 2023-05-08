@@ -12,7 +12,7 @@ using CommunityToolkit.Mvvm.Messaging;
 
 namespace Actie.App.ViewModels;
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class EditTagViewModel : ViewModelBase, IRecipient<UserEditMessage>
+public partial class EditTagViewModel : ViewModelBase
 {
     private readonly ITagFacade _tagFacade;
     private readonly INavigationService _navigationService;
@@ -38,24 +38,6 @@ public partial class EditTagViewModel : ViewModelBase, IRecipient<UserEditMessag
         MessengerService.Send(new TagEditMessage(){ TagId = Tag.Id });
 
         _navigationService.SendBackButtonPressed();
-    }
-
-    [RelayCommand]
-    private async Task DeleteAsync()
-    {
-        if (Tag is not null)
-        {
-            await _tagFacade.DeleteAsync(Id);
-
-            _navigationService.SendBackButtonPressed();
-
-        }
-    }
-
-    public async void Receive(UserEditMessage message)
-    {
-        await base.LoadDataAsync();
-        Tag = await _tagFacade.GetAsync(Id);
     }
 
     protected override async Task LoadDataAsync()
