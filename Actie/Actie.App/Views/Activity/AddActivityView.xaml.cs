@@ -8,5 +8,7 @@ public partial class AddActivityView
     : base(viewModel)
 	{
 		InitializeComponent();
+
+        SaveButton.IsEnabled = false;
 	}
 }
