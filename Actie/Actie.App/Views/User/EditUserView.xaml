@@ -24,6 +24,7 @@
                 HeightRequest="50"
                 WidthRequest="150"
                 BackgroundColor="Red"
+                TextColor="White"
                 Command="{Binding DeleteCommand}"
                 Margin="0,0,25,0"/>
 
