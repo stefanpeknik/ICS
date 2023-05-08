@@ -84,7 +84,8 @@
                 HeightRequest="75"
                 WidthRequest="200"
                 FontSize="22"
-                Margin="50,0,0,50"/>
+                Margin="50,0,0,50"
+                Command="{Binding DeleteCommand}"/>
     </Grid>
 
 
