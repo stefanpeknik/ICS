@@ -37,7 +37,7 @@
             </VerticalStackLayout>
 
         </Grid>
-        <Button Grid.Row="2"
+        <Button Grid.Row="0"
                 x:Name="SaveButton"
                 Text="Save Tag"
                 HorizontalOptions="End"
