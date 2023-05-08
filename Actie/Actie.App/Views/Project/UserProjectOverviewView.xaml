@@ -41,7 +41,7 @@
                            BorderColor="White"
                            WidthRequest="320" HeightRequest="100">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProjectOverviewViewModel}}, Path=GoToProjectDetailCommand}"
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:UserProjectOverviewViewModel}}, Path=GoToProjectDetailCommand}"
                                                   CommandParameter="{Binding Id}" />
                         </Frame.GestureRecognizers>
                         <ScrollView>
