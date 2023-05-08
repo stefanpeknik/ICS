@@ -30,8 +30,8 @@ public class NavigationService : INavigationService
         new("//users/home/all_projects/detail/edit_project", typeof(EditProjectView), typeof(EditProjectViewModel)), 
 
         new("//users/home/my_projects/add_project", typeof(AddProjectView), typeof(AddProjectViewModel)),
-        new("//users/home/my_projects/detail_project", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO detail
-        new("//users/home/my_projects/detail/edit_project", typeof(AddProjectView), typeof(AddProjectViewModel)), //TODO edit
+        new("//users/home/my_projects/detail_project", typeof(DetailProjectView), typeof(DetailProjectViewModel)), 
+        new("//users/home/my_projects/detail/edit_project", typeof(EditProjectView), typeof(EditProjectViewModel)), 
 
         new("//users/home/activities/add_activity", typeof(AddActivityView), typeof(AddActivityViewModel)), 
         new("//users/home/activities/detail_activity", typeof(DetailActivityView), typeof(DetailActivityViewModel)), 
