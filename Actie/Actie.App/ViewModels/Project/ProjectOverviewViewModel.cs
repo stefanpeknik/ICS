@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Actie.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class ProjectOverviewViewModel : ViewModelBase, IRecipient<ProjectEditMessage>
+public partial class ProjectOverviewViewModel : ViewModelBase, IRecipient<ProjectEditMessage>, IRecipient<ProjectDeleteMessage>
 {
     private readonly IProjectFacade _projectFacade;
     private readonly INavigationService _navigationService;
@@ -38,7 +38,7 @@ public partial class ProjectOverviewViewModel : ViewModelBase, IRecipient<Projec
     [RelayCommand]
     private async Task GoToProjectDetailAsync(Guid id)
     {
-        await _navigationService.GoToAsync<DetailProjectViewModel>(
+        await _navigationService.GoToAsync("/detail_project",
             new Dictionary<string, object?> { [nameof(Id)] = id });
     }
 
@@ -50,6 +50,11 @@ public partial class ProjectOverviewViewModel : ViewModelBase, IRecipient<Projec
     }
 
     public async void Receive(ProjectEditMessage message)
+    {
+        await LoadDataAsync();
+    }
+
+    public async void Receive(ProjectDeleteMessage message)
     {
         await LoadDataAsync();
     }

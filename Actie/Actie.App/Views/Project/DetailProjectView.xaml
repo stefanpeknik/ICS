@@ -37,8 +37,9 @@
                 BackgroundColor="Red"
                 TextColor="White"
                 Text="Delete Project"
+                Command="{Binding DeleteCommand}"
                 HeightRequest="75"
-                WidthRequest="150"
+                WidthRequest="200"
                 FontSize="22"
                 Margin="50,0,0,50"/>
     </Grid>
