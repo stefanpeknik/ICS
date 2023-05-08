@@ -14,6 +14,8 @@ namespace Actie.App.ViewModels;
 public partial class UserProjectOverviewViewModel : ViewModelBase
 {
     private readonly IProjectFacade _projectFacade;
+    private readonly INavigationService _navigationService;
+
 
     // User Id
     public Guid Id { get; set; }
@@ -22,9 +24,18 @@ public partial class UserProjectOverviewViewModel : ViewModelBase
     private IEnumerable<ProjectListModel> projects = Array.Empty<ProjectListModel>();
 
 
-    public UserProjectOverviewViewModel(IProjectFacade projectFacade, IMessengerService messengerService) : base(messengerService)
+    public UserProjectOverviewViewModel(IProjectFacade projectFacade, INavigationService navigationService, IMessengerService messengerService) : base(messengerService)
     {
         _projectFacade = projectFacade;
+        _navigationService = navigationService;
+
+    }
+
+    [RelayCommand]
+    private async Task GoToAddProjectAsync()
+    {
+        await _navigationService.GoToAsync<AddProjectViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = Id });
     }
 
     protected override async Task LoadDataAsync()
