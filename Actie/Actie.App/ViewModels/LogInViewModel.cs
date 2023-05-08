@@ -8,7 +8,7 @@ using CommunityToolkit.Mvvm.Messaging;
 
 namespace Actie.App.ViewModels;
 
-public partial class LogInViewModel : ViewModelBase, IRecipient<UserEditMessage>
+public partial class LogInViewModel : ViewModelBase, IRecipient<UserEditMessage>, IRecipient<UserDeleteMessage>
 {
     private readonly IUserFacade _userFacade;
     private readonly INavigationService _navigationService;

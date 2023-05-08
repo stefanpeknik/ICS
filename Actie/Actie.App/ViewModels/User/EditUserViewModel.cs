@@ -40,10 +40,24 @@ public partial class EditUserViewModel : ViewModelBase, IRecipient<UserEditMessa
         await ReloadDataAsync();
     }
 
+    [RelayCommand]
+    private async Task DeleteAsync()
+    {
+        if (User is not null)
+        {
+            await _userFacade.DeleteAsync(User.Id);
+
+            MessengerService.Send(new UserDeleteMessage());
+
+            await _navigationService.GoToAsync("//users");
+            
+        }
+    }
     public async void Receive(UserDeleteMessage message)
     {
         await ReloadDataAsync();
     }
+    
     private async Task ReloadDataAsync()
     {
         User = await _userFacade.GetAsync(User.Id)
