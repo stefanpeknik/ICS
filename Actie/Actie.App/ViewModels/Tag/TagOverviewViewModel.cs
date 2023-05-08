@@ -10,7 +10,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Actie.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class TagOverviewViewModel : ViewModelBase, IRecipient<TagEditMessage>
+public partial class TagOverviewViewModel : ViewModelBase, IRecipient<TagEditMessage>, IRecipient<TagDeleteMessage>
 {
     private readonly ITagFacade _tagFacade;
     private readonly INavigationService _navigationService;
@@ -49,6 +49,11 @@ public partial class TagOverviewViewModel : ViewModelBase, IRecipient<TagEditMes
     }
 
     public async void Receive(TagEditMessage message)
+    {
+        await LoadDataAsync();
+    }
+
+    public async void Receive(TagDeleteMessage message)
     {
         await LoadDataAsync();
     }

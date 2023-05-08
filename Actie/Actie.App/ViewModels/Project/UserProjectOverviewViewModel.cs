@@ -41,7 +41,7 @@ public partial class UserProjectOverviewViewModel : ViewModelBase, IRecipient<Pr
     [RelayCommand]
     private async Task GoToProjectDetailAsync(Guid id)
     {
-        await _navigationService.GoToAsync<DetailProjectViewModel>(
+        await _navigationService.GoToAsync("/detail_project",
             new Dictionary<string, object?> { [nameof(Id)] = id });
     }
 
