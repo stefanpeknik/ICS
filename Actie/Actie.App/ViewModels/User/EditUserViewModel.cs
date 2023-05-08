@@ -3,6 +3,7 @@ using Actie.App.Messages;
 using Actie.App.Services;
 using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 
@@ -12,7 +13,9 @@ public partial class EditUserViewModel : ViewModelBase, IRecipient<UserEditMessa
 {
     private readonly IUserFacade _userFacade;
     private readonly INavigationService _navigationService;
-    public UserDetailModel User { get; set; } = UserDetailModel.Empty;
+
+    [ObservableProperty]
+    public UserDetailModel user = UserDetailModel.Empty;
     public EditUserViewModel(
         IUserFacade ingredientFacade,
         INavigationService navigationService,
