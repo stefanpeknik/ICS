@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Messages;
 using Actie.App.Services;
@@ -26,7 +25,12 @@ public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditM
         _userFacade = userFacade;
         _navigationService = navigationService;
     }
+    protected override async Task LoadDataAsync()
+    {
+        await base.LoadDataAsync();
 
+        User = (await _userFacade.GetAsync(Id))!;
+    }
     [RelayCommand]
     private async Task GoToAllProjectsAsync()
     {
@@ -58,19 +62,17 @@ public partial class UserOverviewViewModel : ViewModelBase, IRecipient<UserEditM
     [RelayCommand]
     private async Task GoToSettingsAsync()
     {
-        await _navigationService.GoToAsync("/edit_user");
+        await _navigationService.GoToAsync("/edit_user", new Dictionary<string, object?> { [nameof(EditUserViewModel.User)] = User });
     }
 
-    protected override async Task LoadDataAsync()
-    {
-        await base.LoadDataAsync();
-
-        User = (await _userFacade.GetAsync(Id))!;
-    }
+    
 
     public async void Receive(UserEditMessage message)
     {
-        await LoadDataAsync();
+        if (message.UserId == User?.Id)
+        {
+            await LoadDataAsync();
+        }
     }
 
     public async void Receive(UserDeleteMessage message)

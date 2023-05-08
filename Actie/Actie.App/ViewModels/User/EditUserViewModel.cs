@@ -1,18 +1,49 @@
-﻿// Copyright (c) .NET Foundation and contributors. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-//
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Actie.App.Messages;
 using Actie.App.Services;
+using Actie.BL.Facades.Interfaces;
+using Actie.BL.Models;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace Actie.App.ViewModels;
-public partial class EditUserViewModel : ViewModelBase
+[QueryProperty(nameof(User), nameof(User))]
+public partial class EditUserViewModel : ViewModelBase, IRecipient<UserEditMessage>, IRecipient<UserDeleteMessage>
 {
-    public EditUserViewModel(IMessengerService messengerService) : base(messengerService)
+    private readonly IUserFacade _userFacade;
+    private readonly INavigationService _navigationService;
+    public UserDetailModel User { get; set; } = UserDetailModel.Empty;
+    public EditUserViewModel(
+        IUserFacade ingredientFacade,
+        INavigationService navigationService,
+        IMessengerService messengerService)
+        : base(messengerService)
     {
+        _userFacade = ingredientFacade;
+        _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task SaveAsync()
+    {
+        await _userFacade.SaveAsync(User);
+
+        MessengerService.Send(new UserEditMessage { UserId = User.Id });
+
+        _navigationService.SendBackButtonPressed();
+    }
+    public async void Receive(UserEditMessage message)
+    {
+        await ReloadDataAsync();
+    }
+
+    public async void Receive(UserDeleteMessage message)
+    {
+        await ReloadDataAsync();
+    }
+    private async Task ReloadDataAsync()
+    {
+        User = await _userFacade.GetAsync(User.Id)
+                 ?? UserDetailModel.Empty;
     }
 }
