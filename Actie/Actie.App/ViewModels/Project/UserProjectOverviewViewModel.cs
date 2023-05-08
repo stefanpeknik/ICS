@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Actie.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class UserProjectOverviewViewModel : ViewModelBase, IRecipient<ProjectEditMessage>, IRecipient<ProjectDeleteMessage>
+public partial class UserProjectOverviewViewModel : ViewModelBase, IRecipient<ProjectEditMessage>, IRecipient<ProjectDeleteMessage>, IRecipient<ActivityDeleteMessage>
 {
     private readonly IProjectFacade _projectFacade;
     private readonly INavigationService _navigationService;
@@ -58,6 +58,11 @@ public partial class UserProjectOverviewViewModel : ViewModelBase, IRecipient<Pr
     }
 
     public async void Receive(ProjectDeleteMessage message)
+    {
+        await LoadDataAsync();
+    }
+
+    public async void Receive(ActivityDeleteMessage message)
     {
         await LoadDataAsync();
     }

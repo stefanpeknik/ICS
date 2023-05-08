@@ -11,23 +11,61 @@
 
 
     <Grid RowDefinitions="Auto, Auto, *">
-        <Grid Grid.Row="0"
-              ColumnDefinitions="auto, *, auto">
-            <Label Grid.Column="0"
-                   Margin="30"
-                   FontSize="46"
-                   Text="{Binding Activity.Name}"
+        <VerticalStackLayout Grid.Row="0"
+                             Margin="30">
+            <HorizontalStackLayout>
+                <Label FontSize="46"
+                       Text="{Binding Activity.Name}"
+                       LineBreakMode="WordWrap"
+                       MaximumHeightRequest="400"/>
+                <Label FontSize="16"
+                       Margin="10,7,0,0"
+                       LineBreakMode="WordWrap"
+                       Text="Rating"/>
+                <Label FontSize="20"
+                       Margin="2,2,0,0"
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Activity.Rating}"/>
+            </HorizontalStackLayout>
+            <Label FontSize="24"
                    LineBreakMode="WordWrap"
-                   MaximumHeightRequest="400"/>
+                   TextColor="Grey"
+                   Text="{Binding Activity.Type}"/>
+        </VerticalStackLayout>
 
+        <Grid Grid.Row="1"
+              RowDefinitions="Auto, Auto, Auto">
+
+            <HorizontalStackLayout Grid.Row="0">
+                <Label Text="Activity start:"
+                       FontSize="24"
+                       Margin="35,0,0,0"
+                       LineBreakMode="WordWrap"
+                       WidthRequest="150"/>
+                <Label FontSize="24"
+                       Margin="10,0"
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Activity.Start}"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Row="1">
+                <Label Text="Activity end:"
+                       FontSize="24"
+                       Margin="35,0,0,0"
+                       LineBreakMode="WordWrap"
+                       WidthRequest="150"/>
+                <Label FontSize="24"
+                       Margin="10,0"
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Activity.End}"/>
+            </HorizontalStackLayout>
+            
+            <Label Grid.Row="2"
+                   FontSize="24"
+                   Margin="35"
+                   LineBreakMode="WordWrap"
+                   Text="{Binding Activity.Description}"/>
 
         </Grid>
-
-        <Label Grid.Row="1"
-               FontSize="24"
-               Margin="35,0"
-               LineBreakMode="WordWrap"
-               Text="{Binding Activity.Description}"/>
 
         <Button Grid.Row="2"
                 VerticalOptions="End"
@@ -47,7 +85,8 @@
                 HeightRequest="75"
                 WidthRequest="200"
                 FontSize="22"
-                Margin="50,0,0,50"/>
+                Margin="50,0,0,50"
+                Command="{Binding DeleteCommand}"/>
     </Grid>
 
 
