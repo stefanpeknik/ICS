@@ -10,7 +10,7 @@
 
     <Grid RowDefinitions="100, Auto, *">
         <Label Grid.Row="0"
-               Text="User Edit"
+               Text="Edit User"
                VerticalOptions="Center"
                HorizontalOptions="Center"
                FontSize="46"/>
@@ -26,46 +26,46 @@
                                  Margin="10">
                 <Label Text="Name"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="Enter your name" />
+                <Entry Text="{Binding User.Name}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
                                  Margin="10">
                 <Label Text="Surname"
                            VerticalOptions="Center"/>
-                <Entry Placeholder="Enter your surname" />
+                <Entry Text="{Binding User.Surname}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="2"
                                  Margin="10">
                 <Label Text="Picture"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="Enter picture url" />
+                <Entry Text="{Binding User.Photo}" />
             </VerticalStackLayout>
             <HorizontalStackLayout Grid.Row="3"
                                    Margin="10">
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Age"
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your age"
+                    <Entry Text="{Binding User.Age}"
                            WidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Gender"
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your gender"
+                    <Entry Text="{Binding User.Gender}"
                            WidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Height"
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your height"
+                    <Entry Text="{Binding User.Height}"
                            WidthRequest="150"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Weight"
                            VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your weight"
+                    <Entry Text="{Binding User.Weight}"
                            WidthRequest="150"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
