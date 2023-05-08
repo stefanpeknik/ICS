@@ -91,13 +91,13 @@ public partial class DetailProjectViewModel : ViewModelBase, IRecipient<ProjectE
     private async Task GoToEditProjectAsync()
     {
         await _navigationService.GoToAsync<EditProjectViewModel>(
-            new Dictionary<string, object?> { [nameof(EditProjectViewModel.Id)] = Project.Id });
+            new Dictionary<string, object?> { [nameof(EditProjectViewModel.Id)] = Project.Id , ["UserId"] = UserId });
     }
 
     public async void Receive(ProjectEditMessage message)
     {
         await LoadDataAsync();
-        //OnPropertyChanged(nameof(SeeJoin));
+        OnPropertyChanged(nameof(SeeJoin));
     }
 }
 
