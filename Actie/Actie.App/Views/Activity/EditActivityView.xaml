@@ -34,24 +34,24 @@
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Start date"
                            VerticalOptions="Center"/>
-                    <DatePicker Date="{Binding Activity.Start}"/>
+                    <DatePicker Date="{Binding StartDate}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Start time"
                            VerticalOptions="Center"/>
                     <TimePicker Margin="0,7,0,0"
-                                Time="{Binding Activity.Start}"/>
+                                Time="{Binding StartTime}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="End date"
                            VerticalOptions="Center"/>
-                    <DatePicker Date="{Binding Activity.End}" />
+                    <DatePicker Date="{Binding EndDate}" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="End time"
                            VerticalOptions="Center"/>
                     <TimePicker Margin="0,7,0,0"
-                                Time="{Binding Activity.End}"/>
+                                Time="{Binding EndTime}"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 
