@@ -42,7 +42,7 @@ public partial class UserProjectOverviewViewModel : ViewModelBase, IRecipient<Pr
     private async Task GoToProjectDetailAsync(Guid id)
     {
         await _navigationService.GoToAsync("/detail_project",
-            new Dictionary<string, object?> { [nameof(Id)] = id });
+            new Dictionary<string, object?> { [nameof(Id)] = id , ["UserId"] = Id});
     }
 
     protected override async Task LoadDataAsync()
