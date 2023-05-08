@@ -80,6 +80,13 @@ public partial class DetailProjectViewModel : ViewModelBase, IRecipient<ProjectE
         MessengerService.Send(new ProjectEditMessage{ProjectId = Project.Id});
     }
 
+    [RelayCommand]
+    private async Task GoToActivityDetailAsync(Guid id)
+    {
+        await _navigationService.GoToAsync<DetailActivityViewModel>(
+            new Dictionary<string, object?> { [nameof(Id)] = id });
+    }
+
     public async void Receive(ProjectEditMessage message)
     {
         await LoadDataAsync();
