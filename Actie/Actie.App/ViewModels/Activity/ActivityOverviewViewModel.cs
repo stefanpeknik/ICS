@@ -1,4 +1,5 @@
 ﻿
+using System.Runtime.InteropServices.JavaScript;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Messages;
@@ -12,6 +13,17 @@ namespace Actie.App.ViewModels;
 [QueryProperty(nameof(Id), nameof(Id))]
 public partial class ActivityOverviewViewModel : ViewModelBase
 {
+    public class DateRangePicker
+    {
+        public string Range { get; set; }
+        public DateTime ToDate
+        {
+            get => DateTime.Today;
+        }
+
+        public DateTime FromDate { get; set; }
+    }
+
     private readonly IActivityFacade _activityFacade;
     private readonly INavigationService _navigationService;
 
@@ -81,16 +93,44 @@ public partial class ActivityOverviewViewModel : ViewModelBase
         }
     }
 
-    
+    [ObservableProperty]
+    public static IList<DateRangePicker> pickerItems;
+
+    private DateRangePicker _selectedPicker;
+    public DateRangePicker SelectedPicker
+    {
+        get => _selectedPicker;
+        set
+        {
+            if (_selectedPicker != value)
+            {
+                _selectedPicker = value;
+                FromDate = value.FromDate;
+                ToDate = value.ToDate;
+                OnPropertyChanged();
+                FilterOut();
+            }
+        }
+    }
+
 
     public ActivityOverviewViewModel( IActivityFacade activityFacade, INavigationService navigationService, IMessengerService messengerService)
         : base(messengerService)
     {
         _activityFacade = activityFacade;
         _navigationService = navigationService;
+
+        PickerItems = new List<DateRangePicker>
+            {
+                new() {Range = "Last week", FromDate = DateTime.Today - TimeSpan.FromDays(7)},
+                new() {Range = "Last month", FromDate = DateTime.Today - TimeSpan.FromDays(30)},
+                new() {Range = "Previous month", FromDate = DateTime.Today - TimeSpan.FromDays(60)},
+                new() {Range = "Last year", FromDate = DateTime.Today - TimeSpan.FromDays(365)}
+            };
+        SelectedPicker = PickerItems[3];
     }
 
-    
+
     private void FilterOut()
     {
         var fromDateCombined = new DateTime(FromDate.Year, FromDate.Month, FromDate.Day, FromTime.Hours,
