@@ -36,5 +36,5 @@ class UserFacade : FacadeBase<UserEntity, UserListModel, UserDetailModel, UserEn
         return entity is null
             ? null
             : ModelMapper.MapToDetailModel(entity);
-    }           
+    }
 }

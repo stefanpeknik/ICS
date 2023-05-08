@@ -17,6 +17,14 @@
                HorizontalOptions="Center"
                FontSize="46"/>
 
+        <Button Grid.Row="0"
+                Text="Delete Project"
+                BackgroundColor="Red"
+                HorizontalOptions="End"
+                HeightRequest="50"
+                WidthRequest="150"
+                Margin="0,0,25,0"/>
+
         <Line BackgroundColor="White"
               VerticalOptions="End" />
 
@@ -28,16 +36,14 @@
                                  Margin="10">
                 <Label Text="Name"
                        VerticalOptions="Center"/>
-                <Entry Text="Tag name" />
-                <!-- {Binding Tag.Name} -->
+                <Entry Text="{Binding Tag.Name}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
                                  Margin="10">
                 <Label Text="Description"
                        VerticalOptions="Center"/>
-                <Entry Text="Tag description" />
-                <!-- {Binding Tag.Description} -->
+                <Entry Text="{Binding Tag.Description}" />
             </VerticalStackLayout>
 
         </Grid>

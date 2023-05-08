@@ -14,7 +14,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Actie.App.ViewModels;
 
 
-public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessage>
+public partial class AddUserViewModel : ViewModelBase, IRecipient<UserEditMessage>, IRecipient<UserDeleteMessage>
 {
     private readonly IUserFacade _userFacade;
     private readonly INavigationService _navigationService;

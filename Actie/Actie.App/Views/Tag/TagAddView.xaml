@@ -2,7 +2,9 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
-             x:Class="Actie.App.Views.Tag.TagAddView">
+             xmlns:viewModels="using:Actie.App.ViewModels"
+             x:Class="Actie.App.Views.Tag.TagAddView"
+            x:DataType="viewModels:TagAddViewModel">
 
     <Grid RowDefinitions="100, Auto, Auto">
         <Label Grid.Row="0"
@@ -22,14 +24,16 @@
                                  Margin="10">
                 <Label Text="Name"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="Enter tag name" />
+                <Entry Placeholder="Enter tag name"
+                Text="{Binding Tag.Name}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1"
                                  Margin="10">
                 <Label Text="Description"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="Enter tag description" />
+                <Entry Placeholder="Enter tag description"
+                Text="{Binding Tag.Description}" />
             </VerticalStackLayout>
 
         </Grid>
@@ -38,8 +42,9 @@
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="100"
-                Margin="0,25,25,0"/>
-
+                Margin="0,25,25,0"
+                Command="{Binding SaveCommand}"
+                />
     </Grid>
 
     <!-- Jmeno Popis -->

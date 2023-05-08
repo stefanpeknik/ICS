@@ -85,7 +85,8 @@
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="150"
-                Margin="0,0,25,0"/>
+                Margin="0,0,25,0"
+                Command="{Binding SaveCommand}"/>
 
     </Grid>
 

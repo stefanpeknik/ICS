@@ -3,12 +3,37 @@ using CommunityToolkit.Mvvm.Messaging;
 using Actie.App.Messages;
 using Actie.App.Services;
 using Actie.BL.Facades;
+using Actie.BL.Facades.Interfaces;
 using Actie.BL.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Actie.App.ViewModels;
+
+[QueryProperty(nameof(Id), nameof(Id))]
 public partial class TagAddViewModel : ViewModelBase
 {
-    public TagAddViewModel(IMessengerService messengerService) : base(messengerService)
+    private readonly ITagFacade _tagFacade;
+    private readonly INavigationService _navigationService;
+
+    public Guid Id { get; set; }
+
+    [ObservableProperty]
+    public TagDetailModel tag = TagDetailModel.Empty;
+
+    public TagAddViewModel(ITagFacade tagFacade, INavigationService navigationService, IMessengerService messengerService)
+        : base(messengerService)
     {
+        _tagFacade = tagFacade;
+        _navigationService = navigationService;
+    }
+
+    [RelayCommand]
+    private async Task SaveAsync()
+    {
+        await _tagFacade.SaveAsync(Tag, Id);
+
+        MessengerService.Send(new TagEditMessage { TagId = Tag.Id });
+
+        _navigationService.SendBackButtonPressed();
     }
 }

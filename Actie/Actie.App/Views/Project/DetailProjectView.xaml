@@ -14,7 +14,8 @@
             <Label Grid.Column="0"
                    Margin="30"
                    FontSize="102"
-                   Text="Project name"/>
+                   Text="{Binding Project.Name}"
+                   TextColor="White"/>
             <!-- Text="{Binding Project.Name}" -->
 
 
@@ -29,7 +30,8 @@
         </Grid>
 
         <Label Grid.Row="1"
-               Text="Project description" />
+               Text="{Binding Project.Description}"
+               TextColor="White"/>
                <!-- Text="{Binding Project.Description}"/> -->
     </Grid>
 

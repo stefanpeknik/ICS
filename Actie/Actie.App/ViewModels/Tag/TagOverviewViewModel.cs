@@ -10,7 +10,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Actie.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class TagOverviewViewModel : ViewModelBase
+public partial class TagOverviewViewModel : ViewModelBase, IRecipient<TagEditMessage>
 {
     private readonly ITagFacade _tagFacade;
     private readonly INavigationService _navigationService;
@@ -38,6 +38,11 @@ public partial class TagOverviewViewModel : ViewModelBase
     {
         await base.LoadDataAsync();
 
-        Tags = await _tagFacade.GetByUserIdAsync(Id);
+        Tags = await _tagFacade.GetAsync();
+    }
+
+    public async void Receive(TagEditMessage message)
+    {
+        await LoadDataAsync();
     }
 }
