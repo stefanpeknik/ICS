@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Actie.App.ViewModels;
 
 [QueryProperty(nameof(Id), nameof(Id))]
-public partial class ActivityOverviewViewModel : ViewModelBase
+public partial class ActivityOverviewViewModel : ViewModelBase, IRecipient<ActivityEditMessage>
 {
     public class DateRangePicker
     {
@@ -144,7 +144,7 @@ public partial class ActivityOverviewViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToAddActivityAsync()
     {
-        await _navigationService.GoToAsync("/add_activity");
+        await _navigationService.GoToAsync("/add_activity", new Dictionary<string, object?> { [nameof(Id)] = Id});
     }
 
     protected override async Task LoadDataAsync()
@@ -152,5 +152,10 @@ public partial class ActivityOverviewViewModel : ViewModelBase
         await base.LoadDataAsync();
 
         Activities = await _activityFacade.GetByUserIdAsync(Id);
+    }
+
+    public async void Receive(ActivityEditMessage message)
+    {
+        await LoadDataAsync();
     }
 }

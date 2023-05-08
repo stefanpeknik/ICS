@@ -2,6 +2,10 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Actie.App.View"
+             xmlns:m="clr-namespace:Actie.BL.Models;assembly=Actie.BL"
+             xmlns:vm="clr-namespace:Actie.App.ViewModels"
+             xmlns:activity="using:Actie.App.Views.Activity"
+             x:DataType="vm:AddActivityViewModel"
              x:Class="Actie.App.Views.Activity.AddActivityView">
 
 
@@ -17,13 +21,14 @@
 
 
         <Grid Grid.Row="1"
-              RowDefinitions="100,100,100,100">
+              RowDefinitions="100,100,100,100,*">
 
             <VerticalStackLayout Grid.Row="0"
                                  Margin="10">
                 <Label Text="Name"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="Enter  name" />
+                <Entry Placeholder="Enter  name"
+                       Text="{Binding Name}"/>
             </VerticalStackLayout>
 
             <HorizontalStackLayout Grid.Row="1"
@@ -31,22 +36,24 @@
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Start date"
                            VerticalOptions="Center"/>
-                    <DatePicker/>
+                    <DatePicker Date="{Binding StartDate}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="Start time"
                            VerticalOptions="Center"/>
-                    <TimePicker Margin="0,7,0,0"/>
+                    <TimePicker Margin="0,7,0,0"
+                                Time="{Binding StartTime}"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="End date"
                            VerticalOptions="Center"/>
-                    <DatePicker />
+                    <DatePicker Date="{Binding EndDate}" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Margin="10,0">
                     <Label Text="End time"
                            VerticalOptions="Center"/>
-                    <TimePicker Margin="0,7,0,0"/>
+                    <TimePicker Margin="0,7,0,0"
+                                Time="{Binding EndTime}"/>
                 </VerticalStackLayout>
                 
             </HorizontalStackLayout>
@@ -57,14 +64,16 @@
                     <Label Text="Type"
                            VerticalOptions="Center" />
                     <Entry Placeholder="Enter activity type"
-                           WidthRequest="150"/>
+                           WidthRequest="150"
+                           Text="{Binding Type}"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Margin="10">
                     <Label Text="Rating (out of 5)"
                            VerticalOptions="Center"/>
                     <Entry Placeholder="Enter activity rating"
-                           WidthRequest="150"/>
+                           WidthRequest="150"
+                           Text="{Binding ActivityModel.Rating}"/>
                 </VerticalStackLayout>
             </HorizontalStackLayout>
 
@@ -72,16 +81,29 @@
                                      Margin="10">
                 <Label Text="Description"
                        VerticalOptions="Center"/>
-                <Entry Placeholder="Enter activity description" />
+                <Entry Placeholder="Enter activity description"
+                       Text="{Binding ActivityModel.Description}"/>
             </VerticalStackLayout>
 
+            <HorizontalStackLayout Grid.Row="4">
+                <Picker
+                    ItemsSource="{Binding MyProjects}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedProject}">
+                </Picker>
+            </HorizontalStackLayout>
+
+
         </Grid>
-        <Button Grid.Row="2"
+        <Button x:Name="SaveButton"
+                Grid.Row="2"
                 Text="Save Activity"
                 HorizontalOptions="End"
                 HeightRequest="50"
                 WidthRequest="150"
-                Margin="0,0,25,0"/>
+                Margin="0,0,25,0"
+                IsEnabled="{Binding CanSave, Mode=TwoWay}"
+                Command="{Binding SaveCommand}"/>
 
     </Grid>
 
