@@ -9,60 +9,61 @@
 
 
     <Grid RowDefinitions="100, *">
-    <Label Grid.Row="0"
-           Text="Tags"
-           VerticalOptions="Center"
-           HorizontalOptions="Center"
-           FontSize="46"/>
-    <Button Text="Add Tag"
-            VerticalOptions="Center"
-            HorizontalOptions="End"
-            Margin="0,0,25,0"
-            Command="{Binding GoToAddTagCommand}"
-            />
-    <Line BackgroundColor="White"
-          HeightRequest="100"
-          VerticalOptions="End"/>
+        <Grid Grid.Row="0">
+            <Label Text="Tags"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="46"/>
+            <Button Text="Add Tag"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Margin="0,0,25,0"
+                    Command="{Binding GoToAddTagCommand}"
+                    />
+        </Grid>
+        <Line BackgroundColor="White"
+              HeightRequest="100"
+              VerticalOptions="End"/>
 
-    <ScrollView Grid.Row="1">
 
-        <CollectionView ItemsSource="{Binding  Tags}"
-                        VerticalOptions="FillAndExpand">
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding  Tags}"
+                        HorizontalOptions="FillAndExpand">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
-                                         HorizontalItemSpacing="10" VerticalItemSpacing="10"
-                                         Span="2" />
+                                 Span="3" />
             </CollectionView.ItemsLayout>
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:TagListModel">
                     <Frame Padding="0"
-                                   CornerRadius="10"
-                                   WidthRequest="320" HeightRequest="110"
-                                   IsClippedToBounds="True">
+                           Margin="0,25,0,0"
+                           CornerRadius="10"
+                           BorderColor="White"
+                           WidthRequest="320" HeightRequest="75"
+                           IsClippedToBounds="True">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:TagOverviewViewModel}}, Path=GoToTagDetailCommand}"
                                                   CommandParameter="{Binding Id}" />
-                            </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>
 
-                        <Grid>
+                        <ScrollView>
                             <VerticalStackLayout>
                                 <Label
                                     Margin="22,12"
                                     FontSize="20" LineBreakMode="WordWrap"
                                     Text="{Binding Name}"
-                                    TextColor="White" VerticalOptions="End" />
+                                    TextColor="White" VerticalOptions="Start" />
 
                             </VerticalStackLayout>
 
-                            </Grid>
+                        </ScrollView>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-    </ScrollView>
-</Grid>
+    </Grid>
 
 
 </views:ContentPageBase>

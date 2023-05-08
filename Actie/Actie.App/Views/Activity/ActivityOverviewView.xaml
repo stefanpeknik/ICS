@@ -8,22 +8,21 @@
              x:Class="Actie.App.Views.Activity.ActivityOverviewView">
 
     <Grid RowDefinitions="100,75, *">
-            <Label  Grid.Row="0"
-                    Text="Activities"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    FontSize="46"/>
-            <Button Grid.Row="0"
-                    Text="Add Activity"
+        <Grid Grid.Row="0">
+            <Label Text="Activities"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="46"/>
+            <Button Text="Add Activity"
                     VerticalOptions="Center"
                     HorizontalOptions="End"
                     Margin="0,0,25,0"
                     Command="{Binding GoToAddActivityCommand}"
-                    />
-            <Line   Grid.Row="0"
-                    BackgroundColor="White"
-                  HeightRequest="100"
-                  VerticalOptions="End"/>
+            />
+        </Grid>
+        <Line BackgroundColor="White"
+              HeightRequest="100"
+              VerticalOptions="End"/>
 
             <Grid Grid.Row="1"
                   ColumnDefinitions="*, auto">
@@ -78,53 +77,54 @@
                   HeightRequest="100"
                   VerticalOptions="End"/>
 
-            <ScrollView Grid.Row="2">
 
-                <CollectionView ItemsSource="{Binding Activities}"
-                                VerticalOptions="FillAndExpand">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical"
-                                             HorizontalItemSpacing="10" VerticalItemSpacing="10"
-                                             Span="2" />
-                    </CollectionView.ItemsLayout>
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Activities}"
+                        HorizontalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="3" />
+            </CollectionView.ItemsLayout>
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="m:ActivityListModel">
-                            <Frame Padding="0"
-                                       CornerRadius="10"
-                                       WidthRequest="320" HeightRequest="160"
-                                       IsClippedToBounds="True">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.GoToDetailCommand}"
-                                                              CommandParameter="{Binding Id}" />
-                                    <!-- what this ^^ -->
-                                </Frame.GestureRecognizers>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:ActivityListModel">
+                    <Frame Padding="0"
+                           Margin="0,25,0,0"
+                           BorderColor="White"
+                               CornerRadius="10"
+                               WidthRequest="320" HeightRequest="160"
+                               >
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference ActivityListViewRoot}, Path=BindingContext.GoToDetailCommand}"
+                                                      CommandParameter="{Binding Id}" />
+                        </Frame.GestureRecognizers>
 
-                                <Grid>
-                                    
+                       
+                        <ScrollView>
                             <VerticalStackLayout>
                                     <Label
-                                           Margin="22,12"
+                                           Margin="20,12"
                                            FontSize="20" LineBreakMode="WordWrap"
                                            Text="{Binding Name}"
                                            TextColor="White" VerticalOptions="End" />
-                                    <Label
-                                           Margin="22,12"
-                                           FontSize="20" LineBreakMode="WordWrap"
+                                    <Label Margin="20,0"
+                                        FontSize="20" LineBreakMode="WordWrap"
                                            Text="{Binding Start}"
                                            TextColor="White" VerticalOptions="End" />
-                                    <Label
-                                           Margin="22,12"
-                                           FontSize="20" LineBreakMode="WordWrap"
+                                    <Label Margin="20,0"
+                                        FontSize="20" LineBreakMode="WordWrap"
                                            Text="{Binding End}"
                                            TextColor="White" VerticalOptions="End" />
+                                    <Label Margin="20,12,0,0"
+                                           FontSize="20" LineBreakMode="WordWrap"
+                                           Text="{Binding Type}"
+                                           TextColor="White" VerticalOptions="End" />
                             </VerticalStackLayout>
-                            </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+                        </ScrollView>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         
     </Grid>
 
