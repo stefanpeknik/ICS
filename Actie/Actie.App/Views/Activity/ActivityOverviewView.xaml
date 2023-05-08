@@ -36,6 +36,14 @@
                    FontSize="24"/>
             <DatePicker Margin="10,0"/>
             <TimePicker Margin="0,12,0,0"/>
+            <Picker Title="Choose filter" Grid.Row="3"
+                    WidthRequest="100">
+                <Picker.Items>
+                    <x:String>Week</x:String>
+                    <x:String>Month</x:String>
+                    <x:String>Year</x:String>
+                </Picker.Items>
+            </Picker>
         </HorizontalStackLayout>
 
 
