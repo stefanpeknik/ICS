@@ -40,20 +40,6 @@ public partial class EditProjectViewModel : ViewModelBase
     }
 
 
-    [RelayCommand]
-    private async Task DeleteAsync()
-    {
-        if (Project is not null)
-        {
-            await _projectFacade.DeleteAsync(Project.Id);
-
-            MessengerService.Send(new ProjectDeleteMessage());
-
-            _navigationService.SendBackButtonPressed();
-
-        }
-    }
-
 
     private async Task ReloadDataAsync()
     {
