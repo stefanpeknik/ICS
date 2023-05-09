@@ -83,6 +83,8 @@ public partial class EditActivityViewModel : ViewModelBase, IRecipient<ActivityE
                 TimeSpan time = Activity.Start.TimeOfDay;
                 Activity.Start = new DateTime(value.Year, value.Month, value.Day);
                 Activity.Start = Activity.Start.Add(time);
+                if (Activity.Start > Activity.End)
+                    Activity.Start = Activity.End - TimeSpan.FromHours(1);
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(CanSave));
             }
@@ -99,6 +101,8 @@ public partial class EditActivityViewModel : ViewModelBase, IRecipient<ActivityE
                 TimeSpan time = Activity.End.TimeOfDay;
                 Activity.End = new DateTime(value.Year, value.Month, value.Day);
                 Activity.End = Activity.End.Add(time);
+                if (Activity.End < Activity.Start)
+                    Activity.End = Activity.Start + TimeSpan.FromHours(1);
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(CanSave));
             }

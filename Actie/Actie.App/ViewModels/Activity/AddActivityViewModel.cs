@@ -74,6 +74,8 @@ public partial class AddActivityViewModel : ViewModelBase
                 TimeSpan time = ActivityModel.Start.TimeOfDay;
                 ActivityModel.Start = new DateTime(value.Year, value.Month, value.Day);
                 ActivityModel.Start = ActivityModel.Start.Add(time);
+                if (ActivityModel.Start > ActivityModel.End)
+                    ActivityModel.Start = ActivityModel.End - TimeSpan.FromHours(1);
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(CanSave));
             }
@@ -90,6 +92,8 @@ public partial class AddActivityViewModel : ViewModelBase
                 TimeSpan time = ActivityModel.End.TimeOfDay;
                 ActivityModel.End = new DateTime(value.Year, value.Month, value.Day);
                 ActivityModel.End = ActivityModel.End.Add(time);
+                if (ActivityModel.End < ActivityModel.Start)
+                    ActivityModel.End = ActivityModel.Start + TimeSpan.FromHours(1);
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(CanSave));
             }

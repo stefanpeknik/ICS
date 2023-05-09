@@ -42,6 +42,8 @@ public partial class ActivityOverviewViewModel : ViewModelBase, IRecipient<Activ
             if (_fromDate != value)
             {
                 _fromDate = value;
+                if (FromDate > ToDate)
+                    _fromDate = ToDate - TimeSpan.FromHours(1);
                 OnPropertyChanged();
                 FilterOut();
             }
@@ -57,6 +59,8 @@ public partial class ActivityOverviewViewModel : ViewModelBase, IRecipient<Activ
             if (_toDate != value)
             {
                 _toDate = value;
+                if (ToDate < FromDate)
+                    _toDate = FromDate + TimeSpan.FromHours(1);
                 OnPropertyChanged();
                 FilterOut();
             }
