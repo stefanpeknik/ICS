@@ -4,6 +4,8 @@ using Actie.DAL.Entities;
 namespace Actie.BL.Facades.Interfaces;
 public interface IActivityFacade : IFacade<ActivityEntity, ActivityListModel, ActivityDetailModel>
 {
+    public Task<IEnumerable<(DateTime, DateTime)>?> SaveCheckDateTimeAsync(ActivityDetailModel model);
+
     public Task<IEnumerable<ActivityListModel>?> GetFilteredPreciseDateTime(Guid userId, DateTime? startsIn = null,
         DateTime? endsIn = null);
 

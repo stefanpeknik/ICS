@@ -32,6 +32,10 @@ public partial class EditActivityViewModel : ViewModelBase, IRecipient<ActivityE
     public Guid UserId { get; set; }
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(StartDate))]
+    [NotifyPropertyChangedFor(nameof(EndDate))]
+    [NotifyPropertyChangedFor(nameof(StartTime))]
+    [NotifyPropertyChangedFor(nameof(EndTime))]
     public ActivityDetailModel activity = ActivityDetailModel.Empty with { Start = DateTime.Now - TimeSpan.FromHours(1), End = DateTime.Now };
 
     [ObservableProperty]
@@ -164,7 +168,18 @@ public partial class EditActivityViewModel : ViewModelBase, IRecipient<ActivityE
     [RelayCommand]
     public async Task SaveAsync()
     {
-        Activity = await _activityFacade.SaveAsync(Activity with { Tags = null!});
+        var collisions = await _activityFacade.SaveCheckDateTimeAsync(Activity with { Tags = null! });
+
+        if (collisions.IsNullOrEmpty() == false)
+        {
+            var text = "Activity schedule conflicts. Please adjust to avoid collisions.\nConflicting times listed below:\n";
+            foreach (var collision in collisions)
+            {
+                text += $"{collision.Item1} - {collision.Item2}\n";
+            }
+            await Application.Current.MainPage.DisplayAlert("Collisions", text, "Choose another time");
+            return;
+        }
 
         MessengerService.Send(new ActivityEditMessage { ActivityId = Activity.Id });
 

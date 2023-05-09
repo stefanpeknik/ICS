@@ -5,8 +5,10 @@ using Actie.BL.Mappers.Interfaces;
 using Actie.BL.Models;
 using Actie.DAL.Entities;
 using Actie.DAL.Mappers;
+using Actie.DAL.Repositories;
 using Actie.DAL.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Actie.BL.Facades;
 
@@ -22,6 +24,55 @@ class ActivityFacade : FacadeBase<ActivityEntity, ActivityListModel, ActivityDet
 
     protected override List<string> IncludesNavigationPathDetails => new(){
         $"{nameof(ActivityEntity.Tags)}.{nameof(ActivityTagEntity.Tag)}"};
+
+
+    private static bool CheckCollision(DateTime start1, DateTime end1, DateTime start2, DateTime end2)
+    {
+        if (start1 <= end2 && end1 >= start2)
+        {
+            // There is an overlap between the two pairs of datetime.
+            return true;
+        }
+
+        // There is no overlap between the two pairs of datetime.
+        return false;
+    }
+
+    public async Task<IEnumerable<(DateTime, DateTime)>?> SaveCheckDateTimeAsync(ActivityDetailModel model)
+    {
+        ActivityDetailModel result;
+
+        GuardCollectionsAreNotSet(model);
+
+        ActivityEntity entity = ModelMapper.MapToEntity(model);
+
+        IUnitOfWork uow = UnitOfWorkFactory.Create();
+        IRepository<ActivityEntity> repository = uow.GetRepository<ActivityEntity, ActivityEntityMapper>();
+
+        var query = repository.Get().Where(a => model.Start <= a.End && model.End >= a.Start && a.Id != model.Id && a.UserId == model.UserId);
+
+        // check for collisions
+        var collisions = await query.ToListAsync();
+        if (collisions.IsNullOrEmpty() == false)
+            return collisions.Select(a => (a.Start, a.End));
+
+        if (await repository.ExistsAsync(entity))
+        {
+            ActivityEntity updatedEntity = await repository.UpdateAsync(entity);
+            result = ModelMapper.MapToDetailModel(updatedEntity);
+        }
+        else
+        {
+            entity.Id = Guid.NewGuid();
+            ActivityEntity insertedEntity = await repository.InsertAsync(entity);
+            result = ModelMapper.MapToDetailModel(insertedEntity);
+        }
+
+        await uow.CommitAsync();
+
+        return null;
+    }
+
 
     public async Task<IEnumerable<ActivityListModel>?> GetFilteredPreciseDateTime(Guid userId, DateTime? startsIn = null,
         DateTime? endsIn = null)

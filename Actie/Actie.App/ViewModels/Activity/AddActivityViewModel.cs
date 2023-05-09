@@ -150,7 +150,18 @@ public partial class AddActivityViewModel : ViewModelBase
     [RelayCommand]
     public async Task SaveAsync()
     {
-        ActivityModel = await _activityFacade.SaveAsync(ActivityModel with {UserId = Id, ProjectId = SelectedProject.Id});
+        var collisions = await _activityFacade.SaveCheckDateTimeAsync(ActivityModel with {UserId = Id, ProjectId = SelectedProject.Id});
+
+        if (collisions.IsNullOrEmpty() == false)
+        {
+            var text = "Activity schedule conflicts. Please adjust to avoid collisions.\nConflicting times listed below:\n";
+            foreach (var collision in collisions)
+            {
+                text += $"{collision.Item1} - {collision.Item2}\n";
+            }
+            await Application.Current.MainPage.DisplayAlert("Collisions", text, "Choose another time");
+            return;
+        }
 
         MessengerService.Send(new ActivityEditMessage{ ActivityId = ActivityModel.Id });
 
